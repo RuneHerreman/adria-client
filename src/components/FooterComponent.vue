@@ -16,13 +16,13 @@ import InkeaLogo from "@/assets/media/INKEA.png";
         <a href="https://sites.google.com/student.howest.be/adria-groep1-howest-2025-2026/home">About us</a>
         <router-link to="/contact">Contact us</router-link>
       </div>
+    </div>
 
-      <div id="copyright">
-        <p>© 2025 INKEA. All rights reserved.</p>
-        <small>
-          This is a fictitious website created for the GLED Analysis and Development Project.
-        </small>
-      </div>
+    <div id="copyright">
+      <p>© 2025 INKEA. All rights reserved.</p>
+      <small>
+        This is a fictitious website created for the OLOD Analysis and Development Project.
+      </small>
     </div>
   </footer>
 </template>
@@ -33,7 +33,7 @@ footer {
   background-image: radial-gradient(rgba(0, 0, 0, 0.05) 2px, transparent 2px);
   background-size: 32px 32px;
   padding: 2rem 4rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--dark-green);
   display: flex;
   flex-direction: column;
@@ -53,6 +53,18 @@ footer {
 #logos {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.logo {
+  height: 45px;
+  width: auto;
+}
+
+#links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 </style>
