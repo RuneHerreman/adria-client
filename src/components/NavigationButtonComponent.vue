@@ -21,11 +21,9 @@ const props = defineProps({
   color: var(--dark-green);
   font-weight: bold;
   border-radius: 0.5rem;
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
-  font-size: 1.2rem;
-  background: no-repeat left center;
-  width: 7.8rem;
-  height: 2.5rem;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  background: no-repeat left+0.5rem center;
+  height: fit-content;
 }
 
 .nav-link:hover {
