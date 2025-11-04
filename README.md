@@ -27,3 +27,6 @@ ___
 | <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15'><rect width='15' height='15' fill='%23A80D0B'/></svg>" alt="#A80D0B" /> Cat Hard    | `#A80D0B`  |
 | <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15'><rect width='15' height='15' fill='%23102202'/></svg>" alt="#102202" /> Cat Expert  | `#102202`  |
 
+## Fonts
+- Headers: `Tw Cen MT`
+- Text: `Inter`
