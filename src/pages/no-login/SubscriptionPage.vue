@@ -1,11 +1,22 @@
 <script setup lang="ts">
-import HeaderComponent from "@/components/HeaderComponent.vue";
+import SubscriptionListComponent from "@/components/subscription-components/SubscriptionListComponent.vue";
 </script>
 
 <template>
-  <HeaderComponent/> <!-- HAS TO BE REMOVED AND CHANGED WITH ONLY THE LOGO LEFT -->
+  <main>
+    <h1>Choose your plan</h1>
+    <SubscriptionListComponent id="subscriptionList"/>
+  </main>
+
 </template>
 
 <style scoped>
+#subscriptionList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 
+}
 </style>
