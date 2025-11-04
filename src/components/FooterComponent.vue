@@ -10,6 +10,13 @@ import InkeaLogo from "@/assets/media/INKEA.png";
         <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
         <img :src="InkeaLogo" alt="Inkea Logo" class="logo" />
       </div>
+
+      <div id="links">
+        <h3>Links</h3>
+        <a href="https://sites.google.com/student.howest.be/adria-groep1-howest-2025-2026/home">About us</a>
+        <router-link to="/contact">Contact us</router-link>
+      </div>
+
     </div>
   </footer>
 </template>
