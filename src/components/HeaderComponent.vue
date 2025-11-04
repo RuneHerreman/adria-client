@@ -7,15 +7,30 @@
     {name: "Shop", path: "/shop", iconUrl: "/src/assets/icons/shop.svg"},
     {name: "Settings", path: "/settings", iconUrl: "/src/assets/icons/settings.svg"},
   ];
-  function goHome() {
 
+
+  const currentRoute = useRoute();
+
+  function logoWithWiteText() {
+    return currentRoute.path === "/";
   }
+
+  function notLoggedIn() {
+    return ["/subscription", "/onboarding"].indexOf(currentRoute.path) !== -1;
+  }
+
+  function showNavigation(){
+    return ["/", "/subscription", "/onboarding"].indexOf(currentRoute.path) === -1;
+  }
+
 </script>
 <template>
   <header>
-    <img @click="() => {router.push('/dashboard')}" src="../assets/media/Genesis.png" alt="genesis-logo">
+    <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="../assets/media/genesis-white.png" alt="genesis-white-logo">
+    <img v-else-if="notLoggedIn()" @click="() => {router.push('/')}" src="../assets/media/genesis.png" alt="genesis-logo">
+    <img v-else @click="() => {router.push('/dashboard')}" src="../assets/media/genesis.png" alt="genesis-logo">
 
-    <nav>
+    <nav v-if="showNavigation()">
       <NavigationButtonComponent
           v-for="link in links"
           :key="link.name"
