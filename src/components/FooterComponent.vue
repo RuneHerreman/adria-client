@@ -17,6 +17,12 @@ import InkeaLogo from "@/assets/media/INKEA.png";
         <router-link to="/contact">Contact us</router-link>
       </div>
 
+      <div id="copyright">
+        <p>© 2025 INKEA. All rights reserved.</p>
+        <small>
+          This is a fictitious website created for the GLED Analysis and Development Project.
+        </small>
+      </div>
     </div>
   </footer>
 </template>
