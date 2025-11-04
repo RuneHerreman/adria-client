@@ -28,5 +28,31 @@ import InkeaLogo from "@/assets/media/INKEA.png";
 </template>
 
 <style scoped>
+footer {
+  background-color: var(--quaternary-green);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 2px, transparent 2px);
+  background-size: 32px 32px;
+  padding: 2rem 4rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: flex-start;
+  max-width: 1100px;
+}
+
+#logos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 </style>
