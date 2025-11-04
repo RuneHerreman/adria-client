@@ -10,7 +10,7 @@ COPY . .
 
 ARG BUILD_ENV=dev
 
-RUN npm run build:${BUILD_ENV}
+RUN npm run build
 
 FROM nginx:alpine
 
