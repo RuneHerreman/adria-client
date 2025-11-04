@@ -5,18 +5,13 @@ import SubscriptionListComponent from "@/components/subscription-components/Subs
 <template>
   <main>
     <h1>Choose your plan</h1>
-    <SubscriptionListComponent id="subscriptionList"/>
+    <SubscriptionListComponent/>
   </main>
 
 </template>
 
 <style scoped>
-#subscriptionList {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-
+h1{
+  margin-bottom: 3rem;
 }
 </style>

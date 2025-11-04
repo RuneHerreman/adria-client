@@ -9,6 +9,7 @@ import SettingsPage from "@/pages/SettingsPage.vue";
 import ShopPage from "@/pages/ShopPage.vue";
 import SubscriptionPage from "@/pages/no-login/SubscriptionPage.vue";
 import ContactPage from "@/pages/no-login/ContactPage.vue";
+import CheckoutPage from "@/pages/no-login/CheckoutPage.vue";
 
 const routes = [
     {
@@ -46,6 +47,10 @@ const routes = [
     {
         path: "/subscription",
         component: SubscriptionPage
+    },
+    {
+        path: "/subscription/checkout",
+        component: CheckoutPage
     },
     {
         path: "/contact",
