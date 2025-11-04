@@ -12,6 +12,9 @@ import GenesisLogo from "@/assets/media/genesis.png";
         Let’s personalize your learning experience.<br />
         What’s your current occupation?
       </p>
+
+      <label for="occupation" class="label">Your occupation</label>
+      <input id="occupation" type="text" placeholder="Type your occupation" class="input"/>
     </div>
   </div>
 </template>
