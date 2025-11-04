@@ -1,5 +1,9 @@
 <script setup>
+import {computed} from "vue";
 
+const perks = computed(() => {
+
+});
 </script>
 
 <template>

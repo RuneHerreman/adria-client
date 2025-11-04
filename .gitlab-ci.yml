@@ -1,0 +1,37 @@
+image: registry.ci.infra.lan:5000/project-2:client-QA
+
+stages:
+  - QA
+  - build
+
+before_script:
+  - ln -s /ci/node_modules .
+
+SonarQube:
+  stage: QA
+  only:
+    - main
+  script:
+    - node -v
+    - npx sonar-scanner -Dsonar.login=$SONAR_TOKEN
+  variables:
+    SONAR_TOKEN: $SONAR_TOKEN
+# You will need to find a way to pass the sonar token to command npm run sonar-ci.
+# The sonar token is available with the variable $SONAR_TOKEN
+# Take an example from the server .gitlab-ci.yml file.
+
+create-image:
+  image: registry.ci.infra.lan:5000/ad-project:server-DEPLOY
+  only:
+    - main
+  stage: build
+  services:
+    - name: docker:dind
+  tags:
+    - docker
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  script:
+    - docker build --build-arg BUILD_ENV=test -t hcr.technet.howest.be/adria-client-group-01:latest .
+    - docker push hcr.technet.howest.be/adria-client-group-01:latest
+  # Extend the script so it builds and pushes the Docker image to the howest registry hcr.technet.howest.be
