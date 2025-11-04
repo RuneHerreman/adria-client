@@ -8,6 +8,7 @@ import OnboardingPage from "@/pages/OnboardingPage.vue";
 import SettingsPage from "@/pages/SettingsPage.vue";
 import ShopPage from "@/pages/ShopPage.vue";
 import SubscriptionPage from "@/pages/SubscriptionPage.vue";
+import ContactPage from "@/pages/ContactPage.vue";
 
 const routes = [
     {
@@ -45,6 +46,10 @@ const routes = [
     {
         path: "/subscription",
         component: SubscriptionPage
+    },
+    {
+        path: "/contact",
+        component: ContactPage
     }
 ];
 
