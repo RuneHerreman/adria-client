@@ -4,7 +4,6 @@ import CoursePage from "@/pages/CoursePage.vue";
 import DashboardPage from "@/pages/DashboardPage.vue";
 import LeaderboardPage from "@/pages/LeaderboardPage.vue";
 import LearningCoursePage from "@/pages/LearningCoursePage.vue";
-import OnboardingPage from "@/pages/no-login/OnboardingOccupationPage.vue";
 import SettingsPage from "@/pages/SettingsPage.vue";
 import ShopPage from "@/pages/ShopPage.vue";
 import SubscriptionPage from "@/pages/no-login/SubscriptionPage.vue";
