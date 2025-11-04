@@ -39,10 +39,12 @@ h1 {
     font-weight: bold;
 }
 
-h1::before {
+h1::after {
     content: "";
     display: block;
-    border-bottom: solid 0.1rem black;
+    border-bottom: solid 0.2rem black;
+    width: 4rem;
+    padding-bottom: 0.5rem;
 }
 
 .landing-page-body{

@@ -1,10 +1,12 @@
 <script setup lang="ts">
-
+defineProps({
+  route: {type:String}
+})
 </script>
 
 <template>
-  <router-link to="/subscription" class="brightgreen-button">
-    Start learning today
+  <router-link :to="route" class="brightgreen-button">
+    <slot></slot>
   </router-link>
 </template>
 
