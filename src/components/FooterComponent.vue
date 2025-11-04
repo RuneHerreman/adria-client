@@ -6,7 +6,6 @@ import InkeaLogo from "@/assets/media/INKEA.png";
 <template>
   <footer>
     <div id="content">
-
       <div class="footer-left">
         <div id="logos">
           <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
@@ -15,17 +14,21 @@ import InkeaLogo from "@/assets/media/INKEA.png";
 
         <div id="links">
           <h3>Links</h3>
-          <a href="https://sites.google.com/student.howest.be/adria-groep1-howest-2025-2026/home" target="_blank">About us</a>
+          <a
+              href="https://sites.google.com/student.howest.be/adria-groep1-howest-2025-2026/home"
+          >About us</a
+          >
           <router-link to="/contact">Contact us</router-link>
         </div>
       </div>
+    </div>
 
-      <div id="copyright">
-        <p>© 2025 INKEA. All rights reserved.</p>
-        <small>
-          This is a fictitious website created for the OLOD Analysis and Development Project.
-        </small>
-      </div>
+    <div id="copyright">
+      <p>© 2025 INKEA. All rights reserved.</p>
+      <small>
+        This is a fictitious website created for the OLOD Analysis and
+        Development Project.
+      </small>
     </div>
   </footer>
 </template>
@@ -33,17 +36,22 @@ import InkeaLogo from "@/assets/media/INKEA.png";
 <style scoped>
 footer {
   background-color: var(--quaternary-green);
-  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 0.125rem, transparent 0.125rem);
-  background-size: 6.25rem 6.25rem;
+
+  background-image:
+      radial-gradient(rgba(0, 0, 0, 0.04) 22%, transparent 23%),
+      radial-gradient(rgba(0, 0, 0, 0.04) 22%, transparent 23%);
+  background-position: center;
+  background-size: 2.4rem 2rem;
+
   font-family: "Inter", sans-serif;
   color: var(--dark-green);
   padding: 1.5rem 5rem;
-  height: 12rem;
+  height: 10rem;
 }
 
 #content {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
@@ -91,10 +99,10 @@ footer {
 }
 
 #copyright {
-  text-align: right;
+  text-align: center;
   font-size: 0.8rem;
   opacity: 0.8;
-  max-width: 18.75rem;
   line-height: 1.4;
+  margin-top: 1rem;
 }
 </style>
