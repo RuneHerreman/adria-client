@@ -21,6 +21,8 @@
 html, body{
     font-family: "Inter", Arial, Helvetica, sans-serif;
     font-size: 1rem;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,5 +42,10 @@ h1 {
 h1::before {
     content: "";
     display: block;
-    border-bottom-color: ;
+    border-bottom: solid 0.1rem black;
+}
+
+.landing-page-body{
+    background: url("../media/landing-page-banner.png") center top no-repeat;
+    background-size: contain;
 }

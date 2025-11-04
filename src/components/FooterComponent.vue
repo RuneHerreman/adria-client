@@ -1,5 +1,5 @@
 <script setup>
-import GenesisLogo from "@/assets/media/Genesis.png";
+import GenesisLogo from "@/assets/media/genesis.png";
 import InkeaLogo from "@/assets/media/INKEA.png";
 </script>
 

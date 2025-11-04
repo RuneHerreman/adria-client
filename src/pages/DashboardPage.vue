@@ -5,7 +5,6 @@ import GreetingComponent from "@/components/dashboard-components/GreetingCompone
 </script>
 
 <template>
-  <HeaderComponent/>
   <main>
     <GreetingComponent/>
   </main>
