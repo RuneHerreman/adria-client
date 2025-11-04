@@ -1,14 +1,14 @@
 import {createRouter, createWebHistory} from "vue-router";
-import LandingPage from "@/pages/LandingPage.vue";
+import LandingPage from "@/pages/no-login/LandingPage.vue";
 import CoursePage from "@/pages/CoursePage.vue";
 import DashboardPage from "@/pages/DashboardPage.vue";
 import LeaderboardPage from "@/pages/LeaderboardPage.vue";
 import LearningCoursePage from "@/pages/LearningCoursePage.vue";
-import OnboardingPage from "@/pages/OnboardingPage.vue";
+import OnboardingPage from "@/pages/no-login/OnboardingPage.vue";
 import SettingsPage from "@/pages/SettingsPage.vue";
 import ShopPage from "@/pages/ShopPage.vue";
-import SubscriptionPage from "@/pages/SubscriptionPage.vue";
-import ContactPage from "@/pages/ContactPage.vue";
+import SubscriptionPage from "@/pages/no-login/SubscriptionPage.vue";
+import ContactPage from "@/pages/no-login/ContactPage.vue";
 
 const routes = [
     {
