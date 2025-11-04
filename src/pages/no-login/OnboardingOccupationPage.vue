@@ -15,6 +15,8 @@ import GenesisLogo from "@/assets/media/genesis.png";
 
       <label for="occupation" class="label">Your occupation</label>
       <input id="occupation" type="text" placeholder="Type your occupation" class="input"/>
+
+      <button class="btn">Continue</button>
     </div>
   </div>
 </template>
