@@ -1,0 +1,20 @@
+:root {
+
+    --primary-green: #2D5E05;
+    --secondary-green: #507F2A;
+    --tertiary-green: #7C9F60;
+    --quaternary-green: #CBD6C2;
+    --dark-green: #102202;
+    --bright-green: #088043;
+
+
+    --off-white: #F9FFF5;
+    --grey-background: #E6E6E6;
+    --grey-text: #4D4D4D;
+
+
+    --cat-easy: #088043;
+    --cat-moderate: #E5A000;
+    --cat-hard: #A8000B;
+    --cat-expert: #102202;
+}
