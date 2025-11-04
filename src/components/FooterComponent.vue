@@ -86,4 +86,11 @@ footer {
   color: var(--primary-green);
 }
 
+#copyright {
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 2rem;
+}
+
 </style>
