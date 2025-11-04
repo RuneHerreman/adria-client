@@ -67,4 +67,23 @@ footer {
   flex-direction: column;
   gap: 0.4rem;
 }
+
+#links h3 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+#links a,
+#links router-link {
+  color: var(--dark-green);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+#links a:hover,
+#links router-link:hover {
+  color: var(--primary-green);
+}
+
 </style>
