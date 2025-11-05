@@ -9,6 +9,7 @@ import ShopPage from "@/pages/ShopPage.vue";
 import SubscriptionPage from "@/pages/no-login/SubscriptionPage.vue";
 import ContactPage from "@/pages/no-login/ContactPage.vue";
 import OnboardingOccupationPage from "@/pages/no-login/OnboardingOccupationPage.vue";
+import OnboardingInterestsPage from "@/pages/no-login/OnboardingInterestsPage.vue";
 
 const routes = [
     {
@@ -34,6 +35,10 @@ const routes = [
     {
         path: "/onboarding/occupation",
         component: OnboardingOccupationPage
+    },
+    {
+        path: "/onboarding/interests",
+        component: OnboardingInterestsPage
     },
     {
         path: "/settings",
