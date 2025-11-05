@@ -10,6 +10,7 @@ import SubscriptionPage from "@/pages/no-login/SubscriptionPage.vue";
 import ContactPage from "@/pages/no-login/ContactPage.vue";
 import OnboardingOccupationPage from "@/pages/no-login/OnboardingOccupationPage.vue";
 import OnboardingInterestsPage from "@/pages/no-login/OnboardingInterestsPage.vue";
+import CheckoutPage from "@/pages/no-login/CheckoutPage.vue";
 
 const routes = [
     {
@@ -51,6 +52,10 @@ const routes = [
     {
         path: "/subscription",
         component: SubscriptionPage
+    },
+    {
+        path: "/subscription/checkout",
+        component: CheckoutPage
     },
     {
         path: "/contact",

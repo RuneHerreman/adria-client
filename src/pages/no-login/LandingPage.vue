@@ -9,7 +9,7 @@ import BrightGreenButtonComponent from "@/components/BrightGreenButtonComponent.
         <p>Don't miss out!</p>
         <h1>Become smarter, <br> now</h1>
         <p>Join our network of over 200,000 users</p>
-        <BrightGreenButtonComponent/>
+        <BrightGreenButtonComponent route="/subscription"/>
       </section>
 
 
