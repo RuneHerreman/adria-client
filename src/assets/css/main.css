@@ -92,7 +92,6 @@ h1::before {
 
 .onboarding-btn:hover {
     background-color: #0f6b43;
-
 }
 
 .onboarding-btn-secondary {
@@ -104,25 +103,22 @@ h1::before {
     cursor: pointer;
     font-weight: 500;
     font-size: 0.95rem;
-
 }
 
 .onboarding-btn-secondary:hover {
     background-color: #d4d4d4;
 }
 
-/* Smaller variant for the Interests onboarding page */
 .onboarding-centered-section.small {
-    width: 30rem;         /* narrower block */
-    min-height: 20rem;    /* less tall */
-    margin: 3rem auto;    /* closer to center */
-    padding: 1.5rem;      /* more compact inside */
+    width: 30rem;
+    min-height: 20rem;
+    margin: 3rem auto;
+    padding: 1.5rem;
 }
 
-/* Smaller grid for Interests */
 .onboarding-centered-section.small .onboarding-interests-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.8rem;          /* tighter spacing */
+    gap: 0.8rem;
     max-width: 22rem;
 }
 
