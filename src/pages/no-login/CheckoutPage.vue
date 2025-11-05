@@ -1,7 +1,7 @@
 <script setup>
   import CheckoutComponent from "@/components/subscription-components/CheckoutComponent.vue";
   import {useUserDataStore} from "@/data/user-data.js";
-  import {computed, onMounted, ref} from "vue";
+  import {onMounted, ref} from "vue";
   import router from "@/router/index.js";
   import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
 

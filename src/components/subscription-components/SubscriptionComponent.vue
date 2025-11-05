@@ -1,5 +1,4 @@
 <script setup>
-import {computed} from "vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 
 const props = defineProps({
