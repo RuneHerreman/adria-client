@@ -1,4 +1,6 @@
 <script setup>
+import {reactive, computed} from "vue";
+
 const interests = [
   "Hunting",
   "History",
@@ -13,6 +15,15 @@ const interests = [
   "Medicine",
   "Survival",
 ];
+
+const interestSelected = reactive([]);
+const selectedInterestCount = computed(() => interestSelected.length);
+
+const handleClickInterest = ($event, interest) => {
+  interestSelected.push(interest);
+  $event.target.classList.toggle("active");
+  console.log(interestSelected);
+};
 </script>
 <template>
   <section class="onboarding-centered-section small">
@@ -23,14 +34,15 @@ const interests = [
         Select <strong>3 topics</strong> you're passionate about<br />
         to personalize your course recommendations.
       </p>
-      <small class="onboarding-selected-count">0/3 selected</small>
+      <small class="onboarding-selected-count">{{selectedInterestCount}}/3 selected</small>
     </div>
 
     <div class="onboarding-interests-grid">
       <button
         v-for="interest in interests"
         :key="interest"
-        class="interest-btn">
+        class="interest-btn"
+        @click="handleClickInterest($event, interest)">
         {{ interest }}
       </button>
     </div>
