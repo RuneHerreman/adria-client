@@ -2,7 +2,7 @@
 
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
-import {useRoute} from "vue-router";
+import { useUserDataStore } from "@/data/user-data";
 import {computed, ref} from "vue";
 import PromoCodeComponent from "@/components/subscription-components/PromoCodeComponent.vue";
 
@@ -11,12 +11,15 @@ const props = defineProps({
   price: {type: Number, required: true},
 })
 
+const emits = defineEmits(["purchaseClick"]);
+
 const discounts = ref({
   ADRIANIGHT10: 10
 })
 
 const discountUsed = ref(false);
 const discountPercentage = ref(0);
+const userData = useUserDataStore();
 
 const totalPrice = computed(() => {
   return (props.price * (100 - discountPercentage.value) / 100).toFixed(2);
@@ -25,6 +28,7 @@ const totalPrice = computed(() => {
 const totalDiscount = computed(() => {
   return (props.price * discountPercentage.value / 100).toFixed(2);
 })
+
 
 function checkDiscount(code){
   const normalized = code.trim().toUpperCase();
@@ -36,6 +40,10 @@ function checkDiscount(code){
     discountUsed.value = false;
     discountPercentage.value = 0;
   }
+}
+
+function handleSubscriptionPayment(){
+  emits("purchaseClick", totalPrice.value);
 }
 </script>
 
@@ -67,7 +75,7 @@ function checkDiscount(code){
     <p>Per month, billed monthly</p>
   </article>
   <div id="buttons">
-    <BrightGreenButtonComponent route="">Continue to payment</BrightGreenButtonComponent>
+    <BrightGreenButtonComponent route="" @click="handleSubscriptionPayment">Continue to payment</BrightGreenButtonComponent>
     <GreyButtonComponent route="/subscription">Change plan</GreyButtonComponent>
   </div>
 </section>

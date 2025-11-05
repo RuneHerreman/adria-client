@@ -22,8 +22,8 @@
   function showNavigation(){
     return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout"].indexOf(currentRoute.path) === -1;
   }
-
 </script>
+
 <template>
   <header>
     <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="../assets/media/genesis-white.png" alt="genesis-white-logo">

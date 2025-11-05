@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-  <router-link :to="route" class="grey-button">
+  <router-link :to="route" class="grey-button button">
     <slot></slot>
   </router-link>
 </template>
@@ -14,13 +14,5 @@ defineProps({
 .grey-button {
   background-color: var(--grey-background);
   color: var(--grey-text);
-  padding: 0.6rem;
-  width: fit-content;
-  height: fit-content;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  font-size: 0.85rem;
-
-  font-weight: 600;
 }
 </style>
