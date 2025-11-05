@@ -1,5 +1,24 @@
 <script setup lang="ts">
 import GenesisLogo from "@/assets/media/genesis.png";
+import {ref} from "vue";
+import {useRouter} from "vue-router";
+import {useUserDataStore} from "@/data/user-data.js";
+
+const router = useRouter();
+const userData = useUserDataStore();
+
+const occupation = ref("");
+function handleUserOccupation() {
+  if (occupation.value.trim() === "") {
+    alert("Please enter your occupation.");
+    return;
+  }
+  else {
+    userData.setOccupation(occupation.value.trim());
+    router.push("/onboarding/interests");
+  }
+}
+
 </script>
 
 <template>
@@ -20,8 +39,9 @@ import GenesisLogo from "@/assets/media/genesis.png";
           type="text"
           placeholder="Type your occupation"
           class="onboarding-input"
+          v-model="occupation"
       />
-      <button class="onboarding-btn">Continue</button>
+      <button class="onboarding-btn" @click="handleUserOccupation">Continue</button>
     </div>
   </section>
 </template>
