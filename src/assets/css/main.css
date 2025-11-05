@@ -143,3 +143,13 @@ h1::after {
     background: rgba(255, 255, 255, 0.9); /* 20% white transparency */
     z-index: -1;
 }
+
+.button{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.6rem 0.75rem;
+    font-weight: 600;
+}
