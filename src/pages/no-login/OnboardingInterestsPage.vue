@@ -1,5 +1,6 @@
 <script setup>
 import {reactive, computed} from "vue";
+import {useUserDataStore} from "@/data/user-data.js";
 
 const interests = [
   "Hunting",
@@ -16,13 +17,24 @@ const interests = [
   "Survival",
 ];
 
+const userData = useUserDataStore();
 const interestSelected = reactive([]);
 const selectedInterestCount = computed(() => interestSelected.length);
 
 const handleClickInterest = ($event, interest) => {
-  interestSelected.push(interest);
-  $event.target.classList.toggle("active");
-  console.log(interestSelected);
+  const isSelected = interestSelected.includes(interest);
+
+  if(isSelected) {
+    interestSelected.splice(interestSelected.indexOf(interest), 1);
+    console.log(interestSelected);
+  } else if (interestSelected.length < 3) {
+    interestSelected.push(interest);
+    console.log(interestSelected);
+  } else {
+    return;
+  }
+
+  $event.currentTarget.classList.toggle("active", !isSelected);
 };
 </script>
 <template>
