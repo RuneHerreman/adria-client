@@ -28,7 +28,7 @@ function clicked() {
         <li v-for="perk in perks" :key="perk">{{perk}}</li>
       </ul>
     </div>
-    <BrightGreenButtonComponent route="" @click="clicked" class="btnSubscribe">Choose {{subscriptionName}}</BrightGreenButtonComponent>
+    <BrightGreenButtonComponent @click="clicked" class="btnSubscribe">Choose {{subscriptionName}}</BrightGreenButtonComponent>
   </article>
 </template>
 

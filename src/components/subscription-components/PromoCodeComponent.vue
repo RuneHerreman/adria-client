@@ -22,7 +22,7 @@ function clicked(){
         type="text"
         placeholder="Enter a promo code"
     />
-    <LightGreenButtonComponent id="btn" route="" @click="clicked">Apply code</LightGreenButtonComponent>
+    <LightGreenButtonComponent id="btn" @click="clicked">Apply code</LightGreenButtonComponent>
   </div>
 
 </template>

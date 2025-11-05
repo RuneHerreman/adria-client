@@ -21,8 +21,8 @@ function handleAffirmation(){
 
 <template>
   <div>
-    <GreyButtonComponent route="" class="btnPopup" @click="closePopup">{{props.negativeText}}</GreyButtonComponent>
-    <LightGreenButtonComponent route="" class="btnPopup" @click="handleAffirmation">{{props.positiveText}}</LightGreenButtonComponent>
+    <GreyButtonComponent class="btnPopup" @click="closePopup">{{props.negativeText}}</GreyButtonComponent>
+    <LightGreenButtonComponent class="btnPopup" @click="handleAffirmation">{{props.positiveText}}</LightGreenButtonComponent>
   </div>
 </template>
 

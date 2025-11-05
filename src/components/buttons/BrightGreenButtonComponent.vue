@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps({
-  route: {type:String}
+  route: {type:String, default: ""}
 })
 </script>
 

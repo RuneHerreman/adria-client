@@ -75,7 +75,7 @@ function handleSubscriptionPayment(){
     <p>Per month, billed monthly</p>
   </article>
   <div id="buttons">
-    <BrightGreenButtonComponent route="" @click="handleSubscriptionPayment">Continue to payment</BrightGreenButtonComponent>
+    <BrightGreenButtonComponent @click="handleSubscriptionPayment">Continue to payment</BrightGreenButtonComponent>
     <GreyButtonComponent route="/subscription">Change plan</GreyButtonComponent>
   </div>
 </section>

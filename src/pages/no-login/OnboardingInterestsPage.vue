@@ -2,6 +2,8 @@
 import {reactive, computed} from "vue";
 import {useUserDataStore} from "@/data/user-data.js";
 import {useRouter} from "vue-router";
+import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
+import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 
 const interests = [
   "Hunting",
@@ -49,31 +51,36 @@ function handleUserPreferences() {
 }
 </script>
 <template>
-  <section class="onboarding-centered-section small">
-    <div class="onboarding-info-block">
-      <small class="onboarding-small-text">Welcome to</small>
-      <img src="@/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
-      <p class="onboarding-description">
-        Select <strong>3 topics</strong> you're passionate about<br />
-        to personalize your course recommendations.
-      </p>
-      <small class="onboarding-selected-count">{{selectedInterestCount}}/3 selected</small>
-    </div>
+  <section class="onboarding-centered-section">
+    <section class="onboardingCard">
+      <section class="onboarding-info-block">
+        <p class="onboarding-small-text">Welcome to</p>
+        <img src="@/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
+        <p class="onboarding-description">
+          Select <strong>3 topics</strong> you're passionate about<br />
+          to personalize your course recommendations.
+        </p>
+        <p class="onboarding-selected-count">{{selectedInterestCount}}/3 selected</p>
+      </section>
 
-    <div class="onboarding-interests-grid">
-      <button
-        v-for="interest in interests"
-        :key="interest"
-        class="interest-btn"
-        @click="handleClickInterest($event, interest)">
-        {{ interest }}
-      </button>
-    </div>
 
-    <div class="onboarding-actions">
-      <button class="onboarding-btn-secondary">Go Back</button>
-      <button class="onboarding-btn" @click="handleUserPreferences">Continue</button>
-    </div>
+
+      <section class="onboarding-interests-grid">
+        <button
+          v-for="interest in interests"
+          :key="interest"
+          class="interest-btn"
+          @click="handleClickInterest($event, interest)">
+          {{ interest }}
+        </button>
+      </section>
+
+
+      <section class="onboarding-actions">
+        <GreyButtonComponent class="onboarding-btn-secondary">Go Back</GreyButtonComponent>
+        <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserPreferences">Continue</BrightGreenButtonComponent>
+      </section>
+    </section>
   </section>
 </template>
 
