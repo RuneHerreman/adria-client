@@ -56,9 +56,13 @@ h1::before {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: white;
+
     width: 37.5rem;
-    height: 28.125rem;
+    min-height: 24rem;
+    margin: 5rem auto;
+    padding: 2rem;
+
+    background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
