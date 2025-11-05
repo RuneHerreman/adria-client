@@ -16,7 +16,7 @@ const discounts = ref({
 })
 
 const discountUsed = ref(false);
-const discountPercentage = ref(5);
+const discountPercentage = ref(0);
 
 const totalPrice = computed(() => {
   return (props.price * (100 - discountPercentage.value) / 100).toFixed(2);
@@ -68,7 +68,7 @@ function checkDiscount(code){
   </article>
   <div id="buttons">
     <BrightGreenButtonComponent route="">Continue to payment</BrightGreenButtonComponent>
-    <GreyButtonComponent route="">Change plan</GreyButtonComponent>
+    <GreyButtonComponent route="/subscription">Change plan</GreyButtonComponent>
   </div>
 </section>
 </template>
@@ -86,6 +86,8 @@ function checkDiscount(code){
   border: #DADADA solid 0.0612rem;
   box-shadow: 0 0 0.25rem rgba(217, 217, 217, 0.25);
   border-radius: 1rem;
+
+  background: white;
 }
 
 #content {
@@ -109,7 +111,6 @@ function checkDiscount(code){
 }
 
 #discount {
-  margin-bottom: 1.5rem;
   color: var(--bright-green);
 }
 
@@ -125,6 +126,7 @@ p{
 }
 
 #code {
+  margin-top: 1.5rem;
   border-bottom: rgb(193, 193, 193) 0.0612rem ridge;
   padding-bottom: 0.5rem;
 }
