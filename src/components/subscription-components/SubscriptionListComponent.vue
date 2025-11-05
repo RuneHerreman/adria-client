@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
+import { useUserDataStore } from "@/data/user-data";
 import SubscriptionComponent from "@/components/subscription-components/SubscriptionComponent.vue";
 import CheckoutComponent from "@/components/subscription-components/CheckoutComponent.vue";
 import router from "@/router";
+
+const userDataStore = useUserDataStore();
 
 const subscriptions = ref([
   {subscriptionName: "Basic", subscriptionPrice: 15.99, perks: [
@@ -26,14 +29,15 @@ const subscriptions = ref([
 ])
 
 
-function handleSubscribe(subscriptionName, subscriptionPrice) {
+function handleSubscribe(subscription) {
+  userDataStore.setSelectedPlan({
+    name: subscription.name,
+    price: subscription.price,
+  });
   router.push({
     path: '/subscription/checkout',
-    query: {
-      planName: subscriptionName,
-      planPrice: subscriptionPrice
-    }
-  });}
+  });
+}
 </script>
 
 <template>
@@ -45,7 +49,7 @@ function handleSubscribe(subscriptionName, subscriptionPrice) {
         :subscriptionPrice="subscription.subscriptionPrice"
         :most-popular="subscription.mostPopular"
     @subscribe="handleSubscribe"
-    @click="handleSubscribe(subscription.subscriptionName, subscription.subscriptionPrice)"/>
+    @click="handleSubscribe"/>
   </section>
 </template>
 

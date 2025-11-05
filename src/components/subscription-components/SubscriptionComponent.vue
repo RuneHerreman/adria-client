@@ -1,6 +1,6 @@
 <script setup>
 import {computed} from "vue";
-import BrightGreenButtonComponent from "@/components/BrightGreenButtonComponent.vue";
+import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 
 const props = defineProps({
   subscriptionName: {type: String, required: true},
@@ -9,9 +9,12 @@ const props = defineProps({
   mostPopular: {type: Boolean, required: false},
 })
 const emit = defineEmits(['subscribe']);
-
 function clicked() {
-  emit('subscribe', [props.subscriptionName, props.subscriptionPrice]);
+  emit('subscribe', {
+    name: props.subscriptionName,
+    price: props.subscriptionPrice,
+    perks: props.perks,
+  });
 }
 </script>
 
