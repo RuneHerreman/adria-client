@@ -28,7 +28,7 @@ function handleAffirmation(){
 
 <style scoped>
   div {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

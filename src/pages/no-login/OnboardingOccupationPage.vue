@@ -51,5 +51,13 @@ function handleUserOccupation() {
 </template>
 
 <style scoped>
+.logo {
+  width: 10rem;
+  margin: 0.3rem auto 1rem;
+}
 
+main{
+  height: 70vh;
+  padding-top: 5%;
+}
 </style>

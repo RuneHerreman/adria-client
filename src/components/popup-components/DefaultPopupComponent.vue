@@ -29,10 +29,11 @@ function handleAffirmation(){
     border: #DADADA solid 0.0612rem;
     box-shadow: 0 0 0.25rem rgba(217, 217, 217, 0.25);
 
-    padding: 1.25rem;
+    padding: 2rem 1.5em 1.5rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -150%);
+
   }
 </style>

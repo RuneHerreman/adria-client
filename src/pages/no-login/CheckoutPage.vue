@@ -55,4 +55,8 @@ main {
   padding-top: 5%;
   height: 70vh;
 }
+
+p{
+  line-height: 1.5rem;
+}
 </style>

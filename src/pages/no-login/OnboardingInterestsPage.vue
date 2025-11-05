@@ -51,7 +51,7 @@ function handleUserPreferences() {
 }
 </script>
 <template>
-  <section class="onboarding-centered-section">
+  <main class="onboarding-centered-section">
     <section class="onboardingCard">
       <section class="onboarding-info-block">
         <p class="onboarding-small-text">Welcome to</p>
@@ -77,25 +77,22 @@ function handleUserPreferences() {
 
 
       <section class="onboarding-actions">
-        <GreyButtonComponent class="onboarding-btn-secondary">Go Back</GreyButtonComponent>
+        <GreyButtonComponent route="/onboarding/occupation" class="onboarding-btn-secondary">Go Back</GreyButtonComponent>
         <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserPreferences">Continue</BrightGreenButtonComponent>
       </section>
     </section>
-  </section>
+  </main>
 </template>
 
 <style scoped>
 .logo {
-  width: 6rem;
-  margin: 0.5rem 0 0.8rem 0;
+  width: 10rem;
+  margin: 0.3rem auto 1rem;
 }
 
-.onboarding-description {
-  font-size: 0.9rem;
-  color: var(--grey-text);
-  line-height: 1.4;
-  text-align: center;
-  margin: 0.5rem 0 0.8rem 0;
+main{
+  height: 70vh;
+  padding-top: 5%;
 }
 
 .onboarding-selected-count {
@@ -106,42 +103,42 @@ function handleUserPreferences() {
 
 .onboarding-interests-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .7rem;
+  margin-top: 3rem;
   width: 100%;
   max-width: 30rem;
 }
 
 .interest-btn {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 450;
+  font-size: .9rem;
+
   background-color: white;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 1rem 0;
-  font-size: 1rem;
+  border-radius: 0.75rem;
+  padding: 1rem 0.5rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 500;
-  width: 100%;
+  transition: all 0.1s ease-in-out;
+  width: 7rem;
 }
 
 .interest-btn:hover {
   border-color: var(--primary-green);
-  background-color: #f9fff5;
+  background-color: #eafae1;
 }
 
 .interest-btn.active {
-  background-color: var(--primary-green);
-  color: white;
   border-color: var(--primary-green);
+  background-color: #d4e6cf;
 }
 
 .onboarding-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
-  max-width: 20rem;
-  margin-top: 2.5rem;
+  width: 100%;
+  margin-top: 2rem;
 }
 </style>
