@@ -14,7 +14,7 @@ import GenesisLogo from "@/assets/media/genesis.png";
     </div>
 
     <div class="onboarding-input-block">
-      <label for="occupation" class="onboarding-label">Your occupation</label>
+      <label for="occupation" class="onboarding-label">Type your occupation:</label>
       <input
           id="occupation"
           type="text"
