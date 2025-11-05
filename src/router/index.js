@@ -4,11 +4,12 @@ import CoursePage from "@/pages/CoursePage.vue";
 import DashboardPage from "@/pages/DashboardPage.vue";
 import LeaderboardPage from "@/pages/LeaderboardPage.vue";
 import LearningCoursePage from "@/pages/LearningCoursePage.vue";
-import OnboardingPage from "@/pages/no-login/OnboardingPage.vue";
 import SettingsPage from "@/pages/SettingsPage.vue";
 import ShopPage from "@/pages/ShopPage.vue";
 import SubscriptionPage from "@/pages/no-login/SubscriptionPage.vue";
 import ContactPage from "@/pages/no-login/ContactPage.vue";
+import OnboardingOccupationPage from "@/pages/no-login/OnboardingOccupationPage.vue";
+import OnboardingInterestsPage from "@/pages/no-login/OnboardingInterestsPage.vue";
 import CheckoutPage from "@/pages/no-login/CheckoutPage.vue";
 
 const routes = [
@@ -33,8 +34,12 @@ const routes = [
         component: LearningCoursePage
     },
     {
-        path: "/onboarding",
-        component: OnboardingPage
+        path: "/onboarding/occupation",
+        component: OnboardingOccupationPage
+    },
+    {
+        path: "/onboarding/interests",
+        component: OnboardingInterestsPage
     },
     {
         path: "/settings",
