@@ -110,3 +110,24 @@ h1::before {
 .onboarding-btn-secondary:hover {
     background-color: #d4d4d4;
 }
+
+/* Smaller variant for the Interests onboarding page */
+.onboarding-centered-section.small {
+    width: 30rem;         /* narrower block */
+    min-height: 20rem;    /* less tall */
+    margin: 3rem auto;    /* closer to center */
+    padding: 1.5rem;      /* more compact inside */
+}
+
+/* Smaller grid for Interests */
+.onboarding-centered-section.small .onboarding-interests-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;          /* tighter spacing */
+    max-width: 22rem;
+}
+
+.onboarding-centered-section.small .interest-btn {
+    padding: 0.7rem 0;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}

@@ -15,7 +15,7 @@ const interests = [
 ];
 </script>
 <template>
-  <section class="onboarding-centered-section">
+  <section class="onboarding-centered-section small">
     <div class="onboarding-info-block">
       <small class="onboarding-small-text">Welcome to</small>
       <img src="@/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
