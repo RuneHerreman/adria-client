@@ -100,10 +100,11 @@ h1::before {
     color: #333;
     border: none;
     border-radius: 6px;
-    padding: 0.6rem 1.4rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     font-weight: 500;
     font-size: 0.95rem;
+
 }
 
 .onboarding-btn-secondary:hover {
