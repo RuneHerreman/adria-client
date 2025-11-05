@@ -1,6 +1,7 @@
 <script setup>
 import {reactive, computed} from "vue";
 import {useUserDataStore} from "@/data/user-data.js";
+import {useRouter} from "vue-router";
 
 const interests = [
   "Hunting",
@@ -18,6 +19,7 @@ const interests = [
 ];
 
 const userData = useUserDataStore();
+const router = useRouter();
 const interestSelected = reactive([]);
 const selectedInterestCount = computed(() => interestSelected.length);
 
@@ -36,6 +38,15 @@ const handleClickInterest = ($event, interest) => {
 
   $event.currentTarget.classList.toggle("active", !isSelected);
 };
+
+function handleUserPreferences() {
+  if (interestSelected.length !== 3) {
+    alert("Please select exactly 3 interests to continue.");
+  } else {
+    userData.setPreferences(interestSelected);
+    router.push("/dashboard");
+  }
+}
 </script>
 <template>
   <section class="onboarding-centered-section small">
@@ -61,7 +72,7 @@ const handleClickInterest = ($event, interest) => {
 
     <div class="onboarding-actions">
       <button class="onboarding-btn-secondary">Go Back</button>
-      <button class="onboarding-btn">Continue</button>
+      <button class="onboarding-btn" @click="handleUserPreferences">Continue</button>
     </div>
   </section>
 </template>
