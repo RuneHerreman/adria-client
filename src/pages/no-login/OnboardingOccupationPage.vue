@@ -31,4 +31,31 @@ import GenesisLogo from "@/assets/media/genesis.png";
   width: 8rem;
   margin: 0.3rem 0;
 }
+
+.onboarding-input-block {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 50%;
+  margin-top: 4rem;
+}
+
+.onboarding-label {
+  font-size: 0.85rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  display: block;
+}
+
+.onboarding-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 0.3rem;
+}
 </style>

@@ -56,12 +56,10 @@ h1::before {
     align-items: center;
     justify-content: center;
     text-align: center;
-
     width: 37.5rem;
     min-height: 24rem;
     margin: 5rem auto;
     padding: 2rem;
-
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -80,29 +78,6 @@ h1::before {
     margin: 0.3rem 0;
 }
 
-.onboarding-input-block {
-    width: 50%;
-    margin-top: 4rem;
-}
-
-.onboarding-label {
-    font-size: 0.85rem;
-    color: #333;
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-    display: block;
-}
-
-.onboarding-input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    box-sizing: border-box;
-    display: block;
-}
-
 .onboarding-btn {
     background-color: #117c4e;
     color: white;
@@ -111,10 +86,26 @@ h1::before {
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-weight: 500;
-    float: right;
+    align-self: flex-end;
     margin-top: 0.3rem;
 }
 
 .onboarding-btn:hover {
     background-color: #0f6b43;
+
+}
+
+.onboarding-btn-secondary {
+    background-color: #e6e6e6;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.onboarding-btn-secondary:hover {
+    background-color: #d4d4d4;
 }
