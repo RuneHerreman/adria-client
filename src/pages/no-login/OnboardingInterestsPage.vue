@@ -1,4 +1,8 @@
 <script setup>
+import {reactive, computed} from "vue";
+import {useUserDataStore} from "@/data/user-data.js";
+import {useRouter} from "vue-router";
+
 const interests = [
   "Hunting",
   "History",
@@ -13,6 +17,36 @@ const interests = [
   "Medicine",
   "Survival",
 ];
+
+const userData = useUserDataStore();
+const router = useRouter();
+const interestSelected = reactive([]);
+const selectedInterestCount = computed(() => interestSelected.length);
+
+const handleClickInterest = ($event, interest) => {
+  const isSelected = interestSelected.includes(interest);
+
+  if(isSelected) {
+    interestSelected.splice(interestSelected.indexOf(interest), 1);
+    console.log(interestSelected);
+  } else if (interestSelected.length < 3) {
+    interestSelected.push(interest);
+    console.log(interestSelected);
+  } else {
+    return;
+  }
+
+  $event.currentTarget.classList.toggle("active", !isSelected);
+};
+
+function handleUserPreferences() {
+  if (interestSelected.length !== 3) {
+    alert("Please select exactly 3 interests to continue.");
+  } else {
+    userData.setPreferences(interestSelected);
+    router.push("/dashboard");
+  }
+}
 </script>
 <template>
   <section class="onboarding-centered-section small">
@@ -23,21 +57,22 @@ const interests = [
         Select <strong>3 topics</strong> you're passionate about<br />
         to personalize your course recommendations.
       </p>
-      <small class="onboarding-selected-count">0/3 selected</small>
+      <small class="onboarding-selected-count">{{selectedInterestCount}}/3 selected</small>
     </div>
 
     <div class="onboarding-interests-grid">
       <button
         v-for="interest in interests"
         :key="interest"
-        class="interest-btn">
+        class="interest-btn"
+        @click="handleClickInterest($event, interest)">
         {{ interest }}
       </button>
     </div>
 
     <div class="onboarding-actions">
       <button class="onboarding-btn-secondary">Go Back</button>
-      <button class="onboarding-btn">Continue</button>
+      <button class="onboarding-btn" @click="handleUserPreferences">Continue</button>
     </div>
   </section>
 </template>
