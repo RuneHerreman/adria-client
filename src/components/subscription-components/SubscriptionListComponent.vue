@@ -26,14 +26,15 @@ const subscriptions = ref([
 ])
 
 
-function handleSubscribe(subscriptionName, subscriptionPrice) {
+function handleSubscribe(subscription) {
   router.push({
     path: '/subscription/checkout',
     query: {
-      planName: subscriptionName,
-      planPrice: subscriptionPrice
+      planName: subscription.name,
+      planPrice: subscription.price
     }
-  });}
+  });
+}
 </script>
 
 <template>
@@ -45,7 +46,7 @@ function handleSubscribe(subscriptionName, subscriptionPrice) {
         :subscriptionPrice="subscription.subscriptionPrice"
         :most-popular="subscription.mostPopular"
     @subscribe="handleSubscribe"
-    @click="handleSubscribe(subscription.subscriptionName, subscription.subscriptionPrice)"/>
+    @click="handleSubscribe"/>
   </section>
 </template>
 

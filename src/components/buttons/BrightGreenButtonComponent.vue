@@ -19,7 +19,7 @@ defineProps({
     height: fit-content;
     border-radius: 0.5rem;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 
     font-weight: 600;
   }
