@@ -85,17 +85,23 @@ function handleSubscriptionPayment(){
 #checkout {
   padding: 2rem;
   margin: 0 auto;
-  width: 20rem;
+  width: 25rem;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  border: #DADADA solid 0.0612rem;
+  border: #e6e6e6 solid 0.0612rem;
   box-shadow: 0 0 0.25rem rgba(217, 217, 217, 0.25);
   border-radius: 1rem;
 
   background: white;
+}
+
+#plan,
+#subtotal,
+#discount{
+  margin-bottom: 0.5rem;
 }
 
 #content {
@@ -125,8 +131,8 @@ function handleSubscriptionPayment(){
 h2 {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
+  font-weight: 550;
+  margin-bottom: 2.2rem;
 }
 
 p{
@@ -147,13 +153,14 @@ p{
 }
 
 #total{
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 #total ~ p{
   color: #9f9f9f;
   font-size: 0.7rem;
 
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
+
 </style>

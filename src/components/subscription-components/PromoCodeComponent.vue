@@ -22,7 +22,7 @@ function clicked(){
         type="text"
         placeholder="Enter a promo code"
     />
-    <LightGreenButtonComponent route="" @click="clicked">Apply code</LightGreenButtonComponent>
+    <LightGreenButtonComponent id="btn" route="" @click="clicked">Apply code</LightGreenButtonComponent>
   </div>
 
 </template>
@@ -35,4 +35,11 @@ div{
   justify-content: space-between;
   align-items: center;
 }
+
+#btn{
+  height: 100%;
+  width: fit-content;
+  white-space: nowrap;
+}
+
 </style>
