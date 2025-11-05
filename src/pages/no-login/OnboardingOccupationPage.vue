@@ -3,24 +3,36 @@ import GenesisLogo from "@/assets/media/genesis.png";
 </script>
 
 <template>
-  <div class="onboarding-container">
-    <div class="onboarding-card">
-      <img :src="GenesisLogo" alt="Genesis logo" class="logo" />
-      <p class="welcome-text">Welcome to</p>
+  <main>
+    <section class="onboarding-centered-section">
+      <div class="onboarding-info-block">
+        <small class="onboarding-small-text">Welcome to</small>
+        <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
+        <small class="onboarding-small-text">
+          Let’s personalize your learning experience.<br />
+          What’s your current occupation?
+        </small>
+      </div>
 
-      <p class="subtitle">
-        Let’s personalize your learning experience.<br />
-        What’s your current occupation?
-      </p>
-
-      <label for="occupation" class="label">Your occupation</label>
-      <input id="occupation" type="text" placeholder="Type your occupation" class="input"/>
-
-      <button class="btn">Continue</button>
-    </div>
-  </div>
+      <div class="onboarding-input-block">
+        <label for="occupation" class="onboarding-label">Your occupation</label>
+        <input
+            id="occupation"
+            type="text"
+            placeholder="Type your occupation"
+            class="onboarding-input"
+        />
+        <button class="onboarding-btn">Continue</button>
+      </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>
+.logo {
+  width: 12rem;
+  margin: 0.5rem 0;
+}
+
 
 </style>
