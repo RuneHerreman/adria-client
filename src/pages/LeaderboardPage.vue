@@ -70,6 +70,7 @@ function isCurrentUser(name: string): boolean {
 #leaderboard-container {
     width: 42rem;
     margin: 0 auto;
+    margin-bottom: 6rem;
 }
 
 #leaderboard-top-3 {
