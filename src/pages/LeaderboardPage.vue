@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import HeaderComponent from "@/components/HeaderComponent.vue";
 import Top3Component from "@/components/leaderboard-components/Top3Component.vue";
 import Top10Component from "@/components/leaderboard-components/Top10Component.vue";
 import { ref, computed } from "vue";
