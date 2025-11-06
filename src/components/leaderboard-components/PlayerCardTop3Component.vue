@@ -1,41 +1,30 @@
 <script setup>
 defineProps({
-    players: {
-        type: Array,
+    player: {
+        type: Object,
         required: true
+    },
+    isTopPlayer: {
+        type: Boolean,
+        default: false
     }
 });
 </script>
 
 <template>
-    <section id="leaderboard-top-3">
-        <div 
-            id="leaderboard-top-3-item" 
-            v-for="(item, index) in players" 
-            :key="item.name"
-            :class="{ 'top-player': index === 1 }"
-        >
-            <img :src="item.img" alt="Profile Picture" class="profile-picture">
-            <div class="profile-info">
-                <p class="profile-name">{{ item.name }}</p>
-                <p class="profile-xp">{{ item.xp }} XP</p>
-            </div>
+    <div 
+        id="leaderboard-top-3-item" 
+        :class="{ 'top-player': isTopPlayer }"
+    >
+        <img :src="player.img" alt="Profile Picture" class="profile-picture">
+        <div class="profile-info">
+            <p class="profile-name">{{ player.name }}</p>
+            <p class="profile-xp">{{ player.xp }} XP</p>
         </div>
-    </section>
+    </div>
 </template>
 
 <style scoped>
-#leaderboard-top-3 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2.5rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    width: 100%;
-}
-
 #leaderboard-top-3-item {
     display: flex;
     flex-direction: column;
@@ -44,8 +33,8 @@ defineProps({
 }
 
 .profile-picture {
-    width: 8rem;
-    height: 8rem;
+    width: 4.5rem;
+    height: 4.5rem;
     border: 0.0625rem solid #ccc;
     border-radius: 50%;
     object-fit: cover;

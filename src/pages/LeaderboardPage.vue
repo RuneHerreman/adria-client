@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import HeaderComponent from "@/components/HeaderComponent.vue";
-import LeaderboardTop3Component from "@/components/leaderboard-components/LeaderboardTop3Component.vue";
-import LeaderboardTop10Component from "@/components/leaderboard-components/LeaderboardTop10Component.vue";
+import Top3Component from "@/components/leaderboard-components/Top3Component.vue";
+import Top10Component from "@/components/leaderboard-components/Top10Component.vue";
 import { ref, computed } from "vue";
 import profilePicture from "@/assets/media/profile-picture.jpg";
 import { useUserDataStore } from "@/data/user-data.js";
@@ -32,8 +32,8 @@ const currentUserName = computed(() => userData.getName());
     <main>
     <h1>Leaderboard</h1>
     <div id="leaderboard-container">
-        <LeaderboardTop3Component :players="leaderboardTop3" />
-        <LeaderboardTop10Component :players="leaderboardTop10" :currentUserName="currentUserName" />
+        <Top3Component :players="leaderboardTop3" />
+        <Top10Component :players="leaderboardTop10" :currentUserName="currentUserName" />
     </div>
     </main>
 </template>
