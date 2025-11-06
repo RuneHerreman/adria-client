@@ -36,6 +36,7 @@ import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonCo
 
   h1{
     color: var(--off-white);
+
     font-size: 4.35rem;
     line-height: 3.5rem;
   }

@@ -1,7 +1,5 @@
 <script setup>
-
-import BannerImageComponent from "@/components/BannerImageComponent.vue";
-import SpotlightFullComponent from "@/components/dashboard-spotlight/SpotlightFullComponent.vue";
+import SpotlightComponent from "@/components/dashboard-components/SpotlightComponent.vue";
 import {ref} from "vue";
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
 const courses = ref([
@@ -15,7 +13,7 @@ const courses = ref([
 
 <template>
   <section id="available-courses-component">
-    <SpotlightFullComponent class="spotlight"
+    <SpotlightComponent class="spotlight"
                             src="src/assets/media/spotlight/Spotlight_Miners.png"
     />
 
@@ -34,14 +32,33 @@ const courses = ref([
         :courseList="courses"
     />
 
+    <div class="half-spotlight-container">
+      <SpotlightComponent
+          src="src/assets/media/spotlight/Spotlight_bread.png"
+          :half="true"
+      />
+      <SpotlightComponent
+          src="src/assets/media/spotlight/Spotlight_Surgeon.png"
+          :half="true"
+      />
+    </div>
+
     <CourseCarousel
         name="Explore new fields"
         :courseList="courses"
     />
+
+
   </section>
 
 </template>
 
 <style scoped>
-
+.half-spotlight-container{
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
 </style>

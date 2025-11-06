@@ -1,11 +1,16 @@
 <script setup lang="ts">
 defineProps({
   src: {type:String, required: true},
+  half: {type: Boolean, default: false}
 })
 </script>
 
 <template>
-  <img :src="src" alt="">
+  <img
+      :src="src"
+      :class="{halfImage: half}"
+      alt=""
+  >
 </template>
 
 <style scoped>
@@ -14,5 +19,10 @@ img{
   height: auto;
   aspect-ratio: 19/7;
   border-radius: 1rem;
+}
+
+img.halfImage{
+  width: 100%;
+  aspect-ratio: 9/7;
 }
 </style>
