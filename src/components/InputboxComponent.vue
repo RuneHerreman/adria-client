@@ -7,7 +7,7 @@ const props = defineProps({
   placeholder: {type:String, required: false}
 })
 const emit = defineEmits(['update:modelValue']);
-const code = ref("")
+const code = ref(props.modelValue || "")
 
 watch(code, (val) => {
   emit('update:modelValue', val);
@@ -15,7 +15,7 @@ watch(code, (val) => {
 
 watch(() => props.modelValue, val => {
   code.value = val || "";
-});
+}, { immediate: true });
 </script>
 
 <template>
