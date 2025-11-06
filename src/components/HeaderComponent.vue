@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import router from '@/router';
   import NavigationButtonComponent from "@/components/NavigationButtonComponent.vue";
+  import XPComponent from "@/components/XPComponent.vue";
   import {useRoute} from "vue-router";
   const links = [
     {name: "Leaderboard", path: "/leaderboard", iconUrl: "/src/assets/icons/leaderboard.svg"},
@@ -16,19 +17,23 @@
   }
 
   function notLoggedIn() {
-    return ["/subscription", "/subscription/checkout", "/onboarding"].indexOf(currentRoute.path) !== -1;
+    return ["/subscription", "/subscription/checkout", "/onboarding/occupation", "/onboarding/interests"].indexOf(currentRoute.path) !== -1;
   }
 
   function showNavigation(){
-    return ["/", "/subscription", "/onboarding", "/subscription/checkout"].indexOf(currentRoute.path) === -1;
+    return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout"].indexOf(currentRoute.path) === -1;
   }
 
+  function goToSettings(){
+    router.push("/settings");
+  }
 </script>
+
 <template>
   <header>
-    <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="../assets/media/genesis-white.png" alt="genesis-white-logo">
-    <img v-else-if="notLoggedIn()" @click="() => {router.push('/')}" src="../assets/media/genesis.png" alt="genesis-logo">
-    <img v-else @click="() => {router.push('/dashboard')}" src="../assets/media/genesis.png" alt="genesis-logo">
+    <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="../assets/media/genesis-white.png" alt="genesis-white-logo" title="Home">
+    <img v-else-if="notLoggedIn()" @click="() => {router.push('/')}" src="../assets/media/genesis.png" alt="genesis-logo" title="Home">
+    <img v-else @click="() => {router.push('/dashboard')}" src="../assets/media/genesis.png" alt="genesis-logo" title="Home">
 
     <nav v-if="showNavigation()">
       <NavigationButtonComponent
@@ -36,7 +41,11 @@
           :key="link.name"
           :name="link.name"
           :path="link.path"
-          :iconUrl="link.iconUrl"/>
+          :iconUrl="link.iconUrl"
+          :title="link.name"
+      />
+      <XPComponent xp="1025"/>
+      <img @click="goToSettings" id="profile-picture" src="../assets/media/profile-picture.jpg" alt="Settings" title="Settings">
     </nav>
   </header>
 </template>
@@ -65,5 +74,12 @@
 
   img:hover {
     cursor: pointer;
+  }
+
+  #profile-picture{
+    border: 0.0625rem var(--dark-green) solid;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
   }
 </style>

@@ -30,10 +30,8 @@ const subscriptions = ref([
 
 
 function handleSubscribe(subscription) {
-  userDataStore.setSelectedPlan({
-    name: subscription.name,
-    price: subscription.price,
-  });
+  userDataStore.setSelectedPlanName(subscription.name);
+  userDataStore.setSelectedPlanPrice(subscription.price);
   router.push({
     path: '/subscription/checkout',
   });
@@ -58,9 +56,9 @@ function handleSubscribe(subscription) {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 5rem;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 </style>

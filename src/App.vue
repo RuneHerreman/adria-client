@@ -9,7 +9,11 @@ watchEffect(() => {
 })
 
 watchEffect(() => {
-  document.body.classList.toggle('gradient-background-body', route.path === '/subscription/checkout')
+  document.body.classList.toggle(
+      'gradient-background-body',
+      route.path === '/subscription/checkout'
+      || route.path === '/onboarding/occupation'
+      || route.path === '/onboarding/interests');
 })
 
 </script>

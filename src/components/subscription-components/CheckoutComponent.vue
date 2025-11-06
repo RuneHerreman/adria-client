@@ -2,7 +2,7 @@
 
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
-import {useRoute} from "vue-router";
+import { useUserDataStore } from "@/data/user-data";
 import {computed, ref} from "vue";
 import PromoCodeComponent from "@/components/subscription-components/PromoCodeComponent.vue";
 
@@ -11,12 +11,15 @@ const props = defineProps({
   price: {type: Number, required: true},
 })
 
+const emits = defineEmits(["purchaseClick"]);
+
 const discounts = ref({
   ADRIANIGHT10: 10
 })
 
 const discountUsed = ref(false);
 const discountPercentage = ref(0);
+const userData = useUserDataStore();
 
 const totalPrice = computed(() => {
   return (props.price * (100 - discountPercentage.value) / 100).toFixed(2);
@@ -25,6 +28,7 @@ const totalPrice = computed(() => {
 const totalDiscount = computed(() => {
   return (props.price * discountPercentage.value / 100).toFixed(2);
 })
+
 
 function checkDiscount(code){
   const normalized = code.trim().toUpperCase();
@@ -36,6 +40,10 @@ function checkDiscount(code){
     discountUsed.value = false;
     discountPercentage.value = 0;
   }
+}
+
+function handleSubscriptionPayment(){
+  emits("purchaseClick", totalPrice.value);
 }
 </script>
 
@@ -67,7 +75,7 @@ function checkDiscount(code){
     <p>Per month, billed monthly</p>
   </article>
   <div id="buttons">
-    <BrightGreenButtonComponent route="">Continue to payment</BrightGreenButtonComponent>
+    <BrightGreenButtonComponent @click="handleSubscriptionPayment">Continue to payment</BrightGreenButtonComponent>
     <GreyButtonComponent route="/subscription">Change plan</GreyButtonComponent>
   </div>
 </section>
@@ -77,17 +85,23 @@ function checkDiscount(code){
 #checkout {
   padding: 2rem;
   margin: 0 auto;
-  width: 20rem;
+  width: 25rem;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  border: #DADADA solid 0.0612rem;
+  border: #e6e6e6 solid 0.0612rem;
   box-shadow: 0 0 0.25rem rgba(217, 217, 217, 0.25);
   border-radius: 1rem;
 
   background: white;
+}
+
+#plan,
+#subtotal,
+#discount{
+  margin-bottom: 0.5rem;
 }
 
 #content {
@@ -117,8 +131,8 @@ function checkDiscount(code){
 h2 {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
+  font-weight: 550;
+  margin-bottom: 2.2rem;
 }
 
 p{
@@ -139,13 +153,14 @@ p{
 }
 
 #total{
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 #total ~ p{
   color: #9f9f9f;
   font-size: 0.7rem;
 
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
+
 </style>

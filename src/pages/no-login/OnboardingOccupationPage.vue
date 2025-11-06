@@ -3,6 +3,8 @@ import GenesisLogo from "@/assets/media/genesis.png";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import {useUserDataStore} from "@/data/user-data.js";
+import InputboxComponent from "@/components/InputboxComponent.vue";
+import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 
 const router = useRouter();
 const userData = useUserDataStore();
@@ -22,60 +24,40 @@ function handleUserOccupation() {
 </script>
 
 <template>
-  <section class="onboarding-centered-section">
-    <div class="onboarding-info-block">
-      <small class="onboarding-small-text">Welcome to</small>
-      <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
-      <small class="onboarding-small-text">
-        Let’s personalize your learning experience.<br />
-        What’s your current occupation?
-      </small>
-    </div>
+  <main class="onboarding-centered-section">
+    <section class="onboardingCard">
+      <section class="onboarding-info-block">
+        <p>Welcome to</p>
+        <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
+        <p>
+          Let’s personalize your learning experience.<br />
+          What’s your current occupation?
+        </p>
+      </section>
 
-    <div class="onboarding-input-block">
-      <label for="occupation" class="onboarding-label">Type your occupation:</label>
-      <input
-          id="occupation"
-          type="text"
-          placeholder="Type your occupation"
-          class="onboarding-input"
-          v-model="occupation"
-      />
-      <button class="onboarding-btn" @click="handleUserOccupation">Continue</button>
-    </div>
-  </section>
+      <section class="onboarding-input-block">
+        <label for="occupation" class="onboarding-label">Your occupation:</label>
+        <InputboxComponent
+            type="text"
+            placeholder="Enter your occupation"
+            id="occupation"
+            class="onboarding-label-input"
+            v-model="occupation"
+        />
+        <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserOccupation">Next step</BrightGreenButtonComponent>
+      </section>
+    </section>
+  </main>
 </template>
 
 <style scoped>
 .logo {
-  width: 8rem;
-  margin: 0.3rem 0;
+  width: 10rem;
+  margin: 0.3rem auto 1rem;
 }
 
-.onboarding-input-block {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  width: 50%;
-  margin-top: 4rem;
-}
-
-.onboarding-label {
-  font-size: 0.85rem;
-  color: #333;
-  margin-bottom: 0.3rem;
-  font-weight: bold;
-  display: block;
-}
-
-.onboarding-input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  box-sizing: border-box;
-  display: block;
-  margin-bottom: 0.3rem;
+main{
+  height: 70vh;
+  padding-top: 5%;
 }
 </style>

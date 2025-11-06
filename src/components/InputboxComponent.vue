@@ -31,7 +31,7 @@ input{
   font-family: "Inter", Arial, Helvetica, sans-serif;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  width: 12rem;
+  width: 100%;
 
   border: 0.1rem solid #D0D0D0;
   height: min-content;
@@ -42,6 +42,6 @@ input{
 input:focus{
   outline: none;
   border-color: var(--tertiary-green);
-  box-shadow: 0 0 0.2rem hsl(0, 0%, 70%);
+  box-shadow: 0 0 0.1rem hsl(0, 0%, 90%);
 }
 </style>

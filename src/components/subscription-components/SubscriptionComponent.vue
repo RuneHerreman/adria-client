@@ -1,5 +1,4 @@
 <script setup>
-import {computed} from "vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 
 const props = defineProps({
@@ -28,7 +27,7 @@ function clicked() {
         <li v-for="perk in perks" :key="perk">{{perk}}</li>
       </ul>
     </div>
-    <BrightGreenButtonComponent route="" @click="clicked" class="btnSubscribe">Choose {{subscriptionName}}</BrightGreenButtonComponent>
+    <BrightGreenButtonComponent @click="clicked" class="btnSubscribe">Choose {{subscriptionName}}</BrightGreenButtonComponent>
   </article>
 </template>
 

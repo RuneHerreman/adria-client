@@ -21,13 +21,14 @@ function handleAffirmation(){
 
 <template>
   <div>
-    <GreyButtonComponent @click="closePopup">{{props.negativeText}}</GreyButtonComponent>
-    <LightGreenButtonComponent @click="handleAffirmation">{{props.positiveText}}</LightGreenButtonComponent>
+    <GreyButtonComponent class="btnPopup" @click="closePopup">{{props.negativeText}}</GreyButtonComponent>
+    <LightGreenButtonComponent class="btnPopup" @click="handleAffirmation">{{props.positiveText}}</LightGreenButtonComponent>
   </div>
 </template>
 
 <style scoped>
   div {
+    margin-top: 1.25rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

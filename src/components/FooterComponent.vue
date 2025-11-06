@@ -5,8 +5,8 @@ import InkeaLogo from "@/assets/media/INKEA.png";
 
 <template>
   <footer>
-    <div id="content">
-      <div class="footer-left">
+    <section id="content">
+      <div class="footer-top">
         <div id="logos">
           <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
           <img :src="InkeaLogo" alt="INKEA Logo" class="logo" />
@@ -21,15 +21,15 @@ import InkeaLogo from "@/assets/media/INKEA.png";
           <router-link to="/contact">Contact us</router-link>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div id="copyright">
+    <section id="copyright">
       <p>© 2025 INKEA. All rights reserved.</p>
       <small>
         This is a fictitious website created for the OLOD Analysis and
         Development Project.
       </small>
-    </div>
+    </section>
   </footer>
 </template>
 
@@ -40,12 +40,12 @@ footer {
   background-image:
       radial-gradient(rgba(0, 0, 0, 0.04) 22%, transparent 23%),
       radial-gradient(rgba(0, 0, 0, 0.04) 22%, transparent 23%);
-  background-position: center;
-  background-size: 2.4rem 2rem;
+  background-position: center center;
+  background-size: 2rem 2rem;
 
   font-family: "Inter", sans-serif;
   color: var(--dark-green);
-  padding: 1.5rem 5rem;
+  padding: 3rem 5rem 1rem 5rem;
   height: 10rem;
 }
 
@@ -57,10 +57,10 @@ footer {
   gap: 2rem;
 }
 
-.footer-left {
+.footer-top {
   display: flex;
   align-items: flex-start;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 #logos {
@@ -70,7 +70,7 @@ footer {
 }
 
 .logo {
-  height: 2.1875rem;
+  height: 2.75rem;
   width: auto;
 }
 
@@ -82,6 +82,7 @@ footer {
 
 #links h3 {
   font-weight: 700;
+  font-size: 1.75rem;
   margin-bottom: 0.3rem;
 }
 
@@ -89,8 +90,8 @@ footer {
 #links router-link {
   color: var(--dark-green);
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
+  font-size: 1rem;
+  transition: color 0.1s ease-in-out;
 }
 
 #links a:hover,
