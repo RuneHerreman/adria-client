@@ -5,7 +5,7 @@
   const props = defineProps({
     name: {type: String, required: true},
     difficulty: {type: String, required: true},
-    completion: {type: Number, required: true},
+    completion: {type: Number, default: 0},
     enrolled: {type: Boolean, default: false}
   });
 </script>

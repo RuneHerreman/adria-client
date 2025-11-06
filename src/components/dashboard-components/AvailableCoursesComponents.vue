@@ -1,13 +1,71 @@
-<script setup>
+<script setup lang="ts">
 import SpotlightComponent from "@/components/dashboard-components/SpotlightComponent.vue";
+import {Course} from "@/assets/js/Course.js"
 import {ref} from "vue";
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
-const courses = ref([
-  {name: "A complete guide to cats", difficulty: "hard", enrolled: true, completion: 75},
-  {name: "How to hunt", difficulty: "moderate", enrolled: true, completion: 90},
-  {name: "Cleaning 101", difficulty: "easy", enrolled: true, completion: 35},
-  {name: "How to mine", difficulty: "hard", enrolled: false, completion: 0},
+const courses = ref<Course[]>([
+  {
+    id: 1,
+    name: "A complete guide to cats",
+    description: "All about cats",
+    category: "Animals",
+    duration: 120,
+    level: "hard",
+    modules: [1, 2, 3],
+    pointsOnCompletion: 50
+  },
+  {
+    id: 2,
+    name: "How to hunt",
+    description: "Learn hunting skills",
+    category: "Survival",
+    duration: 90,
+    level: "moderate",
+    modules: [4, 5, 6],
+    pointsOnCompletion: 40
+  },
+  {
+    id: 2,
+    name: "How to hunt",
+    description: "Learn hunting skills",
+    category: "Survival",
+    duration: 90,
+    level: "moderate",
+    modules: [4, 5, 6],
+    pointsOnCompletion: 40
+  },
+  {
+    id: 2,
+    name: "How to hunt",
+    description: "Learn hunting skills",
+    category: "Survival",
+    duration: 90,
+    level: "moderate",
+    modules: [4, 5, 6],
+    pointsOnCompletion: 40
+  },
+  {
+    id: 2,
+    name: "How to hunt",
+    description: "Learn hunting skills",
+    category: "Survival",
+    duration: 90,
+    level: "moderate",
+    modules: [4, 5, 6],
+    pointsOnCompletion: 40
+  },
+  {
+    id: 2,
+    name: "How to hunt",
+    description: "Learn hunting skills",
+    category: "Survival",
+    duration: 90,
+    level: "moderate",
+    modules: [4, 5, 6],
+    pointsOnCompletion: 40
+  }
 ])
+
 
 </script>
 

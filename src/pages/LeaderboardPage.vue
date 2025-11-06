@@ -140,16 +140,29 @@ function isCurrentUser(name: string): boolean {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+
     padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    background: white;
-    border: 0.0625rem solid #e6e6e6;
-    box-sizing: border-box;
     width: 100%;
+
+    background: white;
+    border: 0.07rem solid #e6e6e6;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+.leaderboard-row:first-of-type {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.leaderboard-row:last-of-type {
+  border-radius: 0 0 1rem 1rem;
+  border-bottom: 0.07rem solid #e6e6e6;
+
 }
 
 .leaderboard-row.current-user {
-    background: #eafae1;
+    background: #e3f2da;
+    border-left: var(--bright-green) 0.25rem solid;
 }
 
 .rank-badge {

@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import CourseCardComponent from "@/components/dashboard-components/CourseCardComponent.vue";
-
-interface Course {
-  name: string;
-  difficulty: string;
-  completion: number;
-  enrolled: boolean;
-}
+import {Course} from "@/assets/js/Course";
 
 const props = defineProps<{
   name: {type:String, required: true},
@@ -23,9 +17,8 @@ const props = defineProps<{
           v-for="(course, idx) in courseList"
           :key="course.name"
           :name="course.name"
-          :difficulty="course.difficulty"
-          :completion="course.completion"
-          :enrolled="course.enrolled"
+          :difficulty="course.level"
+          :enrolled="false"
       />
     </article>
   </section>
