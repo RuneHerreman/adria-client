@@ -46,7 +46,7 @@ footer {
   font-family: "Inter", sans-serif;
   color: var(--dark-green);
   padding: 3rem 5rem 1rem 5rem;
-  height: 10rem;
+  height: fit-content;
 }
 
 #content {
