@@ -6,3 +6,5 @@ function getAllSubscriptions() {
     .then(response => response)
     .catch(ErrorHandler.handleError);
 }
+
+export { getAllSubscriptions };
