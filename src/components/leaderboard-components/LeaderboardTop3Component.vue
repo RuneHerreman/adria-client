@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <div id="leaderboard-top-3">
+    <section id="leaderboard-top-3">
         <div 
             id="leaderboard-top-3-item" 
             v-for="(item, index) in players" 
@@ -21,7 +21,7 @@ defineProps({
                 <p class="profile-xp">{{ item.xp }} XP</p>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>

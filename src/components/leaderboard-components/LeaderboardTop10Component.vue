@@ -16,7 +16,7 @@ function isCurrentUser(name) {
 </script>
 
 <template>
-    <div id="leaderboard-top-10">
+    <section id="leaderboard-top-10">
         <div 
             class="leaderboard-row" 
             v-for="(item, index) in players" 
@@ -28,7 +28,7 @@ function isCurrentUser(name) {
             <p class="player-name">{{ item.name }}</p>
             <p class="player-xp">{{ item.xp }} XP</p>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
