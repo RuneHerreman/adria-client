@@ -23,6 +23,7 @@ const enrolledCourses = computed(() => courses.value.filter(c => c.enrolled))
       :name="course.name"
       :difficulty="course.difficulty"
       :completion="course.completion"
+      :enrolled="course.enrolled"
     />
   </section>
 </template>
@@ -34,7 +35,8 @@ const enrolledCourses = computed(() => courses.value.filter(c => c.enrolled))
   }
 
   h2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
     width: max-content;
   }
 </style>

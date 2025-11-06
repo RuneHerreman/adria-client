@@ -14,7 +14,7 @@
   <article
       class="course-card"
       :class="{enrolledCourse: enrolled}"
-      :style="{ background: `url(../../assets/media/course-background/${name}.jpg);`}"
+      :style="{ background: `url(../../assets/media/course-background/${name}.jpg)`}"
   >
     <div class="course-wrapper">
       <p class="course-name">{{name}}</p>
@@ -22,7 +22,7 @@
           class="course-info"
       >
         <DifficultyComponent :difficulty="difficulty"></DifficultyComponent>
-        <div v-if="enrolled=true" class="progress-container">
+        <div v-if="enrolled" class="progress-container">
           <ProgressComponent progress="50"></ProgressComponent>
           <p class="progress-percentage">{{completion}}%</p>
         </div>
@@ -50,6 +50,12 @@ article{
   background-size: contain;
 
   cursor: pointer;
+  transition: .05s ease-in-out;
+}
+
+article:hover{
+  scale: 101%;
+  box-shadow: 0 0.25rem 0.25rem rgba(230, 230, 230, 0.25);
 }
 
 .course-wrapper {
