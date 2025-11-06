@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
+import {computed, ref, onMounted} from "vue";
 import { useUserDataStore } from "@/data/user-data";
 import SubscriptionComponent from "@/components/subscription-components/SubscriptionComponent.vue";
 import CheckoutComponent from "@/components/subscription-components/CheckoutComponent.vue";
 import router from "@/router";
+import { getAllSubscriptions } from "@/assets/js/data-connector/api.js";
 
 const userDataStore = useUserDataStore();
+
+onMounted(async () => {
+  const subscriptions = await getAllSubscriptions();
+  console.log(subscriptions);
+});
 
 const subscriptions = ref([
   {subscriptionName: "Basic", subscriptionPrice: 15.99, perks: [
@@ -26,7 +32,7 @@ const subscriptions = ref([
         "Access to Genesis Sleep",
         "50% off Insta-Learn"
     ], mostPopular: false},
-])
+]);
 
 
 function handleSubscribe(subscription) {

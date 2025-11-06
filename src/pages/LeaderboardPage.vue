@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import HeaderComponent from "@/components/HeaderComponent.vue";
+import LeaderboardTop3Component from "@/components/leaderboard-components/LeaderboardTop3Component.vue";
 import { ref, computed } from "vue";
 import profilePicture from "@/assets/media/profile-picture.jpg";
 import { useUserDataStore } from "@/data/user-data.js";
@@ -34,20 +35,7 @@ function isCurrentUser(name: string): boolean {
     <main>
     <h1>Leaderboard</h1>
     <div id="leaderboard-container">
-        <div id="leaderboard-top-3">
-            <div 
-                id="leaderboard-top-3-item" 
-                v-for="(item, index) in leaderboardTop3" 
-                :key="item.name"
-                :class="{ 'top-player': index === 1 }"
-            >
-                <img :src="item.img" alt="Profile Picture" class="profile-picture">
-                <div class="profile-info">
-                    <p class="profile-name">{{ item.name }}</p>
-                    <p class="profile-xp">{{ item.xp }} XP</p>
-                </div>
-            </div>
-        </div>
+        <LeaderboardTop3Component :players="leaderboardTop3" />
         
         <div id="leaderboard-top-10">
             <div 
@@ -71,60 +59,6 @@ function isCurrentUser(name: string): boolean {
     width: 42rem;
     margin: 0 auto;
     margin-bottom: 6rem;
-}
-
-#leaderboard-top-3 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2.5rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    width: 100%;
-}
-
-#leaderboard-top-3-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-.profile-picture {
-    width: 8rem;
-    height: 8rem;
-    border: 0.0625rem solid #ccc;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.profile-info {
-    background: white;
-    border-radius: 0.5rem;
-    padding: 1.25rem 1.5rem;
-    text-align: center;
-    width: 12rem;
-    box-sizing: border-box;
-    border: 0.0625rem solid #e6e6e6;
-}
-
-#leaderboard-top-3-item.top-player .profile-info {
-    border: 0.1rem solid gold;
-}
-
-.profile-name {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--grey-text);
-    margin: 0 0 0.5rem 0;
-}
-
-.profile-xp {
-    font-size: 1rem;
-    color: var(--bright-green);
-    margin: 0;
-    font-weight: 500;
 }
 
 #leaderboard-top-10 {
