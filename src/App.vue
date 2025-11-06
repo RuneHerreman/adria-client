@@ -6,7 +6,7 @@ import {useRoute} from "vue-router";
 const route = useRoute();
 watchEffect(() => {
   document.body.classList.toggle('landing-page-body', route.path === '/')
-})
+});
 
 watchEffect(() => {
   document.body.classList.toggle(
@@ -14,7 +14,7 @@ watchEffect(() => {
       route.path === '/subscription/checkout'
       || route.path === '/onboarding/occupation'
       || route.path === '/onboarding/interests');
-})
+});
 
 </script>
 

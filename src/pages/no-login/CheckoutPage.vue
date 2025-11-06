@@ -6,15 +6,15 @@
   import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
 
   const userData = useUserDataStore();
-  const name = userData.getPlanName()
-  const price = userData.getPlanPrice()
+  const name = userData.getPlanName();
+  const price = userData.getPlanPrice();
   const showPopup = ref(false);
 
   onMounted(()=>{
     if (!userData.selectedPlan) {
       router.push("/subscription");
     }
-  })
+  });
 
   function handlePurchase(){
     alert(`Purchased plan: ${name} for ₳${userData.getPlanPrice()}`);
