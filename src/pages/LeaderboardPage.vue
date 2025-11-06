@@ -15,24 +15,74 @@ const leaderboardTop10 = ref([
 ]);
 
 const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, 3));
+
 </script>
 
 <template>
     <main>
     <h1>Leaderboard</h1>
     <div id="leaderboard-top-3">
-        <div id="leaderboard-top-3-item" v-for="item in leaderboardTop3" :key="item.name">
+        <div 
+            id="leaderboard-top-3-item" 
+            v-for="(item, index) in leaderboardTop3" 
+            :key="item.name"
+            :class="{ 'top-player': index === 1 }"
+        >
             <img :src="item.img" alt="Profile Picture" class="profile-picture">
-            <p>{{ item.name }}</p>
-            <p>{{ item.xp }} XP</p>
+            <div class="profile-info">
+                <p class="profile-name">{{ item.name }}</p>
+                <p class="profile-xp">{{ item.xp }} XP</p>
+            </div>
         </div>
     </div>
     </main>
 </template>
 
 <style scoped>
+#leaderboard-top-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+#leaderboard-top-3-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
 .profile-picture {
-    width: 5rem;
-    height: 5rem;
+    width: 8rem;
+    height: 8rem;
+}
+
+.profile-info {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    min-width: 10rem;
+}
+
+#leaderboard-top-3-item.top-player .profile-info {
+    border: 0.1rem solid gold;
+}
+
+.profile-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--grey-text);
+    margin: 0 0 0.5rem 0;
+}
+
+.profile-xp {
+    font-size: 0.9rem;
+    color: var(--bright-green);
+    margin: 0;
+    font-weight: 500;
 }
 </style>
