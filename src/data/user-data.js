@@ -2,6 +2,7 @@ import {defineStore } from 'pinia';
 
 export const useUserDataStore = defineStore('userData', {
     state: () => ({
+        name: "Test User",
         selectedPlan: {
           name: null,
           price: 0,
@@ -10,6 +11,9 @@ export const useUserDataStore = defineStore('userData', {
         preferences: []
     }),
     actions: {
+        setName(name) {
+            this.name = name;
+        },
         setSelectedPlanName(name) {
             this.selectedPlan.name = name;
         },
@@ -21,6 +25,9 @@ export const useUserDataStore = defineStore('userData', {
         },
         setPreferences(preferences) {
             this.preferences = preferences;
+        },
+        getName() {
+            return this.name;
         },
         getPlanName() {
             return this.selectedPlan.name;
