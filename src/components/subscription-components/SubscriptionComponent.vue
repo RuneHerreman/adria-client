@@ -19,7 +19,7 @@ function clicked() {
 </script>
 
 <template>
-  <article class="subscriptionTier" :class="{'most-popular': mostPopular}">
+  <article @click="clicked" class="subscriptionTier" :class="{'most-popular': mostPopular}">
     <p v-if="mostPopular" class="most-popular-ribbon">Most popular</p>
     <div>
       <p class="subscriptionName">{{subscriptionName}}</p>
@@ -34,8 +34,10 @@ function clicked() {
 
 <style scoped>
 .subscriptionTier {
+  cursor: pointer;
+
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-  width: 14rem;
+  width: fit-content;
   height: 25rem;
   border-radius: 1rem;
   box-shadow: 0 0 0.3rem rgba(214, 214, 214, 0.75);
@@ -69,7 +71,9 @@ function clicked() {
 }
 
 .perks{
-  font-size: 1rem;
+  padding-left: 2rem;
+  padding-right: 0.5rem;
+  font-size: .95rem;
   list-style-image: url("../../assets/icons/checkmark.svg");
   line-height: 2rem;
 }
@@ -77,7 +81,7 @@ function clicked() {
 .btnSubscribe {
   display: block;
   text-align: center;
-  width: 90%;
+  width: 100%;
 }
 
 .most-popular {
