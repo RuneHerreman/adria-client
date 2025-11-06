@@ -6,7 +6,8 @@ const props = defineProps({
   subscriptionPrice: {type: Number, required: true},
   perks: {type: Array, required: true},
   mostPopular: {type: Boolean, required: false},
-})
+});
+
 const emit = defineEmits(['subscribe']);
 function clicked() {
   emit('subscribe', {

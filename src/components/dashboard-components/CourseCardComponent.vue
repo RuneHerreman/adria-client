@@ -7,7 +7,7 @@
     difficulty: {type: String, required: true},
     completion: {type: Number, required: true},
     enrolled: {type: Boolean, default: false}
-  })
+  });
 </script>
 
 <template>

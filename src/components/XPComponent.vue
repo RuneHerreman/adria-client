@@ -1,7 +1,7 @@
 <script setup>
   const props = defineProps({
     xp: {type: Number, required: true}
-  })
+  });
 </script>
 
 <template>

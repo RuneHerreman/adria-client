@@ -9,7 +9,7 @@ import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonCo
 const router = useRouter();
 const userData = useUserDataStore();
 
-const occupation = ref("");
+const occupation = ref(userData.getOccupation() || "");
 function handleUserOccupation() {
   if (occupation.value.trim() === "") {
     alert("Please enter your occupation.");
@@ -18,6 +18,7 @@ function handleUserOccupation() {
   else {
     userData.setOccupation(occupation.value.trim());
     router.push("/onboarding/interests");
+    console.log(userData.getOccupation());
   }
 }
 
