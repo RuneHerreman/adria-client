@@ -119,6 +119,17 @@ function handleSubscriptionPayment(){
   font-size: 1.1rem;
 }
 
+p{
+  width: fit-content;
+}
+
+#total ~ p{
+  color: #9f9f9f;
+  font-size: 0.7rem;
+
+  margin-bottom: 3rem;
+}
+
 #plan p:first-of-type,
 #subtotal p:first-of-type {
   color: #4D4D4D;
@@ -133,10 +144,6 @@ h2 {
   font-size: 1.2rem;
   font-weight: 550;
   margin-bottom: 2.2rem;
-}
-
-p{
-  width: fit-content;
 }
 
 #code {
@@ -155,12 +162,4 @@ p{
 #total{
   margin-top: 1rem;
 }
-
-#total ~ p{
-  color: #9f9f9f;
-  font-size: 0.7rem;
-
-  margin-bottom: 3rem;
-}
-
 </style>

@@ -8,9 +8,9 @@ const courses = ref([
   {name: "How to hunt", difficulty: "moderate", enrolled: true, completion: 90},
   {name: "Cleaning 101", difficulty: "easy", enrolled: true, completion: 35},
   {name: "How to mine", difficulty: "hard", enrolled: false, completion: 0},
-])
+]);
 
-const enrolledCourses = computed(() => courses.value.filter(c => c.enrolled))
+const enrolledCourses = computed(() => courses.value.filter(c => c.enrolled));
 
 </script>
 
