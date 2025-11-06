@@ -45,7 +45,7 @@
           :title="link.name"
       />
       <XPComponent :xp="1025"/>
-      <img @click="goToSettings" id="profile-picture" src="../assets/media/profile-picture.jpg" alt="Settings" title="Settings">
+      <img @click="goToSettings" id="profile-picture" class="profile-picture" src="../assets/media/profile-picture.jpg" alt="Settings" title="Settings">
     </nav>
   </header>
 </template>
@@ -76,10 +76,9 @@
     cursor: pointer;
   }
 
-  #profile-picture{
-    border: 0.0625rem var(--dark-green) solid;
+  #profile-picture {
     width: 2rem;
     height: 2rem;
-    border-radius: 50%;
   }
+
 </style>

@@ -128,3 +128,9 @@ h1::after {
 .onboarding-btn{
     align-self: flex-end;
 }
+
+.profile-picture {
+    border: 0.0625rem var(--dark-green) solid;
+    border-radius: 50%;
+    object-fit: cover;
+}

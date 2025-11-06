@@ -22,7 +22,7 @@ const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, 3));
     <h1>Leaderboard</h1>
     <div id="leaderboard-top-3">
         <div id="leaderboard-top-3-item" v-for="item in leaderboardTop3" :key="item.name">
-            <img :src="item.img" alt="Profile Picture">
+            <img :src="item.img" alt="Profile Picture" class="profile-picture">
             <p>{{ item.name }}</p>
             <p>{{ item.xp }} XP</p>
         </div>
@@ -31,5 +31,8 @@ const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, 3));
 </template>
 
 <style scoped>
-
+.profile-picture {
+    width: 5rem;
+    height: 5rem;
+}
 </style>
