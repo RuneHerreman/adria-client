@@ -44,7 +44,7 @@
           :iconUrl="link.iconUrl"
           :title="link.name"
       />
-      <XPComponent xp="1025"/>
+      <XPComponent :xp="1025"/>
       <img @click="goToSettings" id="profile-picture" src="../assets/media/profile-picture.jpg" alt="Settings" title="Settings">
     </nav>
   </header>
