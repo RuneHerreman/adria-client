@@ -6,7 +6,7 @@ export const useUserDataStore = defineStore('userData', {
           name: null,
           price: 0,
         },
-        occupation: null,
+        occupation: "",
         preferences: []
     }),
     actions: {
@@ -27,6 +27,9 @@ export const useUserDataStore = defineStore('userData', {
         },
         getPlanPrice() {
             return this.selectedPlan.price;
+        },
+        getOccupation() {
+            return this.occupation;
         }
     }
 });
