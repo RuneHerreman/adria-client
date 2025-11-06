@@ -21,14 +21,18 @@ import YourCoursesComponent from "@/components/dashboard-components/YourCoursesC
     margin: 3.5rem 0 2rem;
     display: grid;
     grid-template-columns: min-content auto;
+    width: 100%;
   }
 
   #your-courses {
-    border-right: #4D4D4D 0.11rem solid;
+    border-right: #d9d9d9 0.11rem solid;
     padding-right: 1.5rem;
   }
 
   #available-courses {
-    padding-left: 1.5rem;
+    margin-left: 1.5rem;
+    max-width: 100%;
+    overflow: hidden;
   }
+
 </style>
