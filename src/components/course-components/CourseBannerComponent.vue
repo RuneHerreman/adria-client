@@ -59,7 +59,7 @@ console.log(props.course[0]);
 #course-name{
   margin-top: .5rem;
   color: white;
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
@@ -68,7 +68,7 @@ console.log(props.course[0]);
 }
 
 #course-difficulty{
-  font-size: 1rem;
-  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
 }
 </style>
