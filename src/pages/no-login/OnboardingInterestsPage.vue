@@ -91,8 +91,8 @@ function handleUserPreferences() {
 }
 
 main{
-  height: 70vh;
-  padding-top: 5%;
+  height: 78vh;
+  padding-top: 3%;
 }
 
 .onboarding-selected-count {

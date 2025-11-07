@@ -38,7 +38,7 @@ article{
   box-sizing: border-box;
   margin-bottom: 1rem;
   padding: 1rem;
-  height: 7.5rem;
+  height: var(--course-card-background-height);
   width: auto;
   aspect-ratio: 30/13;
 
@@ -47,15 +47,15 @@ article{
   border-radius: 0.5rem;
 
   background: url("../../assets/media/course-background/Bird Blindness - A deepdive.jpg") no-repeat center right;
-  background-size: contain;
+  background-size: 7.5rem;
 
   cursor: pointer;
-  transition: .05s ease-in-out;
+  transition: .1s ease-in-out;
 }
 
 article:hover{
-  scale: 101%;
-  box-shadow: 0 0.25rem 0.25rem rgba(230, 230, 230, 0.25);
+  background-size: calc(var(--course-card-background-height) + 0.5rem);
+  box-shadow: 0 0 0.3rem rgba(217, 217, 217, 0.3);
 }
 
 .course-wrapper {
