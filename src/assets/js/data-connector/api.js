@@ -20,4 +20,13 @@ function getUsersInLeaderboard() {
     .catch(ErrorHandler.handleError);
 }
 
-export { getAllSubscriptions, getUserDetails, getUsersInLeaderboard };
+async function getAllCourses() {
+    return await fetchFromServer("/api/courses")
+}
+
+export {
+    getAllSubscriptions,
+    getUserDetails,
+    getUsersInLeaderboard,
+    getAllCourses
+};
