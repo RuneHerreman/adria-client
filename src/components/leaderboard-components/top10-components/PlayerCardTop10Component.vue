@@ -49,6 +49,11 @@ defineProps({
   border-bottom: 0.0625rem solid #e6e6e6;
 }
 
+.leaderboard-row:only-child{
+  border-radius: 1rem;
+  border-bottom: 0.0625rem solid #e6e6e6;
+}
+
 .leaderboard-row.current-user {
     background: #eafae1;
 }
