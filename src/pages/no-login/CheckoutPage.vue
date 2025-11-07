@@ -11,7 +11,8 @@
   const showPopup = ref(false);
 
   onMounted(()=>{
-    if (!userData.selectedPlan) {
+    if (userData.selectedPlan.price === null ||
+        userData.selectedPlan.name === null) {
       router.push("/subscription");
     }
   });

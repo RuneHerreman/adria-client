@@ -2,6 +2,7 @@
 
 import CourseCardComponent from "@/components/dashboard-components/CourseCardComponent.vue";
 import * as API from "@/assets/js/data-connector/api.js";
+import {handleCourseClick} from "@/assets/js/script.js";
 
 const courses = await API.getCoursesByCategory("Lifestyle");
 console.log(courses[0]);
@@ -12,11 +13,12 @@ console.log(courses[0]);
     <h2>Your courses</h2>
     <CourseCardComponent
       v-for="course in courses"
-      :key="course.name"
+      :key="course.id"
       :name="course.name"
       :difficulty="course.level"
       :completion="50"
       :enrolled="true"
+      @click="handleCourseClick(course.id)"
     />
   </section>
 </template>

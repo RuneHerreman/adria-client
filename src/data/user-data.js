@@ -5,10 +5,11 @@ export const useUserDataStore = defineStore('userData', {
         name: "TestUser",
         selectedPlan: {
           name: null,
-          price: 0,
+          price: null,
         },
         occupation: "",
-        preferences: []
+        preferences: [],
+        selectedCourseID: null
     }),
     actions: {
         setName(name) {
@@ -26,6 +27,9 @@ export const useUserDataStore = defineStore('userData', {
         setPreferences(preferences) {
             this.preferences = preferences;
         },
+        setCourseID(courseID) {
+          this.selectedCourseID = courseID;
+        },
         getName() {
             return this.name;
         },
@@ -37,6 +41,9 @@ export const useUserDataStore = defineStore('userData', {
         },
         getOccupation() {
             return this.occupation;
+        },
+        getCourseID() {
+          return this.selectedCourseID;
         }
     }
 });
