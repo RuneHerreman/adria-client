@@ -10,21 +10,21 @@ import { getUsersInLeaderboard } from "@/assets/js/data-connector/api.js";
 const userData = useUserDataStore();
 
 const leaderboardTop10 = ref([
-    {name: "Adrian", xp: 0, img: profilePicture},
-    {name: "Ronaldo", xp: 10, img: profilePicture},
-    {name: "Third", xp: 100, img: profilePicture},
-    {name: "Fourth", xp: 1000, img: profilePicture},
-    {name: "Fifth", xp: 1011, img: profilePicture},
-    {name: "Sixth", xp: 1111, img: profilePicture},
-    {name: "Seventh", xp: 1112, img: profilePicture},
-    {name: "Test User", xp: 7777, img: profilePicture},
-    {name: "Ninth", xp: 8888, img: profilePicture},
-    {name: "Tenth", xp: 9999, img: profilePicture},
+    {name: "Adrian", xp: 9999, img: profilePicture},
+    {name: "Ronaldo", xp: 8888, img: profilePicture},
+    {name: "Third", xp: 7777, img: profilePicture},
+    {name: "Fourth", xp: 6666, img: profilePicture},
+    {name: "Fifth", xp: 5555, img: profilePicture},
+    {name: "Sixth", xp: 4444, img: profilePicture},
+    {name: "Seventh", xp: 3333, img: profilePicture},
+    {name: "Test User", xp: 2222, img: profilePicture},
+    {name: "Ninth", xp: 1111, img: profilePicture},
+    {name: "Tenth", xp: 0, img: profilePicture},
 
 ]);
 
 onMounted(async () => {
-  leaderboardTop10.value = await getUsersInLeaderboard();
+  //leaderboardTop10.value = await getUsersInLeaderboard();
 });
 
 const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, 3));

@@ -2,7 +2,7 @@ import {defineStore } from 'pinia';
 
 export const useUserDataStore = defineStore('userData', {
     state: () => ({
-        name: "Test User",
+        name: "Ronaldo",
         selectedPlan: {
           name: null,
           price: 0,
