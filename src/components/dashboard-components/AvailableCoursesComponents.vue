@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import SpotlightComponent from "@/components/dashboard-components/SpotlightComponent.vue";
 import {Course} from "@/assets/js/Course.js"
 import {ref} from "vue";
