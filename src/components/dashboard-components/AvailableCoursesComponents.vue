@@ -1,7 +1,5 @@
-<script setup lang="ts">
+<script setup>
 import SpotlightComponent from "@/components/dashboard-components/SpotlightComponent.vue";
-import {Course} from "@/assets/js/Course.js"
-import {ref} from "vue";
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
 import * as API from "@/assets/js/data-connector/api"
 
