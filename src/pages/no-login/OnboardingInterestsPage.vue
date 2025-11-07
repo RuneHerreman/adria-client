@@ -1,9 +1,10 @@
 <script setup>
-import {reactive, computed} from "vue";
+import {reactive, computed, ref} from "vue";
 import {useUserDataStore} from "@/data/user-data.js";
 import {useRouter} from "vue-router";
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
+import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
 
 const interests = [
   "Hunting",
@@ -24,6 +25,7 @@ const userData = useUserDataStore();
 const router = useRouter();
 const interestSelected = reactive([]);
 const selectedInterestCount = computed(() => interestSelected.length);
+const showErrorPopup = ref(false);
 
 const handleClickInterest = ($event, interest) => {
   const isSelected = interestSelected.includes(interest);
@@ -43,16 +45,21 @@ const handleClickInterest = ($event, interest) => {
 
 function handleUserPreferences() {
   if (interestSelected.length !== 3) {
-    alert("Please select exactly 3 interests to continue.");
+    showErrorPopup.value = true;
+    return;
   } else {
     userData.setPreferences(interestSelected);
     router.push("/dashboard");
   }
 }
+
+function closeErrorPopup() {
+  showErrorPopup.value = false;
+}
 </script>
 <template>
   <main class="onboarding-centered-section">
-    <section class="onboardingCard">
+    <section class="onboardingCard" v-if="!showErrorPopup">
       <section class="onboarding-info-block">
         <p class="onboarding-small-text">Welcome to</p>
         <img src="@/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
@@ -81,6 +88,16 @@ function handleUserPreferences() {
         <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserPreferences">Continue</BrightGreenButtonComponent>
       </section>
     </section>
+    <DefaultPopupComponent
+        v-if="showErrorPopup"
+        :single-button="true"
+        button-text="Okay"
+        @close="closeErrorPopup"
+    >
+      <template #text-content>
+        <p>Please select exactly 3 interests to continue.</p>
+      </template>
+    </DefaultPopupComponent>
   </main>
 </template>
 
@@ -93,6 +110,7 @@ function handleUserPreferences() {
 main{
   height: 70vh;
   padding-top: 5%;
+  position: relative;
 }
 
 .onboarding-selected-count {
