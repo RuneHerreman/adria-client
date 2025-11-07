@@ -72,7 +72,7 @@ function handleSubscribe(subscription) {
         :subscriptionPrice="subscription.subscriptionPrice"
         :most-popular="subscription.mostPopular"
     @subscribe="handleSubscribe"
-    @click="handleSubscribe"/>
+    />
   </section>
 </template>
 

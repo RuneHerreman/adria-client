@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import CourseCardComponent from "@/components/dashboard-components/CourseCardComponent.vue";
-
-interface Course {
-  name: string;
-  difficulty: string;
-  completion: number;
-  enrolled: boolean;
-}
+import {Course} from "@/assets/js/Course";
 
 const props = defineProps<{
-  name: {type:String, required: true},
+  name: {type: string, required: true},
   courseList: Course[]
 }>();
 
@@ -23,9 +17,8 @@ const props = defineProps<{
           v-for="(course, idx) in courseList"
           :key="course.name"
           :name="course.name"
-          :difficulty="course.difficulty"
-          :completion="course.completion"
-          :enrolled="course.enrolled"
+          :difficulty="course.level"
+          :enrolled="false"
       />
     </article>
   </section>
@@ -42,8 +35,8 @@ const props = defineProps<{
   }
 
   h2{
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .carousel-wrapper {

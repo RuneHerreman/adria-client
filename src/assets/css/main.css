@@ -44,15 +44,13 @@ h1::after {
     display: block;
     border-bottom: solid 0.2rem black;
     width: 4rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
 }
 
 .landing-page-body{
     background: url("../media/landing-page-banner.png") center top no-repeat;
     background-size: contain;
 }
-
-
 
 .gradient-background-body{
     position: relative;

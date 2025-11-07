@@ -34,11 +34,19 @@ defineProps({
     align-items: center;
     gap: 1rem;
     padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
     background: white;
     border: 0.0625rem solid #e6e6e6;
-    box-sizing: border-box;
+    border-bottom: none;
     width: 100%;
+}
+
+.leaderboard-row:first-of-type{
+  border-radius: 1rem 1rem 0 0;
+}
+
+.leaderboard-row:last-of-type{
+  border-radius: 0 0 1rem 1rem;
+  border-bottom: 0.0625rem solid #e6e6e6;
 }
 
 .leaderboard-row.current-user {

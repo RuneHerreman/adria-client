@@ -4,10 +4,10 @@ import CourseCardComponent from "@/components/dashboard-components/CourseCardCom
 import {computed, ref} from "vue";
 
 const courses = ref([
-  {name: "A complete guide to cats", difficulty: "hard", enrolled: true, completion: 75},
-  {name: "How to hunt", difficulty: "moderate", enrolled: true, completion: 90},
-  {name: "Cleaning 101", difficulty: "easy", enrolled: true, completion: 35},
-  {name: "How to mine", difficulty: "hard", enrolled: false, completion: 0},
+  {name: "A complete guide to cats", level: "hard", enrolled: true, completion: 75},
+  {name: "How to hunt", level: "moderate", enrolled: true, completion: 90},
+  {name: "Cleaning 101", level: "easy", enrolled: true, completion: 35},
+  {name: "How to mine", level: "hard", enrolled: false, completion: 0},
 ]);
 
 const enrolledCourses = computed(() => courses.value.filter(c => c.enrolled));
@@ -21,7 +21,7 @@ const enrolledCourses = computed(() => courses.value.filter(c => c.enrolled));
       v-for="course in enrolledCourses"
       :key="course.name"
       :name="course.name"
-      :difficulty="course.difficulty"
+      :difficulty="course.level"
       :completion="course.completion"
       :enrolled="course.enrolled"
     />
