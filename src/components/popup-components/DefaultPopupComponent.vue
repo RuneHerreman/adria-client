@@ -12,6 +12,7 @@ function handleAffirmation(){
 </script>
 
 <template>
+  <div class="popup-background"></div>
   <section class="popup">
     <slot id="text" name="text-content"></slot>
     <YesNoButtonComponent
@@ -33,7 +34,18 @@ function handleAffirmation(){
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -150%);
+    transform: translate(-50%, -100%);
+    z-index: 10;
+  }
 
+  .popup-background {
+    content: "";
+    display: block;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.27);
+    z-index: 1;
   }
 </style>
