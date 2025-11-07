@@ -14,4 +14,10 @@ function getUserDetails(userId) {
     .catch(ErrorHandler.handleError);
 }
 
-export { getAllSubscriptions, getUserDetails };
+function getUsersInLeaderboard() {
+    return fetchFromServer("/api/users/leaderboard")
+    .then(response => response)
+    .catch(ErrorHandler.handleError);
+}
+
+export { getAllSubscriptions, getUserDetails, getUsersInLeaderboard };
