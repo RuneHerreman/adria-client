@@ -1,29 +1,22 @@
 <script setup>
 
 import CourseCardComponent from "@/components/dashboard-components/CourseCardComponent.vue";
-import {computed, ref} from "vue";
+import * as API from "@/assets/js/data-connector/api.js";
 
-const courses = ref([
-  {name: "A complete guide to cats", level: "hard", enrolled: true, completion: 75},
-  {name: "How to hunt", level: "moderate", enrolled: true, completion: 90},
-  {name: "Cleaning 101", level: "easy", enrolled: true, completion: 35},
-  {name: "How to mine", level: "hard", enrolled: false, completion: 0},
-]);
-
-const enrolledCourses = computed(() => courses.value.filter(c => c.enrolled));
-
+const courses = await API.getCoursesByCategory("Lifestyle");
+console.log(courses[0]);
 </script>
 
 <template>
   <section id="your-courses-component">
     <h2>Your courses</h2>
     <CourseCardComponent
-      v-for="course in enrolledCourses"
+      v-for="course in courses"
       :key="course.name"
       :name="course.name"
       :difficulty="course.level"
-      :completion="course.completion"
-      :enrolled="course.enrolled"
+      :completion="50"
+      :enrolled="true"
     />
   </section>
 </template>

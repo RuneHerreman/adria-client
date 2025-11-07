@@ -36,7 +36,6 @@
         :name="name"
         :price="price"
         @purchaseClick="handlePurchaseClick"
-        v-if="!showPopup"
     />
     <DefaultPopupComponent
         v-if="showPopup"
@@ -59,4 +58,5 @@ main {
 p{
   line-height: 1.5rem;
 }
+
 </style>

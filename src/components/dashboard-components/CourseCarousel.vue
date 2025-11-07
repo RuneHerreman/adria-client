@@ -3,7 +3,7 @@ import CourseCardComponent from "@/components/dashboard-components/CourseCardCom
 import {Course} from "@/assets/js/Course";
 
 const props = defineProps<{
-  name: {type: string, required: true},
+  name: string,
   courseList: Course[]
 }>();
 
@@ -29,7 +29,7 @@ const props = defineProps<{
   .carousel{
     display: flex;
     gap: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.2rem;
     overflow: scroll;
     scrollbar-width: none;
   }
@@ -37,10 +37,10 @@ const props = defineProps<{
   h2{
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
+    font-size: 1.625rem;
   }
 
   .carousel-wrapper {
     width: calc(100% - 2rem);
-
   }
 </style>

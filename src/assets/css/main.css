@@ -16,6 +16,7 @@
     --cat-moderate: #E5A000;
     --cat-hard: #A8000B;
     --cat-expert: #102202;
+    --course-card-background-height: 7.5rem;
 }
 
 html, body{
