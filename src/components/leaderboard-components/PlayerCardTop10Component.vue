@@ -23,7 +23,7 @@ defineProps({
         <div class="rank-badge">{{ rank }}</div>
         <img :src="player.img" alt="Profile Picture" class="profile-picture profile-picture-small">
         <p class="player-name">{{ player.name }}</p>
-        <p class="player-xp">{{ player.xp }} XP</p>
+        <p class="player-xp">{{ player.pointsBalance }} XP</p>
     </div>
 </template>
 
