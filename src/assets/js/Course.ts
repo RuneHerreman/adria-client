@@ -4,7 +4,7 @@ export interface Course {
     description: string,
     duration: number,
     learnList: string[],
-    level: number,
+    level: string,
     modules: number[],
     pointsOnCompletion: number,
     tags: string[],

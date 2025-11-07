@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  course: Course
+  course: json
 }>();
 </script>
 
