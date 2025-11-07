@@ -5,14 +5,17 @@ import {useRouter} from "vue-router";
 import {useUserDataStore} from "@/data/user-data.js";
 import InputboxComponent from "@/components/InputboxComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
+import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
 
 const router = useRouter();
 const userData = useUserDataStore();
 
 const occupation = ref(userData.getOccupation() || "");
+const showErrorPopup = ref(false);
+
 function handleUserOccupation() {
   if (occupation.value.trim() === "") {
-    alert("Please enter your occupation.");
+    showErrorPopup.value = true;
     return;
   }
   else {
@@ -22,11 +25,15 @@ function handleUserOccupation() {
   }
 }
 
+function closeErrorPopup() {
+  showErrorPopup.value = false;
+}
+
 </script>
 
 <template>
   <main class="onboarding-centered-section">
-    <section class="onboardingCard">
+    <section class="onboardingCard" v-if="!showErrorPopup">
       <section class="onboarding-info-block">
         <p>Welcome to</p>
         <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
@@ -48,6 +55,16 @@ function handleUserOccupation() {
         <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserOccupation">Next step</BrightGreenButtonComponent>
       </section>
     </section>
+    <DefaultPopupComponent
+        v-if="showErrorPopup"
+        :single-button="true"
+        button-text="Okay"
+        @close="closeErrorPopup"
+    >
+      <template #text-content>
+        <p>Please enter your occupation.</p>
+      </template>
+    </DefaultPopupComponent>
   </main>
 </template>
 
@@ -60,6 +77,7 @@ function handleUserOccupation() {
 main{
   height: 70vh;
   padding-top: 5%;
+  position: relative;
 }
 
 p{
