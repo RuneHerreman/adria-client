@@ -1,11 +1,36 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
+import {computed, ref, onMounted, reactive} from "vue";
 import { useUserDataStore } from "@/data/user-data";
 import SubscriptionComponent from "@/components/subscription-components/SubscriptionComponent.vue";
 import CheckoutComponent from "@/components/subscription-components/CheckoutComponent.vue";
 import router from "@/router";
+import { getAllSubscriptions } from "@/assets/js/data-connector/api.js";
 
 const userDataStore = useUserDataStore();
+const subscriptionsFromApi = ref([]);
+
+ const perks = reactive(
+  [["Access to all courses."], 
+
+ ["Access to all courses.", 
+ "Interactive experiences"],
+
+ ["Access to all courses.", 
+ "Interactive experiences", 
+ "Access to Genesis Sleep"], 
+ 
+ ["Access to all courses.", 
+ "Interactive experiences", 
+ "Access to Genesis Sleep", 
+ "50% off Insta-Learn"]]);
+
+onMounted(async () => {
+  subscriptionsFromApi.value = await getAllSubscriptions();
+  console.log(subscriptionsFromApi.value);
+  console.log(subscriptionsFromApi.value[0].type);
+
+  
+});
 
 const subscriptions = ref([
   {subscriptionName: "Basic", subscriptionPrice: 15.99, perks: [
@@ -26,7 +51,7 @@ const subscriptions = ref([
         "Access to Genesis Sleep",
         "50% off Insta-Learn"
     ], mostPopular: false},
-])
+]);
 
 
 function handleSubscribe(subscription) {

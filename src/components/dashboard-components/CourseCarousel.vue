@@ -3,7 +3,7 @@ import CourseCardComponent from "@/components/dashboard-components/CourseCardCom
 import {Course} from "@/assets/js/Course";
 
 const props = defineProps<{
-  name: {type:String, required: true},
+  name: {type: string, required: true},
   courseList: Course[]
 }>();
 

@@ -1,32 +1,33 @@
 <script setup lang="ts">
 
-import HeaderComponent from "@/components/HeaderComponent.vue";
-import { ref, computed } from "vue";
+import Top3Component from "@/components/leaderboard-components/top3-components/Top3Component.vue";
+import Top10Component from "@/components/leaderboard-components/top10-components/Top10Component.vue";
+import { ref, computed, onMounted } from "vue";
 import profilePicture from "@/assets/media/profile-picture.jpg";
 import { useUserDataStore } from "@/data/user-data.js";
 
 const userData = useUserDataStore();
 
 const leaderboardTop10 = ref([
-    {name: "Adrian", xp: 0, img: profilePicture},
-    {name: "Ronaldo", xp: 10, img: profilePicture},
-    {name: "Third", xp: 100, img: profilePicture},
-    {name: "Fourth", xp: 1000, img: profilePicture},
-    {name: "Fifth", xp: 1011, img: profilePicture},
-    {name: "Sixth", xp: 1111, img: profilePicture},
-    {name: "Seventh", xp: 1112, img: profilePicture},
-    {name: "Test User", xp: 7777, img: profilePicture},
-    {name: "Ninth", xp: 8888, img: profilePicture},
-    {name: "Tenth", xp: 9999, img: profilePicture},
+    {name: "Adrian", pointsBalance: 9999, img: profilePicture},
+    {name: "Ronaldo", pointsBalance: 8888, img: profilePicture},
+    {name: "Third", pointsBalance: 7777, img: profilePicture},
+    {name: "Fourth", pointsBalance: 6666, img: profilePicture},
+    {name: "Fifth", pointsBalance: 5555, img: profilePicture},
+    {name: "Sixth", pointsBalance: 4444, img: profilePicture},
+    {name: "Seventh", pointsBalance: 3333, img: profilePicture},
+    {name: "Test User", pointsBalance: 2222, img: profilePicture},
+    {name: "Ninth", pointsBalance: 1111, img: profilePicture},
+    {name: "Tenth", pointsBalance: 0, img: profilePicture},
 
 ]);
 
+onMounted(async () => {
+  leaderboardTop10.value = await getUsersInLeaderboard();
+});
+
 const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, 3));
 const currentUserName = computed(() => userData.getName());
-
-function isCurrentUser(name: string): boolean {
-    return name === currentUserName.value;
-}
 
 </script>
 
@@ -34,34 +35,8 @@ function isCurrentUser(name: string): boolean {
     <main>
     <h1>Leaderboard</h1>
     <div id="leaderboard-container">
-        <div id="leaderboard-top-3">
-            <div 
-                id="leaderboard-top-3-item" 
-                v-for="(item, index) in leaderboardTop3" 
-                :key="item.name"
-                :class="{ 'top-player': index === 1 }"
-            >
-                <img :src="item.img" alt="Profile Picture" class="profile-picture">
-                <div class="profile-info">
-                    <p class="profile-name">{{ item.name }}</p>
-                    <p class="profile-xp">{{ item.xp }} XP</p>
-                </div>
-            </div>
-        </div>
-        
-        <div id="leaderboard-top-10">
-            <div 
-                class="leaderboard-row" 
-                v-for="(item, index) in leaderboardTop10" 
-                :key="item.name"
-                :class="{ 'current-user': isCurrentUser(item.name) }"
-            >
-                <div class="rank-badge">{{ index + 1 }}</div>
-                <img :src="item.img" alt="Profile Picture" class="profile-picture profile-picture-small">
-                <p class="player-name">{{ item.name }}</p>
-                <p class="player-xp">{{ item.xp }} XP</p>
-            </div>
-        </div>
+        <Top3Component :players="leaderboardTop3" :currentUserName="currentUserName" />
+        <Top10Component :players="leaderboardTop10" :currentUserName="currentUserName" />
     </div>
     </main>
 </template>
@@ -140,29 +115,16 @@ function isCurrentUser(name: string): boolean {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-
     padding: 0.75rem 1rem;
-    width: 100%;
-
+    border-radius: 0.5rem;
     background: white;
-    border: 0.07rem solid #e6e6e6;
-    border-bottom: none;
+    border: 0.0625rem solid #e6e6e6;
     box-sizing: border-box;
-}
-
-.leaderboard-row:first-of-type {
-  border-radius: 1rem 1rem 0 0;
-}
-
-.leaderboard-row:last-of-type {
-  border-radius: 0 0 1rem 1rem;
-  border-bottom: 0.07rem solid #e6e6e6;
-
+    width: 100%;
 }
 
 .leaderboard-row.current-user {
-    background: #e3f2da;
-    border-left: var(--bright-green) 0.25rem solid;
+    background: #eafae1;
 }
 
 .rank-badge {
