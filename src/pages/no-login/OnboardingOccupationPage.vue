@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import GenesisLogo from "@/assets/media/genesis.png";
 import {ref} from "vue";
 import {useRouter} from "vue-router";

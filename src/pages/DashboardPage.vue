@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import GreetingComponent from "@/components/dashboard-components/GreetingComponent.vue";

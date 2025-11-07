@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 import Top3Component from "@/components/leaderboard-components/top3-components/Top3Component.vue";
 import Top10Component from "@/components/leaderboard-components/top10-components/Top10Component.vue";

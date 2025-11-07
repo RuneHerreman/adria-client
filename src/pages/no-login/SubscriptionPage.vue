@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import SubscriptionListComponent from "@/components/subscription-components/SubscriptionListComponent.vue";
 </script>
 

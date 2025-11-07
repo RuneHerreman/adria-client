@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import CourseCardComponent from "@/components/dashboard-components/CourseCardComponent.vue";
 import {Course} from "@/assets/js/Course";
 

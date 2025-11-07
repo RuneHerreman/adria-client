@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 import YesNoButtonComponent from "@/components/buttons/YesNoButtonComponent.vue";
 const emits = defineEmits(["close", "affirmation"]);

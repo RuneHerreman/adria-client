@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
   const name = "{{ name }}"
   function getGreeting(){
     const date = new Date().getHours();
