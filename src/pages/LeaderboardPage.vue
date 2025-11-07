@@ -2,9 +2,10 @@
 
 import Top3Component from "@/components/leaderboard-components/Top3Component.vue";
 import Top10Component from "@/components/leaderboard-components/Top10Component.vue";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import profilePicture from "@/assets/media/profile-picture.jpg";
 import { useUserDataStore } from "@/data/user-data.js";
+import { getUsersInLeaderboard } from "@/assets/js/data-connector/api.js";
 
 const userData = useUserDataStore();
 
@@ -21,6 +22,10 @@ const leaderboardTop10 = ref([
     {name: "Tenth", xp: 9999, img: profilePicture},
 
 ]);
+
+onMounted(async () => {
+  leaderboardTop10.value = await getUsersInLeaderboard();
+});
 
 const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, 3));
 const currentUserName = computed(() => userData.getName());
