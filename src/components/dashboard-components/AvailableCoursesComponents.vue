@@ -5,70 +5,14 @@ import {ref} from "vue";
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
 import * as API from "@/assets/js/data-connector/api"
 
-const courses = ref<Course[]>([
-  {
-    id: 1,
-    name: "A complete guide to cats",
-    description: "All about cats",
-    category: "Animals",
-    duration: 120,
-    level: "hard",
-    modules: [1, 2, 3],
-    pointsOnCompletion: 50
-  },
-  {
-    id: 2,
-    name: "How to hunt",
-    description: "Learn hunting skills",
-    category: "Survival",
-    duration: 90,
-    level: "moderate",
-    modules: [4, 5, 6],
-    pointsOnCompletion: 40
-  },
-  {
-    id: 2,
-    name: "How to hunt",
-    description: "Learn hunting skills",
-    category: "Survival",
-    duration: 90,
-    level: "moderate",
-    modules: [4, 5, 6],
-    pointsOnCompletion: 40
-  },
-  {
-    id: 2,
-    name: "How to hunt",
-    description: "Learn hunting skills",
-    category: "Survival",
-    duration: 90,
-    level: "moderate",
-    modules: [4, 5, 6],
-    pointsOnCompletion: 40
-  },
-  {
-    id: 2,
-    name: "How to hunt",
-    description: "Learn hunting skills",
-    category: "Survival",
-    duration: 90,
-    level: "moderate",
-    modules: [4, 5, 6],
-    pointsOnCompletion: 40
-  },
-  {
-    id: 2,
-    name: "How to hunt",
-    description: "Learn hunting skills",
-    category: "Survival",
-    duration: 90,
-    level: "moderate",
-    modules: [4, 5, 6],
-    pointsOnCompletion: 40
-  }
-])
+const allCourses = await API.getCourses();
+const survivalCourses = await API.getCoursesByCategory("Survival");
+const lifestyleCourses = await API.getCoursesByCategory("Lifestyle");
+const cookingCourses = await API.getCoursesByCategory("Culinary Arts");
 
-console.log(API.getAllCourses());
+
+
+console.log(allCourses);
 </script>
 
 <template>
@@ -79,17 +23,17 @@ console.log(API.getAllCourses());
 
     <CourseCarousel
         name="Explore new fields"
-        :courseList="courses"
+        :courseList="allCourses"
     />
 
     <CourseCarousel
-        name="Explore new fields"
-        :courseList="courses"
+        name="Survive in the wild"
+        :courseList="survivalCourses"
     />
 
     <CourseCarousel
-        name="Explore new fields"
-        :courseList="courses"
+        name="Up your lifestyle"
+        :courseList="lifestyleCourses"
     />
 
     <div class="half-spotlight-container">
@@ -104,8 +48,8 @@ console.log(API.getAllCourses());
     </div>
 
     <CourseCarousel
-        name="Explore new fields"
-        :courseList="courses"
+        name="Real earth cooking"
+        :courseList="cookingCourses"
     />
 
 

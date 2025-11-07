@@ -23,7 +23,7 @@
       >
         <DifficultyComponent :difficulty="difficulty"></DifficultyComponent>
         <div v-if="enrolled" class="progress-container">
-          <ProgressComponent progress="50"></ProgressComponent>
+          <ProgressComponent :progress="0"></ProgressComponent>
           <p class="progress-percentage">{{completion}}%</p>
         </div>
       </div>

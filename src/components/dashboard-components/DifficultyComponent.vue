@@ -2,6 +2,7 @@
   const props = defineProps({
     difficulty: {type: String, required: true}
   });
+  console.log(props.difficulty)
 </script>
 
 <template>

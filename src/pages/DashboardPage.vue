@@ -11,7 +11,12 @@ import YourCoursesComponent from "@/components/dashboard-components/YourCoursesC
     <GreetingComponent/>
     <section id="wrapper">
       <YourCoursesComponent id="your-courses"/>
-      <AvailableCoursesComponents id="available-courses"/>
+      <suspense fallback="loading">
+        <AvailableCoursesComponents id="available-courses"/>
+        <template #fallback>
+          <div>Loading courses...</div>
+        </template>
+      </suspense>
     </section>
   </main>
 </template>

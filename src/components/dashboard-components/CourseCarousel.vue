@@ -6,8 +6,9 @@ const props = defineProps<{
   name: string,
   courseList: Course[]
 }>();
-
-
+for (const course of props.courseList) {
+  console.log(course.level)
+}
 </script>
 
 <template>
