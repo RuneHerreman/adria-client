@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
-import Top3Component from "@/components/leaderboard-components/Top3Component.vue";
-import Top10Component from "@/components/leaderboard-components/Top10Component.vue";
+import Top3Component from "@/components/leaderboard-components/top3-components/Top3Component.vue";
+import Top10Component from "@/components/leaderboard-components/top10-components/Top10Component.vue";
 import { ref, computed, onMounted } from "vue";
 import profilePicture from "@/assets/media/profile-picture.jpg";
 import { useUserDataStore } from "@/data/user-data.js";

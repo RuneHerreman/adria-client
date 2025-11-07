@@ -1,5 +1,5 @@
 <script setup>
-import PlayerCardTop3Component from "@/components/leaderboard-components/PlayerCardTop3Component.vue";
+import PlayerCardTop3Component from "@/components/leaderboard-components/top3-components/PlayerCardTop3Component.vue";
 import { computed } from "vue";
 
 const props = defineProps({
