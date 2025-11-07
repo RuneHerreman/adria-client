@@ -20,6 +20,7 @@ console.log(props.course[0]);
 
 <style scoped>
 #course-banner {
+  grid-area: banner;
   position: relative;
 
   width: 100%;
