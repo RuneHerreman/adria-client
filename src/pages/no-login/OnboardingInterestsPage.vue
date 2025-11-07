@@ -39,9 +39,11 @@ const handleClickInterest = ($event, interest) => {
   } else {
     return;
   }
-
-  $event.currentTarget.classList.toggle("active", !isSelected);
 };
+
+function isInterestSelected(interest) {
+  return interestSelected.includes(interest);
+}
 
 function handleUserPreferences() {
   if (interestSelected.length !== 3) {
@@ -77,6 +79,7 @@ function closeErrorPopup() {
           v-for="interest in interests"
           :key="interest"
           class="interest-btn"
+          :class="{ active: isInterestSelected(interest) }"
           @click="handleClickInterest($event, interest)">
           {{ interest }}
         </button>
