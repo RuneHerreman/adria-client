@@ -6,8 +6,16 @@ const props = defineProps({
     players: {
         type: Array,
         required: true
+    },
+    currentUserName: {
+        type: String,
+        required: true
     }
 });
+
+function isCurrentUser(name) {
+    return name === props.currentUserName;
+}
 
 const orderedPlayers = computed(() => {
     if (props.players.length < 3) return props.players;
@@ -22,6 +30,7 @@ const orderedPlayers = computed(() => {
             :key="item.name"
             :player="item"
             :isTopPlayer="index === 1"
+            :isCurrentUser="isCurrentUser(item.name)"
         />
     </section>
 </template>

@@ -36,7 +36,7 @@ const currentUserName = computed(() => userData.getName());
     <main>
     <h1>Leaderboard</h1>
     <div id="leaderboard-container">
-        <Top3Component :players="leaderboardTop3" />
+        <Top3Component :players="leaderboardTop3" :currentUserName="currentUserName" />
         <Top10Component :players="leaderboardTop10" :currentUserName="currentUserName" />
     </div>
     </main>

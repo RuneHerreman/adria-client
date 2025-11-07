@@ -7,6 +7,10 @@ defineProps({
     isTopPlayer: {
         type: Boolean,
         default: false
+    },
+    isCurrentUser: {
+        type: Boolean,
+        default: false
     }
 });
 </script>
@@ -14,7 +18,7 @@ defineProps({
 <template>
     <div 
         id="leaderboard-top-3-item" 
-        :class="{ 'top-player': isTopPlayer }"
+        :class="{ 'top-player': isTopPlayer, 'current-user': isCurrentUser }"
     >
         <img :src="player.img" alt="Profile Picture" class="profile-picture">
         <div class="profile-info">
@@ -52,6 +56,10 @@ defineProps({
 
 #leaderboard-top-3-item.top-player .profile-info {
     border: 0.1rem solid gold;
+}
+
+#leaderboard-top-3-item.current-user .profile-info {
+    background: #eafae1;
 }
 
 .profile-name {
