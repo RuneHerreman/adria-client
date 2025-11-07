@@ -3,9 +3,10 @@ import CourseCardComponent from "@/components/dashboard-components/CourseCardCom
 import {Course} from "@/assets/js/Course";
 
 const props = defineProps<{
-  name: {type: string, required: true},
+  name: string,
   courseList: Course[]
 }>();
+
 
 </script>
 
