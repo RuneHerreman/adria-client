@@ -46,10 +46,16 @@ async function getCoursesByCategory(category) {
     return translateCourseLevels(result)
 }
 
+async function getCourseByID(courseID) {
+  const courses = await getCourses();
+  return courses.filter(course => course.id === courseID);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
     getUsersInLeaderboard,
     getCourses,
-    getCoursesByCategory
+    getCoursesByCategory,
+    getCourseByID
 };

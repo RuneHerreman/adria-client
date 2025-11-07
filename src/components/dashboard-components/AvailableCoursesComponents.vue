@@ -8,8 +8,6 @@ const survivalCourses = await API.getCoursesByCategory("Survival");
 const lifestyleCourses = await API.getCoursesByCategory("Lifestyle");
 const cookingCourses = await API.getCoursesByCategory("Culinary Arts");
 
-
-
 console.log(allCourses);
 </script>
 

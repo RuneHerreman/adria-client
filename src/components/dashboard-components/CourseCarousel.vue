@@ -6,6 +6,7 @@ const props = defineProps<{
   name: string,
   courseList: Course[]
 }>();
+import {handleCourseClick} from "@/assets/js/script.js";
 
 </script>
 
@@ -15,10 +16,11 @@ const props = defineProps<{
     <article class="carousel">
       <CourseCardComponent
           v-for="(course, idx) in courseList"
-          :key="course.name"
+          :key="course.id"
           :name="course.name"
           :difficulty="course.level"
           :enrolled="false"
+          @click="handleCourseClick(course.id)"
       />
     </article>
   </section>
