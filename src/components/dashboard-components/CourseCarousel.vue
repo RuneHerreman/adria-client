@@ -34,6 +34,7 @@ import {handleCourseClick} from "@/assets/js/script.js";
     padding: 0.2rem;
     overflow: scroll;
     scrollbar-width: none;
+
   }
 
   h2{

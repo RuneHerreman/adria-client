@@ -19,6 +19,7 @@ img{
   height: auto;
   aspect-ratio: 19/7;
   border-radius: 1rem;
+  margin-bottom: 2rem;
 }
 
 img.halfImage{

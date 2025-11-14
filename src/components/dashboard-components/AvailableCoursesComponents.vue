@@ -18,17 +18,17 @@ console.log(allCourses);
     />
 
     <CourseCarousel
-        name="Explore new fields"
+        name="Broaden your horizons"
         :courseList="allCourses"
     />
 
     <CourseCarousel
-        name="Survive in the wild"
+        name="Survive in the Adrean wild"
         :courseList="survivalCourses"
     />
 
     <CourseCarousel
-        name="Up your lifestyle"
+        name="Get a lil pep in your step"
         :courseList="lifestyleCourses"
     />
 
@@ -44,7 +44,7 @@ console.log(allCourses);
     </div>
 
     <CourseCarousel
-        name="Real earth cooking"
+        name="Real terrestrial cooking"
         :courseList="cookingCourses"
     />
 
@@ -60,5 +60,7 @@ console.log(allCourses);
   flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
+
+  margin-top: 2rem;
 }
 </style>
