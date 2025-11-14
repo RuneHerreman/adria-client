@@ -28,7 +28,7 @@ console.log(allCourses);
     />
 
     <CourseCarousel
-        name="Get a lil pep in your step"
+        name="Turn your life around"
         :courseList="lifestyleCourses"
     />
 
