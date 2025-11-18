@@ -3,20 +3,24 @@
 import CourseDescriptionComponent from "@/components/course-components/CourseDescriptionComponent.vue";
 import CourseActionsComponent from "@/components/course-components/CourseActionsComponent.vue";
 import CourseBannerComponent from "@/components/course-components/CourseBannerComponent.vue";
-import {onMounted} from "vue";
+import {onBeforeMount, onMounted} from "vue";
 import router from "@/router/index.js";
 import * as API from "@/assets/js/data-connector/api.js";
 import {useUserDataStore} from "@/data/user-data.js";
+import {useRoute} from "vue-router";
+const route = useRoute()
+const courseID = route.params.id
 
-const userData = useUserDataStore();
-const chosenCourse = await API.getCourseByID(userData.getCourseID());
-
-onMounted(()=>{
-  if (userData.getCourseID() === null) {
+onBeforeMount(()=>{
+  if (!route.params.id) {
     router.push("/dashboard");
   }
 });
-console.log(userData.getCourseID());
+
+const chosenCourse = await API.getCourseByID(courseID);
+
+
+console.log(courseID);
 
 console.log(chosenCourse)
 </script>

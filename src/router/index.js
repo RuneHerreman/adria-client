@@ -18,7 +18,7 @@ const routes = [
         component: LandingPage
     },
     {
-        path: "/course",
+        path: "/course/:id",
         component: CoursePage
     },
     {

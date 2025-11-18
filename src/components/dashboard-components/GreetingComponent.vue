@@ -1,5 +1,5 @@
-<script setup>
-  const name = "{{ name }}"
+<script setup lang="ts">
+  const name = "Simon Cornelissis"
   function getGreeting(){
     const date = new Date().getHours();
 
@@ -20,9 +20,11 @@
 </script>
 
 <template>
-  <h1>{{ getGreeting() }} <br> {{name}}</h1>
+  <h1>{{ getGreeting() }}, <br> {{name}}</h1>
 </template>
 
 <style scoped>
-
+  h1 {
+    line-height: 2.6rem;
+  }
 </style>

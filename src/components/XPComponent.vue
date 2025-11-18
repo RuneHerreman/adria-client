@@ -18,7 +18,7 @@
     gap: 0.2rem;
 
     padding: 0.6rem 1rem;
-    border: 0.1rem var(--bright-green) solid;
+    border: 0.12rem var(--bright-green) solid;
     border-radius: 1.5rem;
 
     cursor: default;

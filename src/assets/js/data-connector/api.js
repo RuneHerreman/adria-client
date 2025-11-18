@@ -43,6 +43,7 @@ async function getCourses() {
 
 async function getCoursesByCategory(category) {
     const result = await fetchFromServer(`/api/courses?category=${category}`, "GET")
+
     return translateCourseLevels(result)
 }
 

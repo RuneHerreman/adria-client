@@ -5,11 +5,15 @@ import GreetingComponent from "@/components/dashboard-components/GreetingCompone
 import AvailableCoursesComponents from "@/components/dashboard-components/AvailableCoursesComponents.vue";
 import YourCoursesComponent from "@/components/dashboard-components/YourCoursesComponent.vue";
 import LoadingComponent from "@/components/LoadingComponent.vue";
+import CallToActionComponent from "@/components/dashboard-components/CallToActionComponent.vue";
 </script>
 
 <template>
   <main>
-    <GreetingComponent/>
+    <div id="top-compartment">
+      <GreetingComponent/>
+      <CallToActionComponent/>
+    </div>
       <suspense>
         <template #default>
           <section id="wrapper">
@@ -25,12 +29,17 @@ import LoadingComponent from "@/components/LoadingComponent.vue";
           </LoadingComponent>
         </template>
       </suspense>
-
   </main>
 </template>
 
 
 <style scoped>
+  #top-compartment{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
   #wrapper {
     margin: 3.5rem 0 2rem;
     display: grid;
@@ -47,5 +56,9 @@ import LoadingComponent from "@/components/LoadingComponent.vue";
     margin-left: 1.5rem;
     max-width: 100%;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 </style>
