@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import {computed, ref, onMounted, reactive} from "vue";
 import { useUserDataStore } from "@/data/user-data";
 import SubscriptionComponent from "@/components/subscription-components/SubscriptionComponent.vue";

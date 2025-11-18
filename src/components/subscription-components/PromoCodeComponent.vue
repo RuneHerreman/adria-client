@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 import InputboxComponent from "@/components/InputboxComponent.vue";
 import LightGreenButtonComponent from "@/components/buttons/LightGreenButtonComponent.vue";

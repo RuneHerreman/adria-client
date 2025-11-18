@@ -1,4 +1,6 @@
 <script setup>
+
+  import HeaderComponent from "@/components/HeaderComponent.vue";
   import {onMounted} from "vue";
   import {useUserDataStore} from "@/data/user-data.js";
   import router from "@/router/index.js";

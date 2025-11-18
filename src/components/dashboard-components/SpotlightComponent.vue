@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 defineProps({
   src: {type:String, required: true},
   half: {type: Boolean, default: false}

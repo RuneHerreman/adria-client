@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";

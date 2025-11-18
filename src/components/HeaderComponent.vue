@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
   import router from '@/router';
   import NavigationButtonComponent from "@/components/NavigationButtonComponent.vue";
   import XPComponent from "@/components/XPComponent.vue";
