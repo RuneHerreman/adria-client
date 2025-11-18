@@ -29,7 +29,6 @@ import CallToActionComponent from "@/components/dashboard-components/CallToActio
           </LoadingComponent>
         </template>
       </suspense>
-
   </main>
 </template>
 
