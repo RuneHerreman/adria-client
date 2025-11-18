@@ -29,7 +29,6 @@ const totalDiscount = computed(() => {
   return (props.price * discountPercentage.value / 100).toFixed(2);
 })
 
-
 function checkDiscount(code){
   const normalized = code.trim().toUpperCase();
   const percentage = discounts.value[normalized];

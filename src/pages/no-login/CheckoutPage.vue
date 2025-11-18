@@ -11,7 +11,8 @@
   const showPopup = ref(false);
 
   onMounted(()=>{
-    if (!userData.selectedPlan) {
+    if (userData.selectedPlan.price === null ||
+        userData.selectedPlan.name === null) {
       router.push("/subscription");
     }
   });
@@ -36,7 +37,6 @@
         :name="name"
         :price="price"
         @purchaseClick="handlePurchaseClick"
-        v-if="!showPopup"
     />
     <DefaultPopupComponent
         v-if="showPopup"
@@ -59,4 +59,5 @@ main {
 p{
   line-height: 1.5rem;
 }
+
 </style>

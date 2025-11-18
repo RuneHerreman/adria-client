@@ -4,17 +4,31 @@ import HeaderComponent from "@/components/HeaderComponent.vue";
 import GreetingComponent from "@/components/dashboard-components/GreetingComponent.vue";
 import AvailableCoursesComponents from "@/components/dashboard-components/AvailableCoursesComponents.vue";
 import YourCoursesComponent from "@/components/dashboard-components/YourCoursesComponent.vue";
+import LoadingComponent from "@/components/LoadingComponent.vue";
 </script>
 
 <template>
   <main>
     <GreetingComponent/>
-    <section id="wrapper">
-      <YourCoursesComponent id="your-courses"/>
-      <AvailableCoursesComponents id="available-courses"/>
-    </section>
+      <suspense>
+        <template #default>
+          <section id="wrapper">
+            <YourCoursesComponent id="your-courses"/>
+            <AvailableCoursesComponents id="available-courses"/>
+          </section>
+        </template>
+        <template #fallback>
+          <LoadingComponent>
+            <template #loading>
+              courses
+            </template>
+          </LoadingComponent>
+        </template>
+      </suspense>
+
   </main>
 </template>
+
 
 <style scoped>
   #wrapper {
@@ -34,5 +48,4 @@ import YourCoursesComponent from "@/components/dashboard-components/YourCoursesC
     max-width: 100%;
     overflow: hidden;
   }
-
 </style>

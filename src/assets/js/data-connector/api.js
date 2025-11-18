@@ -1,6 +1,22 @@
 import { fetchFromServer } from "./api-communication-abstractor.js";
 import * as ErrorHandler from "./error-handler.js";
 
+function translateLevel(level) {
+    switch(level) {
+        case 0: return "easy";
+        case 1: return "moderate";
+        case 2: return "hard";
+        case 3: return "expert";
+        default: return "unknown";
+    }
+}
+
+function translateCourseLevels(courses) {
+    return courses.map(course => ({
+        ...course,
+        level: translateLevel(course.level)
+    }));
+}
 
 function getAllSubscriptions() {
     return fetchFromServer("/api/subscriptions/all-subscriptions")
@@ -20,13 +36,26 @@ function getUsersInLeaderboard() {
     .catch(ErrorHandler.handleError);
 }
 
-async function getAllCourses() {
-    return await fetchFromServer("/api/courses")
+async function getCourses() {
+    const result = await fetchFromServer("/api/courses")
+    return translateCourseLevels(result)
+}
+
+async function getCoursesByCategory(category) {
+    const result = await fetchFromServer(`/api/courses?category=${category}`, "GET")
+    return translateCourseLevels(result)
+}
+
+async function getCourseByID(courseID) {
+  const courses = await getCourses();
+  return courses.filter(course => course.id === courseID);
 }
 
 export {
     getAllSubscriptions,
     getUserDetails,
     getUsersInLeaderboard,
-    getAllCourses
+    getCourses,
+    getCoursesByCategory,
+    getCourseByID
 };
