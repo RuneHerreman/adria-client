@@ -1,26 +1,15 @@
-<script setup lang="ts">
+<script setup>
 
 import Top3Component from "@/components/leaderboard-components/top3-components/Top3Component.vue";
 import Top10Component from "@/components/leaderboard-components/top10-components/Top10Component.vue";
 import { ref, computed, onMounted } from "vue";
 import profilePicture from "@/assets/media/profile-picture.jpg";
 import { useUserDataStore } from "@/data/user-data.js";
+import { getUsersInLeaderboard } from "@/assets/js/data-connector/api.js";
 
 const userData = useUserDataStore();
 
-const leaderboardTop10 = ref([
-    {name: "Adrian", pointsBalance: 9999, img: profilePicture},
-    {name: "Ronaldo", pointsBalance: 8888, img: profilePicture},
-    {name: "Third", pointsBalance: 7777, img: profilePicture},
-    {name: "Fourth", pointsBalance: 6666, img: profilePicture},
-    {name: "Fifth", pointsBalance: 5555, img: profilePicture},
-    {name: "Sixth", pointsBalance: 4444, img: profilePicture},
-    {name: "Seventh", pointsBalance: 3333, img: profilePicture},
-    {name: "Test User", pointsBalance: 2222, img: profilePicture},
-    {name: "Ninth", pointsBalance: 1111, img: profilePicture},
-    {name: "Tenth", pointsBalance: 0, img: profilePicture},
-
-]);
+const leaderboardTop10 = ref([]);
 
 onMounted(async () => {
   leaderboardTop10.value = await getUsersInLeaderboard();
