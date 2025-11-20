@@ -2,7 +2,7 @@
 defineProps({
   src: {type:String, required: true},
   half: {type: Boolean, default: false}
-})
+});
 </script>
 
 <template>

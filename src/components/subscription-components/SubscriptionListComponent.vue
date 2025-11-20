@@ -1,8 +1,7 @@
 <script setup>
-import {computed, ref, onMounted, reactive} from "vue";
+import {ref, onMounted, reactive} from "vue";
 import { useUserDataStore } from "@/data/user-data";
 import SubscriptionComponent from "@/components/subscription-components/SubscriptionComponent.vue";
-import CheckoutComponent from "@/components/subscription-components/CheckoutComponent.vue";
 import router from "@/router";
 import { getAllSubscriptions } from "@/assets/js/data-connector/api.js";
 

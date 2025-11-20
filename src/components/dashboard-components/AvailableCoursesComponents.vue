@@ -1,7 +1,7 @@
 <script setup>
 import SpotlightComponent from "@/components/dashboard-components/SpotlightComponent.vue";
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
-import * as API from "@/assets/js/data-connector/api"
+import * as API from "@/assets/js/data-connector/api";
 
 const allCourses = await API.getCourses();
 const survivalCourses = await API.getCoursesByCategory("Survival");

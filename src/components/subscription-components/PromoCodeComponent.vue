@@ -1,11 +1,11 @@
 <script setup>
-
 import InputboxComponent from "@/components/InputboxComponent.vue";
 import LightGreenButtonComponent from "@/components/buttons/LightGreenButtonComponent.vue";
 import {ref} from "vue";
 
-const emits = defineEmits(["apply"])
+const emits = defineEmits(["apply"]);
 const promoCode = ref("");
+
 function clicked(){
   emits("apply", promoCode.value);
   console.log(promoCode.value);

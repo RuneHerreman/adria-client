@@ -1,6 +1,4 @@
 <script setup>
-
-import HeaderComponent from "@/components/HeaderComponent.vue";
 import GreetingComponent from "@/components/dashboard-components/GreetingComponent.vue";
 import AvailableCoursesComponents from "@/components/dashboard-components/AvailableCoursesComponents.vue";
 import YourCoursesComponent from "@/components/dashboard-components/YourCoursesComponent.vue";

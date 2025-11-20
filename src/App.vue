@@ -5,7 +5,7 @@ import {watchEffect} from "vue";
 import {useRoute} from "vue-router";
 const route = useRoute();
 watchEffect(() => {
-  document.body.classList.toggle('landing-page-body', route.path === '/')
+  document.body.classList.toggle('landing-page-body', route.path === '/');
 });
 
 watchEffect(() => {

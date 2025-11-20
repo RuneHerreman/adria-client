@@ -62,6 +62,14 @@ console.log(props.course[0]);
   margin-bottom: 0.5rem;
 }
 
+.course-info-item p:first-of-type  {
+  color: #666666;
+}
+
+.course-info-item p {
+  font-size: 0.8rem;
+}
+
 #course-actions h2 ~ p {
   font-size: 0.75rem;
   line-height: 0.8rem;
@@ -82,14 +90,6 @@ console.log(props.course[0]);
   gap: .75rem;
 
   margin-top: 2rem;
-}
-
-.course-info-item p:first-of-type  {
-  color: #666666;
-}
-
-.course-info-item p {
-  font-size: 0.8rem;
 }
 
 .course-info-item {

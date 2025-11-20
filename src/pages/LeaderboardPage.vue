@@ -1,9 +1,7 @@
 <script setup>
-
 import Top3Component from "@/components/leaderboard-components/top3-components/Top3Component.vue";
 import Top10Component from "@/components/leaderboard-components/top10-components/Top10Component.vue";
 import { ref, computed, onMounted } from "vue";
-import profilePicture from "@/assets/media/profile-picture.jpg";
 import { useUserDataStore } from "@/data/user-data.js";
 import { getUsersInLeaderboard } from "@/assets/js/data-connector/api.js";
 
@@ -14,8 +12,8 @@ const leaderboardTop10 = ref([]);
 onMounted(async () => {
   leaderboardTop10.value = await getUsersInLeaderboard();
 });
-
-const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, 3));
+const maxPlayers = 3;
+const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, maxPlayers));
 const currentUserName = computed(() => userData.getName());
 
 </script>

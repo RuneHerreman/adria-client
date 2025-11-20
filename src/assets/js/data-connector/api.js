@@ -37,14 +37,13 @@ function getUsersInLeaderboard() {
 }
 
 async function getCourses() {
-    const result = await fetchFromServer("/api/courses")
-    return translateCourseLevels(result)
+    const result = await fetchFromServer("/api/courses");
+    return translateCourseLevels(result);
 }
 
 async function getCoursesByCategory(category) {
-    const result = await fetchFromServer(`/api/courses?category=${category}`, "GET")
-
-    return translateCourseLevels(result)
+    const result = await fetchFromServer(`/api/courses?category=${category}`, "GET");
+    return translateCourseLevels(result);
 }
 
 async function getCourseByID(courseID) {

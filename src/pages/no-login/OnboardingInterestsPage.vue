@@ -26,6 +26,7 @@ const router = useRouter();
 const interestSelected = reactive([]);
 const selectedInterestCount = computed(() => interestSelected.length);
 const showErrorPopup = ref(false);
+const maxAllowedInterests = 3;
 
 const handleClickInterest = ($event, interest) => {
   const isSelected = interestSelected.includes(interest);
@@ -33,11 +34,9 @@ const handleClickInterest = ($event, interest) => {
   if(isSelected) {
     interestSelected.splice(interestSelected.indexOf(interest), 1);
     console.log(interestSelected);
-  } else if (interestSelected.length < 3) {
+  } else if (interestSelected.length < maxAllowedInterests) {
     interestSelected.push(interest);
     console.log(interestSelected);
-  } else {
-    return;
   }
 };
 
@@ -46,9 +45,8 @@ function isInterestSelected(interest) {
 }
 
 function handleUserPreferences() {
-  if (interestSelected.length !== 3) {
+  if (interestSelected.length !== maxAllowedInterests) {
     showErrorPopup.value = true;
-    return;
   } else {
     userData.setPreferences(interestSelected);
     router.push("/dashboard");

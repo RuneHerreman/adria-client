@@ -16,9 +16,9 @@ const props = defineProps({
 function isCurrentUser(name) {
     return name === props.currentUserName;
 }
-
+const maxPlayers = 3;
 const orderedPlayers = computed(() => {
-    if (props.players.length < 3) return props.players;
+    if (props.players.length < maxPlayers) return props.players;
     return [props.players[1], props.players[0], props.players[2]];
 });
 </script>

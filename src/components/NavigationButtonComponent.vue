@@ -1,11 +1,9 @@
 <script setup>
-import {useRoute} from "vue-router";
-
 const props = defineProps({
   name: {type: String, required: true},
   path: {type: String, required: true},
   iconUrl: {type: String, required: true}
-})
+});
 </script>
 
 <template>
