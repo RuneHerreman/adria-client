@@ -5,9 +5,9 @@ const props = defineProps({
   modelValue: String,
   type: {type:String, required: true},
   placeholder: {type:String, required: false}
-})
+});
 const emit = defineEmits(['update:modelValue']);
-const code = ref(props.modelValue || "")
+const code = ref(props.modelValue || "");
 
 watch(code, (val) => {
   emit('update:modelValue', val);

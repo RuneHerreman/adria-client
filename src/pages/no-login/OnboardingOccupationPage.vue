@@ -16,7 +16,6 @@ const showErrorPopup = ref(false);
 function handleUserOccupation() {
   if (occupation.value.trim() === "") {
     showErrorPopup.value = true;
-    return;
   }
   else {
     userData.setOccupation(occupation.value.trim());

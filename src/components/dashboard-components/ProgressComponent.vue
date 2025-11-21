@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
   progress: {type: Number, required: true},
-})
+});
 </script>
 
 <template>

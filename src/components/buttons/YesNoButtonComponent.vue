@@ -6,7 +6,7 @@ import LightGreenButtonComponent from "@/components/buttons/LightGreenButtonComp
 const props = defineProps({
   negativeText: {type:String, required: false, default: "No"},
   positiveText: {type:String, required: false, default: "Yes"}
-})
+});
 
 const emits = defineEmits(["close", "affirmation"]);
 

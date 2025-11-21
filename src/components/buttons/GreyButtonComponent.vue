@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   route: {type:String, default: ""}
-})
+});
 </script>
 
 <template>

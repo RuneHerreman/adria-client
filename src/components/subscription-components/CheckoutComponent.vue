@@ -9,13 +9,13 @@ import PromoCodeComponent from "@/components/subscription-components/PromoCodeCo
 const props = defineProps({
   name: {type: String, required: true},
   price: {type: Number, required: true},
-})
+});
 
 const emits = defineEmits(["purchaseClick"]);
 
 const discounts = ref({
   ADRIANIGHT10: 10
-})
+});
 
 const discountUsed = ref(false);
 const discountPercentage = ref(0);
@@ -27,7 +27,7 @@ const totalPrice = computed(() => {
 
 const totalDiscount = computed(() => {
   return (props.price * discountPercentage.value / 100).toFixed(2);
-})
+});
 
 function checkDiscount(code){
   const normalized = code.trim().toUpperCase();

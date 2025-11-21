@@ -1,15 +1,13 @@
 <script setup>
-
 import CourseDescriptionComponent from "@/components/course-components/CourseDescriptionComponent.vue";
 import CourseActionsComponent from "@/components/course-components/CourseActionsComponent.vue";
 import CourseBannerComponent from "@/components/course-components/CourseBannerComponent.vue";
-import {onBeforeMount, onMounted} from "vue";
+import {onBeforeMount} from "vue";
 import router from "@/router/index.js";
 import * as API from "@/assets/js/data-connector/api.js";
-import {useUserDataStore} from "@/data/user-data.js";
 import {useRoute} from "vue-router";
-const route = useRoute()
-const courseID = route.params.id
+const route = useRoute();
+const courseID = route.params.id;
 
 onBeforeMount(()=>{
   if (!route.params.id) {
@@ -22,7 +20,7 @@ const chosenCourse = await API.getCourseByID(courseID);
 
 console.log(courseID);
 
-console.log(chosenCourse)
+console.log(chosenCourse);
 </script>
 
 <template>
