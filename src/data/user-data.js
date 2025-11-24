@@ -44,6 +44,9 @@ export const useUserDataStore = defineStore('userData', {
         },
         getCourseID() {
           return this.selectedCourseID;
-        }
+        },
+      getUserID(){
+          return this.userId;
+      }
     },
 });

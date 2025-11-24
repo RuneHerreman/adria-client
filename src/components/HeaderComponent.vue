@@ -32,12 +32,11 @@
 
 <template>
   <header>
-    <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="../assets/media/genesis-white.png" alt="genesis-white-logo" title="Home">
-    <img v-else-if="notLoggedIn()" @click="() => {router.push('/')}" src="../assets/media/genesis.png" alt="genesis-logo" title="Home">
+    <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="@/assets/media/genesis-white.png" alt="genesis-white-logo" title="Home">
+    <img v-else-if="notLoggedIn()" @click="() => {router.push('/')}" src="@/assets/media/genesis.png" alt="genesis-logo" title="Home">
     <img v-else @click="() => {
       router.push('/dashboard');
-      userData.setCourseID(null)
-    }" src="../assets/media/genesis.png" alt="genesis-logo" title="Home">
+    }" src="@/assets/media/genesis.png" alt="genesis-logo" title="Home">
 
     <nav v-if="showNavigation()">
       <NavigationButtonComponent

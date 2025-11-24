@@ -4,8 +4,8 @@ import CourseCardComponent from "@/components/dashboard-components/CourseCardCom
 import * as API from "@/assets/js/data-connector/api.js";
 import {handleCourseClick} from "@/assets/js/script.js";
 
-const courses = await API.getUserCourses("");
-console.log(courses[0]);
+const courses = await API.getUserCourses("389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+console.log(courses);
 </script>
 
 <template>
@@ -13,12 +13,12 @@ console.log(courses[0]);
     <h2>Your courses</h2>
     <CourseCardComponent
       v-for="course in courses"
-      :key="course.id"
-      :name="course.name"
+      :key="course.courseId"
+      :name="course.courseName"
       :difficulty="course.level"
-      :completion="50"
+      :completion="course.progressPercentage"
       :enrolled="true"
-      @click="handleCourseClick(course.id)"
+      @click="handleCourseClick(course.courseId)"
     />
   </section>
 </template>

@@ -5,8 +5,9 @@ import ProgressComponent from "@/components/dashboard-components/ProgressCompone
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import DifficultyComponent from "@/components/dashboard-components/DifficultyComponent.vue";
-import {enroll} from "@/assets/js/script.js";
+import * as API from "@/assets/js/data-connector/api";
 import {useRoute} from "vue-router";
+import { useUserDataStore } from "@/data/user-data";
 const enrolled = ref(true);
 const router = useRoute();
 const props = defineProps<{
@@ -16,8 +17,7 @@ const props = defineProps<{
 console.log("Course:",props.course);
 
 function handleEnrolment(){
-  enroll(router.params.id)
-  console.log("Enrolled")
+  API.enrollUser(router.params.id, useUserDataStore().getUserId());
 }
 
 function handleLearn() {

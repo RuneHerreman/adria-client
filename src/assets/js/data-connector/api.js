@@ -1,6 +1,7 @@
 import { fetchFromServer } from "./api-communication-abstractor.js";
 import * as ErrorHandler from "./error-handler.js";
 
+
 function translateLevel(level) {
     switch(level) {
         case 0: return "easy";
@@ -57,10 +58,12 @@ async function getCourseByID(courseID) {
 }
 
 async function getUserCourses(userID){
-    const result = await fetchFromServer(`/api/users/${userID}`);
-    return translateCourseLevels(result.user);
+    const result = await fetchFromServer(`/api/users/${userID}/courses`);
+    return translateCourseLevels(result).filter(c => c.progressPercentage < 100);
 }
-
+async function enrollUser(courseID, userID) {
+  return await fetchFromServer(`/api/users/${userID}/enroll`, `POST`);
+}
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -68,5 +71,6 @@ export {
     getCourses,
     getCoursesByCategory,
     getCourseByID,
-    getUserCourses
+    getUserCourses,
+    enrollUser
 };

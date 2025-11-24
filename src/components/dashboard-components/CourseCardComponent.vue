@@ -23,7 +23,7 @@
       >
         <DifficultyComponent :difficulty="difficulty"></DifficultyComponent>
         <div v-if="enrolled" class="progress-container">
-          <ProgressComponent :progress="0"></ProgressComponent>
+          <ProgressComponent :progress="completion"></ProgressComponent>
           <p class="progress-percentage">{{completion}}%</p>
         </div>
       </div>
@@ -84,10 +84,12 @@ article::after{
 
 .course-name {
   width: 60%;
-  white-space: wrap;
-  margin-bottom: 1rem;
+  white-space: pre-wrap;
   font-size: 1.2rem;
   line-height: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.5rem;
 }
 
 .progress-container {
