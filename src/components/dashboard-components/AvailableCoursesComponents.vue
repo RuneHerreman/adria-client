@@ -4,8 +4,8 @@ import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue
 import * as API from "@/assets/js/data-connector/api";
 
 const allCourses = await API.getCourses();
-const survivalCourses = await API.getCoursesByCategory("Survival");
-const lifestyleCourses = await API.getCoursesByCategory("Lifestyle");
+const survivalCourses = await API.getCoursesByCategory("Survival Skills");
+const lifestyleCourses = await API.getCoursesByCategory("Life Skills");
 const cookingCourses = await API.getCoursesByCategory("Culinary Arts");
 
 console.log(allCourses);

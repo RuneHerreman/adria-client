@@ -18,8 +18,6 @@ onBeforeMount(()=>{
 const chosenCourse = await API.getCourseByID(courseID);
 
 
-console.log(courseID);
-
 console.log(chosenCourse);
 </script>
 
@@ -37,7 +35,7 @@ console.log(chosenCourse);
   grid-template-areas:
       "banner banner"
       "description actions";
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   justify-content: space-between;
   gap: 2.5rem;
   margin-bottom: 5rem;

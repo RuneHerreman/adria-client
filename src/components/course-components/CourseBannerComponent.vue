@@ -3,17 +3,15 @@ import DifficultyComponent from "@/components/dashboard-components/DifficultyCom
 import {Course} from "@/assets/js/Course";
 
 const props = defineProps<{
-  course: Course[]
+  course: Course
 }>();
-
-console.log(props.course[0]);
 </script>
 
 <template>
   <section id="course-banner">
     <div id="course-wrapper">
-      <DifficultyComponent id="course-difficulty" :difficulty="course[0].level"/>
-      <h1 id="course-name">{{course[0].name}}</h1>
+      <DifficultyComponent id="course-difficulty" :difficulty="course.level"/>
+      <h1 id="course-name">{{course.name}}</h1>
     </div>
   </section>
 </template>

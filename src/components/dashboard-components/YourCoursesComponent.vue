@@ -4,7 +4,7 @@ import CourseCardComponent from "@/components/dashboard-components/CourseCardCom
 import * as API from "@/assets/js/data-connector/api.js";
 import {handleCourseClick} from "@/assets/js/script.js";
 
-const courses = await API.getCoursesByCategory("Lifestyle");
+const courses = await API.getUserCourses("");
 console.log(courses[0]);
 </script>
 

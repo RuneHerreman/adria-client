@@ -2,20 +2,19 @@
 import {Course} from "@/assets/js/Course";
 
 const props = defineProps<{
-  course: Course[]
+  course: Course
 }>();
 
-console.log(props.course[0]);
 </script>
 
 <template>
   <section id="course-description">
     <article>
       <h2>About this course</h2>
-      <p>{{course[0].description}}</p>
+      <p>{{course.description}}</p>
       <h3>What you'll learn</h3>
       <ul>
-        <li v-for="item in course[0].learnList">{{item}}</li>
+        <li v-for="item in course.learnList">{{item}}</li>
         <li>Example</li>
       </ul>
     </article>
@@ -32,7 +31,7 @@ console.log(props.course[0]);
 }
 
 #course-description h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 0.75rem;
 }
 
@@ -42,7 +41,7 @@ console.log(props.course[0]);
 }
 
 #course-description h3{
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }

@@ -18,6 +18,11 @@ function translateCourseLevels(courses) {
     }));
 }
 
+function translateCourseLevel(course) {
+    course.level = translateLevel(course.level);
+    return course;
+}
+
 function getAllSubscriptions() {
     return fetchFromServer("/api/subscriptions/all-subscriptions")
     .then(response => response)
@@ -47,8 +52,13 @@ async function getCoursesByCategory(category) {
 }
 
 async function getCourseByID(courseID) {
-  const courses = await getCourses();
-  return courses.filter(course => course.id === courseID);
+    const course = await fetchFromServer(`/api/courses/${courseID}`);
+    return translateCourseLevel(course);
+}
+
+async function getUserCourses(userID){
+    const result = await fetchFromServer(`/api/users/${userID}`);
+    return translateCourseLevels(result.user);
 }
 
 export {
@@ -57,5 +67,6 @@ export {
     getUsersInLeaderboard,
     getCourses,
     getCoursesByCategory,
-    getCourseByID
+    getCourseByID,
+    getUserCourses
 };
