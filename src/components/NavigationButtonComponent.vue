@@ -24,6 +24,7 @@ const props = defineProps({
   padding: 0.5rem 1rem 0.5rem 2.5rem;
   background: no-repeat left+0.5rem center;
   height: fit-content;
+  transition: 0.1s ease-in-out;
 }
 
 .nav-link:hover {

@@ -62,7 +62,7 @@ function closeErrorPopup() {
     <section class="onboardingCard" v-if="!showErrorPopup">
       <section class="onboarding-info-block">
         <p class="onboarding-small-text">Welcome to</p>
-        <img src="@/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
+        <img src="/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
         <p class="onboarding-description">
           Select <strong>3 topics</strong> you're passionate about<br />
           to personalize your course recommendations.

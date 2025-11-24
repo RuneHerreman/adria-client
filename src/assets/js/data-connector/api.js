@@ -1,6 +1,7 @@
 import { fetchFromServer } from "./api-communication-abstractor.js";
 import * as ErrorHandler from "./error-handler.js";
 
+
 function translateLevel(level) {
     switch(level) {
         case 0: return "easy";
@@ -16,6 +17,11 @@ function translateCourseLevels(courses) {
         ...course,
         level: translateLevel(course.level)
     }));
+}
+
+function translateCourseLevel(course) {
+    course.level = translateLevel(course.level);
+    return course;
 }
 
 function getAllSubscriptions() {
@@ -47,8 +53,23 @@ async function getCoursesByCategory(category) {
 }
 
 async function getCourseByID(courseID) {
-  const courses = await getCourses();
-  return courses.filter(course => course.id === courseID);
+    const course = await fetchFromServer(`/api/courses/${courseID}`);
+    return translateCourseLevel(course);
+}
+
+async function getUserCourses(userID){
+    const result = await fetchFromServer(`/api/users/${userID}/courses`);
+    return translateCourseLevels(result).filter(c => c.progressPercentage < 100);
+}
+async function enrollUser(courseID, userID) {
+  return await fetchFromServer(`/api/users/${userID}/enroll/${courseID}`, `POST`);
+}
+
+async function removeUserCoursesFromList(courses, userID) {
+  const userCourses = await getUserCourses(userID)
+  const doubleCourses = new Set(userCourses.map(course => course.courseId));
+
+  return courses.filter(course => !doubleCourses.has(course.id));
 }
 
 export {
@@ -57,5 +78,8 @@ export {
     getUsersInLeaderboard,
     getCourses,
     getCoursesByCategory,
-    getCourseByID
+    getCourseByID,
+    getUserCourses,
+    enrollUser,
+    removeUserCoursesFromList
 };

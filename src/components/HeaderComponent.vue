@@ -5,9 +5,9 @@
   import {useRoute} from "vue-router";
   import { useUserDataStore } from '@/data/user-data';
   const links = [
-    {name: "Leaderboard", path: "/leaderboard", iconUrl: "/src/assets/icons/leaderboard.svg"},
-    {name: "Shop", path: "/shop", iconUrl: "/src/assets/icons/shop.svg"},
-    {name: "Settings", path: "/settings", iconUrl: "/src/assets/icons/settings.svg"},
+    {name: "Leaderboard", path: "/leaderboard", iconUrl: "/assets/icons/leaderboard.svg"},
+    {name: "Shop", path: "/shop", iconUrl: "/assets/icons/shop.svg"},
+    {name: "Settings", path: "/settings", iconUrl: "/assets/icons/settings.svg"},
   ];
 
   const userData = useUserDataStore();
@@ -32,12 +32,11 @@
 
 <template>
   <header>
-    <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="../assets/media/genesis-white.png" alt="genesis-white-logo" title="Home">
-    <img v-else-if="notLoggedIn()" @click="() => {router.push('/')}" src="../assets/media/genesis.png" alt="genesis-logo" title="Home">
+    <img v-if="logoWithWiteText()" @click="() => {router.push('/')}" src="/assets/media/genesis-white.png" alt="genesis-white-logo" title="Home">
+    <img v-else-if="notLoggedIn()" @click="() => {router.push('/')}" src="/assets/media/genesis.png" alt="genesis-logo" title="Home">
     <img v-else @click="() => {
       router.push('/dashboard');
-      userData.setCourseID(null)
-    }" src="../assets/media/genesis.png" alt="genesis-logo" title="Home">
+    }" src="/assets/media/genesis.png" alt="genesis-logo" title="Home">
 
     <nav v-if="showNavigation()">
       <NavigationButtonComponent
@@ -49,7 +48,7 @@
           :title="link.name"
       />
       <XPComponent :xp="1025"/>
-      <img @click="goToSettings" id="profile-picture" class="profile-picture" src="../assets/media/profile-picture.jpg" alt="Settings" title="Settings">
+      <img @click="goToSettings" id="profile-picture" class="profile-picture" src="/assets/media/profile-picture.jpg" alt="Settings" title="Settings">
     </nav>
   </header>
 </template>

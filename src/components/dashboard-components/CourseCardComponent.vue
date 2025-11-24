@@ -14,7 +14,7 @@
   <article
       class="course-card"
       :class="{enrolledCourse: enrolled}"
-      :style="{ background: `url(../../assets/media/course-background/${name}.jpg)`}"
+      :style="{ background: `url(/assets/media/course-background/${name}.jpg)`}"
   >
     <div class="course-wrapper">
       <p class="course-name">{{name}}</p>
@@ -23,7 +23,7 @@
       >
         <DifficultyComponent :difficulty="difficulty"></DifficultyComponent>
         <div v-if="enrolled" class="progress-container">
-          <ProgressComponent :progress="0"></ProgressComponent>
+          <ProgressComponent :progress="completion"></ProgressComponent>
           <p class="progress-percentage">{{completion}}%</p>
         </div>
       </div>
@@ -46,7 +46,7 @@ article{
   box-shadow: 0 0 0.25rem rgba(217, 217, 217, 0.25);
   border-radius: 0.5rem;
 
-  background: url("../../assets/media/course-background/Bird Blindness - A deepdive.jpg") no-repeat center right;
+  background: url("/assets/media/course-background/Bird Blindness - A deepdive.jpg") no-repeat center right;
   background-size: 7.5rem;
 
   cursor: pointer;
@@ -84,10 +84,12 @@ article::after{
 
 .course-name {
   width: 60%;
-  white-space: wrap;
-  margin-bottom: 1rem;
+  white-space: pre-wrap;
   font-size: 1.2rem;
   line-height: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.5rem;
 }
 
 .progress-container {

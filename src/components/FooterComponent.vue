@@ -1,6 +1,4 @@
 <script setup>
-import GenesisLogo from "@/assets/media/genesis.png";
-import InkeaLogo from "@/assets/media/INKEA.png";
 </script>
 
 <template>
@@ -8,8 +6,8 @@ import InkeaLogo from "@/assets/media/INKEA.png";
     <section id="content">
       <div class="footer-top">
         <div id="logos">
-          <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
-          <img :src="InkeaLogo" alt="INKEA Logo" class="logo" />
+          <img src="/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
+          <img src="/assets/media/INKEA.png" alt="INKEA Logo" class="logo" />
         </div>
 
         <div id="links">

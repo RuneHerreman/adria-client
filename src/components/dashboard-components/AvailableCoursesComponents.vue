@@ -3,10 +3,10 @@ import SpotlightComponent from "@/components/dashboard-components/SpotlightCompo
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
 import * as API from "@/assets/js/data-connector/api";
 
-const allCourses = await API.getCourses();
-const survivalCourses = await API.getCoursesByCategory("Survival");
-const lifestyleCourses = await API.getCoursesByCategory("Lifestyle");
-const cookingCourses = await API.getCoursesByCategory("Culinary Arts");
+const allCourses = await API.removeUserCoursesFromList(await API.getCourses(), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const survivalCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Survival Skills"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const lifestyleCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Life Skills"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Culinary Arts"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
 
 console.log(allCourses);
 </script>
@@ -14,7 +14,7 @@ console.log(allCourses);
 <template>
   <section id="available-courses-component">
     <SpotlightComponent class="spotlight"
-                            src="src/assets/media/spotlight/Spotlight_Miners.png"
+                            src="/assets/media/spotlight/Spotlight_Miners.png"
     />
 
     <CourseCarousel
@@ -34,11 +34,11 @@ console.log(allCourses);
 
     <div class="half-spotlight-container">
       <SpotlightComponent
-          src="src/assets/media/spotlight/Spotlight_bread.png"
+          src="/assets/media/spotlight/Spotlight_bread.png"
           :half="true"
       />
       <SpotlightComponent
-          src="src/assets/media/spotlight/Spotlight_Surgeon.png"
+          src="/assets/media/spotlight/Spotlight_Surgeon.png"
           :half="true"
       />
     </div>

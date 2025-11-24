@@ -74,7 +74,6 @@ function clicked() {
   padding-left: 2rem;
   padding-right: 0.5rem;
   font-size: .95rem;
-  list-style-image: url("../../assets/icons/checkmark.svg");
   line-height: 2rem;
 }
 

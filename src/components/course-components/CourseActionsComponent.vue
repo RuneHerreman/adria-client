@@ -5,41 +5,78 @@ import ProgressComponent from "@/components/dashboard-components/ProgressCompone
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import DifficultyComponent from "@/components/dashboard-components/DifficultyComponent.vue";
+import * as API from "@/assets/js/data-connector/api";
+import {useRoute} from "vue-router";
+const userCourses = ref<Array<any>>([]);
 const enrolled = ref(false);
+const enrolledCourse = ref<any | undefined>(undefined);
 
+const router = useRoute();
 const props = defineProps<{
-  course: Course[]
+  course: Course
 }>();
 
-console.log(props.course[0]);
+console.log("Course:", props.course);
+function handleEnrolment(){
+  API.enrollUser(router.params.id, "389bc6fb-080e-4450-ac9a-2ff10868b0d6")
+      .then(() => loadUserCourses());
+}
+
+function handleLearn() {
+  console.log("learn")
+}
+
+function handleSleepLearn() {
+  console.log("sleep learn")
+}
+
+async function loadUserCourses() {
+  userCourses.value = await API.getUserCourses("389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+  const courseID = String(router.params.id);
+  enrolled.value = userCourses.value.some((c) => c.courseId == courseID);
+  if (enrolled.value) {
+    enrolledCourse.value = userCourses.value.find((c) => c.courseId == courseID);
+  } else {
+    enrolledCourse.value = undefined;
+  }
+}
+
+loadUserCourses();
+
 </script>
 
 <template>
   <section id="course-actions">
     <section v-if="enrolled" id="course-actions-enrolled">
       <h2>Continue learning</h2>
-      <div v-if="enrolled" class="progress-container">
-        <ProgressComponent :progress="15"></ProgressComponent>
-        <p class="progress-percentage">{{15}}%</p>
+      <div>
+        <p id="progress-title">Your progress</p>
+        <div class="progress-container">
+          <ProgressComponent :progress="enrolledCourse.progressPercentage"></ProgressComponent>
+          <p class="progress-percentage">{{enrolledCourse.progressPercentage}}%</p>
+        </div>
       </div>
+
       <div id="course-buttons">
-        <BrightGreenButtonComponent>Learn</BrightGreenButtonComponent>
-        <GreyButtonComponent>Learn in sleep</GreyButtonComponent>
+        <BrightGreenButtonComponent @click="handleLearn" class="course-button">Learn</BrightGreenButtonComponent>
+        <GreyButtonComponent @click="handleSleepLearn" class="course-button">Learn in sleep</GreyButtonComponent>
       </div>
     </section>
-    <section id="course-actions-not-enrolled" v-else>
+
+    <section v-else id="course-actions-not-enrolled">
       <h2>Ready to start?</h2>
       <p>Enroll now to get access to all course material. Start your learning journey today.</p>
-      <BrightGreenButtonComponent id="enroll-button">Enroll in course</BrightGreenButtonComponent>
+      <BrightGreenButtonComponent @click="handleEnrolment" id="enroll-button" class="course-button">Enroll in course</BrightGreenButtonComponent>
     </section>
+
     <div id="course-info">
       <div class="course-info-item">
         <p>Difficulty</p>
-        <DifficultyComponent :difficulty="course[0].level"/>
+        <DifficultyComponent :difficulty="course.level"/>
       </div>
       <div class="course-info-item">
         <p>Lessons</p>
-        <p>{{course[0].modules.length}}</p>
+        <p>{{ "Not Implemented Yet" }}</p> <!--todo-->
       </div>
       <div class="course-info-item">
         <p>Students</p>
@@ -58,7 +95,7 @@ console.log(props.course[0]);
 }
 
 #course-actions h2 {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
 }
 
@@ -77,12 +114,17 @@ console.log(props.course[0]);
   margin-bottom: 2rem;
 }
 
-#enroll-button {
+.course-button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   font-size: .9rem;
   text-align: center;
+  padding: 0.8rem 0;
   display: block;
   width: 100%;
 }
+
 
 #course-info {
   display: flex;
@@ -102,5 +144,28 @@ console.log(props.course[0]);
 #course-actions-not-enrolled {
   padding-bottom: 1.2rem;
   border-bottom: 0.0625rem solid rgba(77, 77, 77, 0.4);
+}
+
+#course-buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.progress-container{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.progress-percentage {
+  font-size: 0.9rem;
+}
+
+p#progress-title {
+  font-size: 0.9rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 </style>
