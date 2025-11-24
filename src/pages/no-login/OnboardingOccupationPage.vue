@@ -1,5 +1,4 @@
 <script setup>
-import GenesisLogo from "@/assets/media/genesis.png";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import {useUserDataStore} from "@/data/user-data.js";
@@ -35,7 +34,7 @@ function closeErrorPopup() {
     <section class="onboardingCard" v-if="!showErrorPopup">
       <section class="onboarding-info-block">
         <p>Welcome to</p>
-        <img :src="GenesisLogo" alt="Genesis Logo" class="logo" />
+        <img src="/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
         <p>
           Let's personalize your learning experience.<br />
           What's your current occupation?

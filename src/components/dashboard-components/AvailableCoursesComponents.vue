@@ -14,7 +14,7 @@ console.log(allCourses);
 <template>
   <section id="available-courses-component">
     <SpotlightComponent class="spotlight"
-                            src="src/assets/media/spotlight/Spotlight_Miners.png"
+                            src="/assets/media/spotlight/Spotlight_Miners.png"
     />
 
     <CourseCarousel
@@ -34,11 +34,11 @@ console.log(allCourses);
 
     <div class="half-spotlight-container">
       <SpotlightComponent
-          src="src/assets/media/spotlight/Spotlight_bread.png"
+          src="/assets/media/spotlight/Spotlight_bread.png"
           :half="true"
       />
       <SpotlightComponent
-          src="src/assets/media/spotlight/Spotlight_Surgeon.png"
+          src="/assets/media/spotlight/Spotlight_Surgeon.png"
           :half="true"
       />
     </div>
