@@ -5,7 +5,7 @@
 <template>
   <div>
     <p>Refer a friend,<br>save 15%</p>
-    <img id="qr" src="../../assets/icons/qr%20bart%20de%20wever.png" alt="">
+    <img id="qr" src="/assets/icons/qr%20bart%20de%20wever.png" alt="">
   </div>
 </template>
 

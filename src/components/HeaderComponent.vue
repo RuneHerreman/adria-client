@@ -5,9 +5,9 @@
   import {useRoute} from "vue-router";
   import { useUserDataStore } from '@/data/user-data';
   const links = [
-    {name: "Leaderboard", path: "/leaderboard", iconUrl: "/src/assets/icons/leaderboard.svg"},
-    {name: "Shop", path: "/shop", iconUrl: "/src/assets/icons/shop.svg"},
-    {name: "Settings", path: "/settings", iconUrl: "/src/assets/icons/settings.svg"},
+    {name: "Leaderboard", path: "/leaderboard", iconUrl: "/assets/icons/leaderboard.svg"},
+    {name: "Shop", path: "/shop", iconUrl: "/assets/icons/shop.svg"},
+    {name: "Settings", path: "/settings", iconUrl: "/assets/icons/settings.svg"},
   ];
 
   const userData = useUserDataStore();

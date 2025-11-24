@@ -49,7 +49,7 @@ const props = defineProps<{
 #course-description ul {
   font-size: 1.1rem;
   line-height: 2.5rem;
-  list-style: url("@/assets/icons/checkmark-green.svg");
+  list-style: url("/assets/icons/checkmark-green.svg");
   padding-left: 2rem;
 }
 
