@@ -62,8 +62,16 @@ async function getUserCourses(userID){
     return translateCourseLevels(result).filter(c => c.progressPercentage < 100);
 }
 async function enrollUser(courseID, userID) {
-  return await fetchFromServer(`/api/users/${userID}/enroll`, `POST`);
+  return await fetchFromServer(`/api/users/${userID}/enroll/${courseID}`, `POST`);
 }
+
+async function removeUserCoursesFromList(courses, userID) {
+  const userCourses = await getUserCourses(userID)
+  const doubleCourses = new Set(userCourses.map(course => course.courseId));
+
+  return courses.filter(course => !doubleCourses.has(course.id));
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -72,5 +80,6 @@ export {
     getCoursesByCategory,
     getCourseByID,
     getUserCourses,
-    enrollUser
+    enrollUser,
+    removeUserCoursesFromList
 };

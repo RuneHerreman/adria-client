@@ -7,17 +7,19 @@ import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import DifficultyComponent from "@/components/dashboard-components/DifficultyComponent.vue";
 import * as API from "@/assets/js/data-connector/api";
 import {useRoute} from "vue-router";
-import { useUserDataStore } from "@/data/user-data";
-const enrolled = ref(true);
+const userCourses = ref<Array<any>>([]);
+const enrolled = ref(false);
+const enrolledCourse = ref<any | undefined>(undefined);
+
 const router = useRoute();
 const props = defineProps<{
   course: Course
 }>();
 
-console.log("Course:",props.course);
-
+console.log("Course:", props.course);
 function handleEnrolment(){
-  API.enrollUser(router.params.id, useUserDataStore().getUserId());
+  API.enrollUser(router.params.id, "389bc6fb-080e-4450-ac9a-2ff10868b0d6")
+      .then(() => loadUserCourses());
 }
 
 function handleLearn() {
@@ -27,6 +29,20 @@ function handleLearn() {
 function handleSleepLearn() {
   console.log("sleep learn")
 }
+
+async function loadUserCourses() {
+  userCourses.value = await API.getUserCourses("389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+  const courseID = String(router.params.id);
+  enrolled.value = userCourses.value.some((c) => c.courseId == courseID);
+  if (enrolled.value) {
+    enrolledCourse.value = userCourses.value.find((c) => c.courseId == courseID);
+  } else {
+    enrolledCourse.value = undefined;
+  }
+}
+
+loadUserCourses();
+
 </script>
 
 <template>
@@ -36,8 +52,8 @@ function handleSleepLearn() {
       <div>
         <p id="progress-title">Your progress</p>
         <div class="progress-container">
-          <ProgressComponent :progress="28"></ProgressComponent>
-          <p class="progress-percentage">{{28}}%</p>
+          <ProgressComponent :progress="enrolledCourse.progressPercentage"></ProgressComponent>
+          <p class="progress-percentage">{{enrolledCourse.progressPercentage}}%</p>
         </div>
       </div>
 
@@ -60,7 +76,7 @@ function handleSleepLearn() {
       </div>
       <div class="course-info-item">
         <p>Lessons</p>
-        <p>{{ "Not Implemented Yet"}}</p> <!--todo-->
+        <p>{{ "Not Implemented Yet" }}</p> <!--todo-->
       </div>
       <div class="course-info-item">
         <p>Students</p>

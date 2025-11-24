@@ -3,10 +3,10 @@ import SpotlightComponent from "@/components/dashboard-components/SpotlightCompo
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
 import * as API from "@/assets/js/data-connector/api";
 
-const allCourses = await API.getCourses();
-const survivalCourses = await API.getCoursesByCategory("Survival Skills");
-const lifestyleCourses = await API.getCoursesByCategory("Life Skills");
-const cookingCourses = await API.getCoursesByCategory("Culinary Arts");
+const allCourses = await API.removeUserCoursesFromList(await API.getCourses(), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const survivalCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Survival Skills"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const lifestyleCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Life Skills"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Culinary Arts"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
 
 console.log(allCourses);
 </script>
