@@ -20,6 +20,7 @@ import {handleCourseClick} from "@/assets/js/script.js";
           :name="course.name"
           :difficulty="course.level"
           :enrolled="false"
+          :coverImage="course.coverImage"
           @click="handleCourseClick(course.id)"
       />
     </article>

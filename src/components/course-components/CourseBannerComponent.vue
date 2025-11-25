@@ -8,7 +8,11 @@ const props = defineProps<{
 </script>
 
 <template>
-  <section id="course-banner">
+  <section id="course-banner"
+           :style="{
+      backgroundImage: `url('data:image/jpeg;base64,${course.bannerImage}')`
+    }"
+  >
     <div id="course-wrapper">
       <DifficultyComponent id="course-difficulty" :difficulty="course.level"/>
       <h1 id="course-name">{{course.name}}</h1>
