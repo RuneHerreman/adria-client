@@ -30,10 +30,8 @@ function getAllSubscriptions() {
     .catch(ErrorHandler.handleError);
 }
 
-function getUserDetails(userId) {
-    return fetchFromServer(`/api/users/${userId}`)
-    .then(response => response)
-    .catch(ErrorHandler.handleError);
+async function getUserDetails(userId) {
+    return await fetchFromServer(`/api/users/${userId}`)
 }
 
 function getUsersInLeaderboard() {
@@ -72,6 +70,12 @@ async function removeUserCoursesFromList(courses, userID) {
   return courses.filter(course => !doubleCourses.has(course.id));
 }
 
+async function changeOccupation(userID, occupation) {
+    await fetchFromServer(`/api/users/${userID}/changeOccupation`, `POST`, {
+        occupation: occupation
+    });
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -81,5 +85,6 @@ export {
     getCourseByID,
     getUserCourses,
     enrollUser,
-    removeUserCoursesFromList
+    removeUserCoursesFromList,
+    changeOccupation
 };

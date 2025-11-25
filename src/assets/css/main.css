@@ -48,6 +48,10 @@ h1::after {
     padding-bottom: 1rem;
 }
 
+h3  {
+    color: #333333;
+}
+
 .landing-page-body{
     background: url("/assets/media/landing-page-banner.png") center top no-repeat;
     background-size: contain;
