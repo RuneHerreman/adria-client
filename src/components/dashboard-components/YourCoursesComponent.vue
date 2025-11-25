@@ -18,6 +18,7 @@ console.log(courses);
       :difficulty="course.level"
       :completion="course.progressPercentage"
       :enrolled="true"
+      :coverImage="course.coverImage"
       @click="handleCourseClick(course.courseId)"
     />
   </section>

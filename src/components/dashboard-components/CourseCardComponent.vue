@@ -6,7 +6,8 @@
     name: {type: String, required: true},
     difficulty: {type: String, required: true},
     completion: {type: Number, default: 0},
-    enrolled: {type: Boolean, default: false}
+    enrolled: {type: Boolean, default: false},
+    coverImage: {type: String, default: false},
   });
 </script>
 
@@ -14,7 +15,9 @@
   <article
       class="course-card"
       :class="{enrolledCourse: enrolled}"
-      :style="{ background: `url(/assets/media/course-background/${name}.jpg)`}"
+      :style="{
+        background: `url('data:image/jpeg;base64,${coverImage}') right/contain no-repeat`
+      }"
   >
     <div class="course-wrapper">
       <p class="course-name">{{name}}</p>
@@ -46,8 +49,7 @@ article{
   box-shadow: 0 0 0.25rem rgba(217, 217, 217, 0.25);
   border-radius: 0.5rem;
 
-  background: url("/assets/media/course-background/Bird Blindness - A deepdive.jpg") no-repeat center right;
-  background-size: 7.5rem;
+  background-size: var(--course-card-background-height);
 
   cursor: pointer;
   transition: .1s ease-in-out;

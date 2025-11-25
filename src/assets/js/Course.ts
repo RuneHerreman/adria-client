@@ -5,7 +5,8 @@ export interface Course {
     duration: number,
     learnList: string[],
     level: string,
-    modules: number[],
+    coverImage: string,
+    bannerImage: string,
     pointsOnCompletion: number,
     tags: string[],
 }
