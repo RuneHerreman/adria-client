@@ -15,7 +15,6 @@ const props = defineProps<{
       <h3>What you'll learn</h3>
       <ul>
         <li v-for="item in course.learnList">{{item}}</li>
-        <li>Example</li>
       </ul>
     </article>
   </section>
