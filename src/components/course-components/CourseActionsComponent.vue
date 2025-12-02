@@ -95,7 +95,7 @@ loadUserCourses();
 }
 
 #course-actions h2 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
 }
 
