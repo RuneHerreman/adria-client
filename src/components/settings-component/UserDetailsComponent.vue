@@ -12,8 +12,8 @@ const props = defineProps({
 
 function handleChangeOccupation(){
   console.log(occupation.value)
-  changeOccupation(user.adriaId, occupation.value)
-  user.occupation = occupation.value;
+  changeOccupation(props.user.adriaId, occupation.value)
+  props.user.occupation = occupation.value;
   occupation.value = "";
 }
 </script>
@@ -51,6 +51,7 @@ h3 {
 
 #occupation {
   min-width: 20rem;
+  margin-bottom: 0;
 }
 
 #occupation-container{

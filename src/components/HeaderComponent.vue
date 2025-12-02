@@ -64,7 +64,7 @@
           @click="goToSettings"
           id="profile-picture"
           class="profile-picture"
-          :src="`data:image/jpeg;base64,${user.profilePicture}`"
+          :src="`data:image/*;base64,${user.profilePicture}`"
           alt="Settings"
           title="Settings">
     </nav>

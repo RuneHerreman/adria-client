@@ -83,6 +83,10 @@ async function changeOccupation(userID, occupation) {
     });
 }
 
+async function updateProfilePicture(userID, imageString) {
+  await fetchFromServer(`/api/users/${userID}/profilePicture/${imageString}`, "POST")
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -93,5 +97,6 @@ export {
     getUserCourses,
     enrollUser,
     removeUserCoursesFromList,
-    changeOccupation
+    changeOccupation,
+    updateProfilePicture
 };
