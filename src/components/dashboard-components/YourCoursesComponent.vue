@@ -32,7 +32,7 @@ console.log(courses);
 
   h2 {
     margin-bottom: 1rem;
-    font-size: 1.75rem;
+    font-weight: 600;
     width: max-content;
   }
 </style>

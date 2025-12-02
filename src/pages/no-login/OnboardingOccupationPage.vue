@@ -73,7 +73,7 @@ function closeErrorPopup() {
 }
 
 main{
-  padding-top: 5%;
+  padding: 5rem 0;
   position: relative;
 }
 
