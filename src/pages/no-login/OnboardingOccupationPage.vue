@@ -73,7 +73,6 @@ function closeErrorPopup() {
 }
 
 main{
-  height: 70vh;
   padding-top: 5%;
   position: relative;
 }

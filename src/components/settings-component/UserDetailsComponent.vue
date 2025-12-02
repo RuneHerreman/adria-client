@@ -54,6 +54,7 @@ h3 {
 }
 
 #occupation-container{
+  grid-column: 1 / span 2;
   margin-top: 1rem;
 }
 
@@ -61,7 +62,7 @@ h3 {
   width: fit-content;
   padding-top: 0.5rem;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
   flex-direction: column;
 }
 
@@ -69,7 +70,7 @@ h3 {
   padding-top: 1rem;
 
   display: grid;
-  grid-template-columns: 6rem auto;
+  grid-template-columns: 7rem auto;
   row-gap: 0.5rem;
 }
 

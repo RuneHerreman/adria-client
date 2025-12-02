@@ -17,6 +17,8 @@
     --cat-hard: #A8000B;
     --cat-expert: #102202;
     --course-card-background-height: 7.5rem;
+    --footer-height: 13.5rem;
+    --header-height: 3.5rem;
 }
 
 html, body{
@@ -35,6 +37,10 @@ html main, html header {
     margin: 0 auto;
 }
 
+main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
 h1 {
     font-size: 2.5rem;
     font-weight: bold;
@@ -49,6 +55,7 @@ h1::after {
 }
 
 h3  {
+    font-size: 1.35rem;
     color: #333333;
 }
 

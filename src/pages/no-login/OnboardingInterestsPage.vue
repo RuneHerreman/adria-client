@@ -109,8 +109,8 @@ function closeErrorPopup() {
 }
 
 main{
-  height: 70vh;
-  padding-top: 5%;
+  height: fit-content;
+  padding: 5rem 0;
   position: relative;
 }
 

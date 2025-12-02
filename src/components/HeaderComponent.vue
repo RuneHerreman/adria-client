@@ -60,7 +60,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    height: var(--header-height);
   }
 
   nav {
