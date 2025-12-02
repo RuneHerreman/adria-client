@@ -9,4 +9,5 @@ export interface Course {
     bannerImage: string,
     pointsOnCompletion: number,
     tags: string[],
+    subscriptionRequired: boolean
 }

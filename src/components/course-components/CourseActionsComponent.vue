@@ -7,6 +7,8 @@ import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import DifficultyComponent from "@/components/dashboard-components/DifficultyComponent.vue";
 import * as API from "@/assets/js/data-connector/api";
 import {useRoute} from "vue-router";
+import {useUserDataStore} from "@/data/user-data.js";
+
 const userCourses = ref<Array<any>>([]);
 const enrolled = ref(false);
 const enrolledCourse = ref<any | undefined>(undefined);
@@ -18,7 +20,8 @@ const props = defineProps<{
 
 console.log("Course:", props.course);
 function handleEnrolment(){
-  API.enrollUser(router.params.id, "389bc6fb-080e-4450-ac9a-2ff10868b0d6")
+  const userId = useUserDataStore().getUserID();
+  API.enrollUser(router.params.id, userId)
       .then(() => loadUserCourses());
 }
 
@@ -31,7 +34,7 @@ function handleSleepLearn() {
 }
 
 async function loadUserCourses() {
-  userCourses.value = await API.getUserCourses("389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+  userCourses.value = await API.getUserCourses(useUserDataStore().getUserID());
   const courseID = String(router.params.id);
   enrolled.value = userCourses.value.some((c) => c.courseId == courseID);
   if (enrolled.value) {
@@ -108,8 +111,8 @@ loadUserCourses();
 }
 
 #course-actions h2 ~ p {
-  font-size: 0.75rem;
-  line-height: 0.8rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
   font-weight: 300;
   margin-bottom: 2rem;
 }

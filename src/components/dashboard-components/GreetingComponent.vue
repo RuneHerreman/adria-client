@@ -3,6 +3,7 @@
 import { useUserDataStore } from "@/data/user-data";
   const user = await API.getUserDetails(useUserDataStore().getUserID());
   const name = user.userName;
+  console.log(user)
   function getGreeting(){
     const date = new Date().getHours();
 

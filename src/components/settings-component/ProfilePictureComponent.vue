@@ -3,13 +3,20 @@
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import RedButtonComponent from "@/components/buttons/RedButtonComponent.vue";
+
+const props = defineProps({
+  user: {type: Object, required: true}
+})
+
 </script>
 
 <template>
 <section>
   <h3>Profile picture</h3>
   <div id="profile-picture-wrapper">
-    <img src="/assets/media/profile-picture.jpg" alt="profile-picture">
+    <img
+        :src="`data:image/jpeg;base64,${user.profilePicture}`"
+        alt="profile-picture">
     <section id="profile-picture-actions">
       <GreyButtonComponent>Add Frame</GreyButtonComponent>
       <BrightGreenButtonComponent>Change profile picture</BrightGreenButtonComponent>

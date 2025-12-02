@@ -2,11 +2,12 @@
 import SpotlightComponent from "@/components/dashboard-components/SpotlightComponent.vue";
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
 import * as API from "@/assets/js/data-connector/api";
+import {useUserDataStore} from "@/data/user-data.js";
 
-const allCourses = await API.removeUserCoursesFromList(await API.getCourses(), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
-const survivalCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Survival Skills"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
-const lifestyleCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Life Skills"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
-const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Culinary Arts"), "389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const allCourses = await API.removeUserCoursesFromList(await API.getCourses(), useUserDataStore().getUserID());
+const survivalCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Survival Skills"), useUserDataStore().getUserID());
+const lifestyleCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Life Skills"), useUserDataStore().getUserID());
+const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Culinary Arts"), useUserDataStore().getUserID());
 
 console.log(allCourses);
 </script>

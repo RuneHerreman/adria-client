@@ -11,7 +11,7 @@ const props = defineProps({
 <template>
   <section>
     <h2>Profile</h2>
-    <ProfilePictureComponent/>
+    <ProfilePictureComponent :user="user" />
     <UserDetailsComponent :user="user"/>
   </section>
 </template>
