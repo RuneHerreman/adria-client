@@ -84,7 +84,11 @@ async function changeOccupation(userID, occupation) {
 }
 
 async function updateProfilePicture(userID, imageString) {
-  await fetchFromServer(`/api/users/${userID}/profilePicture/${imageString}`, "POST")
+  await fetchFromServer(`/api/users/${userID}/profilePicture`, "POST", { profilePicture: imageString })
+}
+
+async function deleteProfilePicture(userID) {
+  await fetchFromServer(`/api/users/${userID}/profilePicture`, "DELETE");
 }
 
 export {
@@ -98,5 +102,6 @@ export {
     enrollUser,
     removeUserCoursesFromList,
     changeOccupation,
-    updateProfilePicture
+    updateProfilePicture,
+    deleteProfilePicture
 };

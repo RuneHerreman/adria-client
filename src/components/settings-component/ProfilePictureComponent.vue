@@ -19,26 +19,33 @@ const handleFileUpload = (event: Event) => {
 
   if (!file) return;
 
+  const maxSizeInBytes = 2 * 1024 * 1024; // 5MB
+  if (file.size > maxSizeInBytes) {
+    alert('File is too large. Maximum size is 2MB.');
+    target.value = '';
+    return;
+  }
+
   const reader = new FileReader();
 
   reader.onload = (e) => {
     const result = e.target?.result as string;
-    // Remove the data URI prefix to get just the base64 string
     const base64String = result.split(',')[1];
 
-    // Emit event to parent component with the base64 string
-    API.updateProfilePicture(useUserDataStore().getUserID(), base64String);
+    await API.updateProfilePicture(useUserDataStore().getUserID(), base64String);
   };
 
   reader.readAsDataURL(file);
-
-  // Reset input so same file can be selected again
   target.value = '';
 };
 
 const triggerFileUpload = () => {
   fileInput.value?.click();
 };
+
+function handleProfilePictureRemoval() {
+  await API.deleteProfilePicture(useUserDataStore().getUserID());
+}
 
 </script>
 
@@ -47,7 +54,7 @@ const triggerFileUpload = () => {
   <h3>Profile picture</h3>
   <div id="profile-picture-wrapper">
     <img
-        :src="`data:image/*;base64,${user.profilePicture}`"
+        :src="user.profilePicture ? `data:image/*;base64,${user.profilePicture}` : '/assets/media/profile-picture.png'"
         alt="profile-picture">
     <section id="profile-picture-actions">
       <input
@@ -59,7 +66,7 @@ const triggerFileUpload = () => {
       />
       <GreyButtonComponent>Add Frame</GreyButtonComponent>
       <BrightGreenButtonComponent @click="triggerFileUpload">Change profile picture</BrightGreenButtonComponent>
-      <RedButtonComponent>Remove profile picture from site</RedButtonComponent>
+      <RedButtonComponent @click="handleProfilePictureRemoval">Remove profile picture from site</RedButtonComponent>
     </section>
   </div>
 
@@ -73,7 +80,7 @@ img{
   border-radius: 50%;
 }
 
-.grey-button {
+.grey-button { /*DO NOT TOUCH THIS CSS, IT NEEDS TO BE HERE*/
   grid-column: 1 / span 2;
 }
 
