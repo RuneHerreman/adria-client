@@ -1,5 +1,8 @@
-<script setup lang="ts">
-  const name = "Simon Cornelissis"
+<script setup>
+  import * as API from "@/assets/js/data-connector/api"
+import { useUserDataStore } from "@/data/user-data";
+  const user = await API.getUserDetails(useUserDataStore().getUserID());
+  const name = user.userName;
   function getGreeting(){
     const date = new Date().getHours();
 

@@ -56,9 +56,16 @@ async function getCourseByID(courseID) {
 }
 
 async function getUserCourses(userID){
+  try {
     const result = await fetchFromServer(`/api/users/${userID}/courses`);
+
     return translateCourseLevels(result).filter(c => c.progressPercentage < 100);
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
+
 async function enrollUser(courseID, userID) {
   return await fetchFromServer(`/api/users/${userID}/enroll/${courseID}`, `POST`);
 }

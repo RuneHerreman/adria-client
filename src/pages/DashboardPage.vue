@@ -8,10 +8,22 @@ import CallToActionComponent from "@/components/dashboard-components/CallToActio
 
 <template>
   <main>
-    <div id="top-compartment">
-      <GreetingComponent/>
-      <CallToActionComponent/>
-    </div>
+    <suspense>
+      <template #default>
+        <div id="top-compartment">
+          <GreetingComponent/>
+          <CallToActionComponent/>
+        </div>
+      </template>
+      <template #fallback>
+        <LoadingComponent>
+          <template #loading>
+            user data
+          </template>
+        </LoadingComponent>
+      </template>
+    </suspense>
+
       <suspense>
         <template #default>
           <section id="wrapper">

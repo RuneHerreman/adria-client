@@ -3,14 +3,17 @@
 import CourseCardComponent from "@/components/dashboard-components/CourseCardComponent.vue";
 import * as API from "@/assets/js/data-connector/api.js";
 import {handleCourseClick} from "@/assets/js/script.js";
+import {useUserDataStore} from "@/data/user-data.js";
 
-const courses = await API.getUserCourses("389bc6fb-080e-4450-ac9a-2ff10868b0d6");
+const courses = await API.getUserCourses(useUserDataStore().getUserID());
+
 console.log(courses);
 </script>
 
 <template>
   <section id="your-courses-component">
     <h2>Your courses</h2>
+    <div v-if="!courses || courses.length === 0" id="no-courses-message">No courses yet...</div>
     <CourseCardComponent
       v-for="course in courses"
       :key="course.courseId"
@@ -28,6 +31,16 @@ console.log(courses);
   #your-courses-component {
     display: flex;
     flex-direction: column;
+  }
+
+  #no-courses-message{
+    aspect-ratio: 30/13;
+    height: var(--course-card-background-height);
+    width: auto;
+
+    color: var(--grey-text);
+    margin-top: 4rem;
+    text-align: center;
   }
 
   h2 {
