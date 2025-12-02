@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script setup>
 
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import RedButtonComponent from "@/components/buttons/RedButtonComponent.vue";
-import {ref} from "vue";
+import {ref, defineEmits, defineProps} from "vue";
 import * as API from "@/assets/js/data-connector/api"
 import { useUserDataStore } from "@/data/user-data";
 
@@ -11,10 +11,12 @@ const props = defineProps({
   user: {type: Object, required: true}
 })
 
-const fileInput = ref<HTMLInputElement | null>(null);
+const emit = defineEmits(["reloadUserData"]);
 
-const handleFileUpload = (event: Event) => {
-  const target = event.target as HTMLInputElement;
+const fileInput = ref(null);
+
+async function handleFileUpload(event) {
+  const target = event.target;
   const file = target.files?.[0];
 
   if (!file) return;
@@ -28,11 +30,12 @@ const handleFileUpload = (event: Event) => {
 
   const reader = new FileReader();
 
-  reader.onload = (e) => {
-    const result = e.target?.result as string;
+  reader.onload = async (e) => {
+    const result = e.target?.result;
     const base64String = result.split(',')[1];
 
     await API.updateProfilePicture(useUserDataStore().getUserID(), base64String);
+    emit('reloadUserData');
   };
 
   reader.readAsDataURL(file);
@@ -43,8 +46,9 @@ const triggerFileUpload = () => {
   fileInput.value?.click();
 };
 
-function handleProfilePictureRemoval() {
+async function handleProfilePictureRemoval() {
   await API.deleteProfilePicture(useUserDataStore().getUserID());
+  emit('reloadUserData');
 }
 
 </script>

@@ -6,12 +6,14 @@ import UserDetailsComponent from "@/components/settings-component/UserDetailsCom
 const props = defineProps({
   user: {type: Object, required: true}
 })
+
+defineEmits(['reloadUserData']);
 </script>
 
 <template>
   <section>
     <h2>Profile</h2>
-    <ProfilePictureComponent :user="user" />
+    <ProfilePictureComponent :user="user" @reloadUserData="$emit('reloadUserData')"/>
     <UserDetailsComponent :user="user"/>
   </section>
 </template>
