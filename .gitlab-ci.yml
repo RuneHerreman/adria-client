@@ -12,8 +12,9 @@ SonarQube:
   only:
     - main
   script:
+    - ln -s /ci/node_modules .
     - node -v
-    - npm run test:coverage
+    - npx vitest run --coverage
     - npx sonar-scanner -Dsonar.login=$SONAR_TOKEN
   variables:
     SONAR_TOKEN: $SONAR_TOKEN
