@@ -2,13 +2,6 @@ import {test, expect, describe, beforeEach, vi} from 'vitest'
 import * as API from '@/assets/js/data-connector/api'
 import * as APICOMM from "@/assets/js/data-connector/api-communication-abstractor"
 import * as ErrorHandler from "@/assets/js/data-connector/error-handler"
-import { getAllSubscriptions } from '@/assets/js/data-connector/api';
-import { getUserDetails } from '@/assets/js/data-connector/api';
-import { getUsersInLeaderboard } from '@/assets/js/data-connector/api';
-import { getCourses } from '@/assets/js/data-connector/api';
-import { getCoursesByCategory } from '@/assets/js/data-connector/api';
-import { getCourseByID } from '@/assets/js/data-connector/api';
-import { getUserCourses } from '@/assets/js/data-connector/api';
 
 beforeEach(()=>{
     vi.clearAllMocks();

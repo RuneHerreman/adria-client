@@ -34,7 +34,9 @@ const handleClickInterest = ($event, interest) => {
   if(isSelected) {
     interestSelected.splice(interestSelected.indexOf(interest), 1);
     console.log(interestSelected);
-  } else if (interestSelected.length < maxAllowedInterests) {
+  }
+
+  if (interestSelected.length < maxAllowedInterests) {
     interestSelected.push(interest);
     console.log(interestSelected);
   }

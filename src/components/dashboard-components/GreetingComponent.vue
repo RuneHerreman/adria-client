@@ -1,21 +1,28 @@
 <script setup>
-  import * as API from "@/assets/js/data-connector/api"
+  import * as API from "@/assets/js/data-connector/api";
 import { useUserDataStore } from "@/data/user-data";
   const user = await API.getUserDetails(useUserDataStore().getUserID());
   const name = user.userName;
-  console.log(user)
+
+  const morningStart = 6;
+  const morningEnd = 11;
+  const afternoonStart = 12;
+  const afternoonEnd = 16;
+  const eveningStart = 17;
+  const eveningEnd = 23;
+  console.log(user);
   function getGreeting(){
     const date = new Date().getHours();
 
-    if (date >= 6 && date <= 11){
+    if (date >= morningStart && date <= morningEnd){
       return "Good morning";
     }
 
-    if (date >= 12 && date <= 16){
+    if (date >= afternoonStart && date <= afternoonEnd){
       return "Good afternoon";
     }
 
-    if (date >= 17 && date <= 23){
+    if (date >= eveningStart && date <= eveningEnd){
       return "Good evening";
     }
 

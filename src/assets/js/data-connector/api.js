@@ -31,7 +31,7 @@ function getAllSubscriptions() {
 }
 
 async function getUserDetails(userId) {
-    return await fetchFromServer(`/api/users/${userId}`)
+    return await fetchFromServer(`/api/users/${userId}`);
 }
 
 function getUsersInLeaderboard() {
@@ -71,7 +71,7 @@ async function enrollUser(courseID, userID) {
 }
 
 async function removeUserCoursesFromList(courses, userID) {
-  const userCourses = await getUserCourses(userID)
+  const userCourses = await getUserCourses(userID);
   const doubleCourses = new Set(userCourses.map(course => course.courseId));
 
   return courses.filter(course => !doubleCourses.has(course.id));
@@ -84,7 +84,7 @@ async function changeOccupation(userID, occupation) {
 }
 
 async function updateProfilePicture(userID, imageString) {
-  await fetchFromServer(`/api/users/${userID}/profilePicture`, "POST", { profilePicture: imageString })
+  await fetchFromServer(`/api/users/${userID}/profilePicture`, "POST", { profilePicture: imageString });
 }
 
 async function deleteProfilePicture(userID) {
