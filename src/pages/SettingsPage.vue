@@ -1,7 +1,7 @@
 <script setup>
 import LoadingComponent from "@/components/LoadingComponent.vue";
 import SettingsComponent from "@/components/settings-component/SettingsComponent.vue";
-
+const emit = defineEmits(['profileUpdated']);
 </script>
 
 <template>
@@ -11,6 +11,7 @@ import SettingsComponent from "@/components/settings-component/SettingsComponent
       <template #default>
         <SettingsComponent
             id="settings-personalInfo"
+            @profileUpdated="emit('profileUpdated')"
         />
       </template>
       <template #fallback>

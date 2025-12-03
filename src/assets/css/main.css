@@ -145,7 +145,6 @@ html main, html header {
 }
 
 .profile-picture {
-    border: 0.0625rem var(--dark-green) solid;
     border-radius: 50%;
     object-fit: cover;
 }
