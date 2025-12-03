@@ -15,8 +15,19 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  test:{
-    environment: "jsdom",
+  test: {
+    environment: 'jsdom',
     globals: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov', 'html'],
+      reportsDirectory: './coverage',
+      include: ['src/**/*.{js,ts,vue}'],
+      exclude: ['**/__tests__/**', '**/*.test.{js,ts}', '**/*.spec.{js,ts}']
+    },
+    reporters: ['default', 'junit'],
+    outputFile: {
+      junit: './test-results/junit.xml'
+    }
   }
 })
