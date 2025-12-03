@@ -4,12 +4,12 @@ import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import RedButtonComponent from "@/components/buttons/RedButtonComponent.vue";
 import {ref, defineEmits, defineProps} from "vue";
-import * as API from "@/assets/js/data-connector/api"
+import * as API from "@/assets/js/data-connector/api";
 import { useUserDataStore } from "@/data/user-data";
 
 const props = defineProps({
   user: {type: Object, required: true}
-})
+});
 
 const emit = defineEmits(["reloadUserData"]);
 
@@ -40,7 +40,7 @@ async function handleFileUpload(event) {
 
   reader.readAsDataURL(file);
   target.value = '';
-};
+}
 
 const triggerFileUpload = () => {
   fileInput.value?.click();

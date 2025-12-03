@@ -102,12 +102,12 @@ loadUserCourses();
   margin-bottom: 0.5rem;
 }
 
-.course-info-item p:first-of-type  {
-  color: #666666;
-}
-
 .course-info-item p {
   font-size: 0.8rem;
+}
+
+.course-info-item p:first-of-type  {
+  color: #666666;
 }
 
 #course-actions h2 ~ p {
