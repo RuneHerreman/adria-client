@@ -1,6 +1,7 @@
 <script setup>
 
 import YesNoButtonComponent from "@/components/buttons/YesNoButtonComponent.vue";
+import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 
 const props = defineProps({
   singleButton: {
@@ -34,7 +35,7 @@ function handleAffirmation(){
         @affirmation="handleAffirmation()"
     />
     <div v-else class="single-button-container">
-      <button class="button grey-button" @click="handleClose()">{{ buttonText }}</button>
+      <GreyButtonComponent @click="handleClose()">{{ buttonText }}</GreyButtonComponent>
     </div>
   </section>
 </template>
@@ -69,13 +70,5 @@ function handleAffirmation(){
     margin-top: 1.25rem;
     display: flex;
     justify-content: center;
-  }
-
-  .grey-button {
-    background-color: var(--grey-background);
-    color: var(--grey-text);
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1.5rem;
   }
 </style>

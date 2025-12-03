@@ -4,11 +4,22 @@
   import XPComponent from "@/components/XPComponent.vue";
   import {useRoute} from "vue-router";
   import { useUserDataStore } from '@/data/user-data';
+  import {onMounted, ref} from "vue";
+  import * as API from "@/assets/js/data-connector/api.js";
   const links = [
     {name: "Leaderboard", path: "/leaderboard", iconUrl: "/assets/icons/leaderboard.svg"},
     {name: "Shop", path: "/shop", iconUrl: "/assets/icons/shop.svg"},
     {name: "Settings", path: "/settings", iconUrl: "/assets/icons/settings.svg"},
   ];
+  const user = ref();
+  onMounted(async () => {
+    try {
+      user.value = await API.getUserDetails(useUserDataStore().getUserID());
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
 
   const userData = useUserDataStore();
   const currentRoute = useRoute();
@@ -47,8 +58,15 @@
           :iconUrl="link.iconUrl"
           :title="link.name"
       />
-      <XPComponent :xp="1025"/>
-      <img @click="goToSettings" id="profile-picture" class="profile-picture" src="/assets/media/profile-picture.jpg" alt="Settings" title="Settings">
+      <XPComponent v-if="user" :xp="user.pointsBalance"/>
+      <img
+          v-if="user"
+          @click="goToSettings"
+          id="profile-picture"
+          class="profile-picture"
+          :src="user.profilePicture ? `data:image/*;base64,${user.profilePicture}` : '/assets/media/profile-picture.png'"
+          alt="Settings"
+          title="Settings">
     </nav>
   </header>
 </template>
@@ -60,7 +78,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    height: var(--header-height);
   }
 
   nav {

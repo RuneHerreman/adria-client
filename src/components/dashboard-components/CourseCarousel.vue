@@ -39,9 +39,9 @@ import {handleCourseClick} from "@/assets/js/script.js";
   }
 
   h2{
+    font-weight: 600;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
-    font-size: 1.625rem;
   }
 
   .carousel-wrapper {

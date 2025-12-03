@@ -56,9 +56,16 @@ async function getCourseByID(courseID) {
 }
 
 async function getUserCourses(userID){
+  try {
     const result = await fetchFromServer(`/api/users/${userID}/courses`);
+
     return translateCourseLevels(result).filter(c => c.progressPercentage < 100);
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
+
 async function enrollUser(courseID, userID) {
   return await fetchFromServer(`/api/users/${userID}/enroll/${courseID}`, `POST`);
 }
@@ -76,6 +83,14 @@ async function changeOccupation(userID, occupation) {
     });
 }
 
+async function updateProfilePicture(userID, imageString) {
+  await fetchFromServer(`/api/users/${userID}/profilePicture`, "POST", { profilePicture: imageString })
+}
+
+async function deleteProfilePicture(userID) {
+  await fetchFromServer(`/api/users/${userID}/profilePicture`, "DELETE");
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -86,5 +101,7 @@ export {
     getUserCourses,
     enrollUser,
     removeUserCoursesFromList,
-    changeOccupation
+    changeOccupation,
+    updateProfilePicture,
+    deleteProfilePicture
 };

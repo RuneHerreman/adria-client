@@ -9,7 +9,8 @@ export const useUserDataStore = defineStore('userData', {
         },
         occupation: "",
         preferences: [],
-        selectedCourseID: null
+        selectedCourseID: null,
+        userId: "389bc6fb-080e-4450-ac9a-2ff10868b0d6"
     }),
     actions: {
         setName(name) {
