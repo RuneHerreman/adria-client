@@ -12,14 +12,14 @@ function translateLevel(level) {
     }
 }
 
-function translateCourseLevels(courses) {
+export function translateCourseLevels(courses) {
     return courses.map(course => ({
         ...course,
         level: translateLevel(course.level)
     }));
 }
 
-function translateCourseLevel(course) {
+export function translateCourseLevel(course) {
     course.level = translateLevel(course.level);
     return course;
 }
