@@ -12,6 +12,8 @@ SonarQube:
   only:
     - main
   script:
+    - ln -s /ci/node_modules .
+    - npm install
     - node -v
     - npm run test:coverage
     - npx sonar-scanner -Dsonar.login=$SONAR_TOKEN
