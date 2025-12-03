@@ -13,6 +13,7 @@ SonarQube:
     - main
   script:
     - node -v
+    - npm run test:coverage
     - npx sonar-scanner -Dsonar.login=$SONAR_TOKEN
   variables:
     SONAR_TOKEN: $SONAR_TOKEN
