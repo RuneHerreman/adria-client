@@ -1,9 +1,10 @@
 <script setup>
 import FooterComponent from "@/components/FooterComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
-import {watchEffect} from "vue";
+import {ref, watchEffect} from "vue";
 import {useRoute} from "vue-router";
 const route = useRoute();
+const headerKey = ref(0);
 watchEffect(() => {
   document.body.classList.toggle('landing-page-body', route.path === '/');
 });
@@ -16,11 +17,15 @@ watchEffect(() => {
       || route.path === '/onboarding/interests');
 });
 
+function handleProfileUpdate() {
+  headerKey.value++
+}
+
 </script>
 
 <template>
-    <HeaderComponent/>
-    <RouterView />
+    <HeaderComponent :key="headerKey"/>
+    <RouterView @profileUpdated="handleProfileUpdate"/>
     <FooterComponent />
 </template>
 

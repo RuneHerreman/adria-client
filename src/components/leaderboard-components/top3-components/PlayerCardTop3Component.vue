@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
     player: {
         type: Object,
         required: true
@@ -13,6 +13,7 @@ defineProps({
         default: false
     }
 });
+console.log(props.player)
 </script>
 
 <template>
@@ -20,7 +21,10 @@ defineProps({
         id="leaderboard-top-3-item" 
         :class="{ 'top-player': isTopPlayer, 'current-user': isCurrentUser }"
     >
-        <img :src="player.img" alt="Profile Picture" class="profile-picture">
+        <img
+            :src="player.profilePicture ? `data:image/*;base64,${player.profilePicture}` : '/assets/media/profile-picture.png'"
+            alt="Profile Picture"
+            class="profile-picture">
         <div class="profile-info">
             <p class="profile-name">{{ player.name }}</p>
             <p class="profile-xp">{{ player.pointsBalance }} XP</p>
