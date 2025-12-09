@@ -9,6 +9,20 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    VitePWA({
+      srcDir: "src",
+      filename: "service-worker.js",
+      strategies: "injectManifest",
+      injectRegister: "auto",
+      manifest: false,
+      injectManifest: {
+        globPatterns: ["**/*"],
+      },
+      devOptions: {
+        enabled: true,
+        type: "module"
+      }
+    })
   ],
   resolve: {
     alias: {
