@@ -78,12 +78,6 @@ async function removeUserCoursesFromList(courses, userID) {
   return courses.filter(course => !doubleCourses.has(course.id));
 }
 
-async function changeOccupation(userID, occupation) {
-    await fetchFromServer(`/api/users/${userID}/changeOccupation`, `POST`, {
-        occupation: occupation
-    });
-}
-
 async function updateProfilePicture(userID, imageString) {
   await fetchFromServer(`/api/users/${userID}/profilePicture`, "POST", { profilePicture: imageString });
 }
@@ -101,6 +95,10 @@ async function checkAnswer(courseId, questionId, answerId, userId) {
     `POST`)
 }
 
+async function changeOccupation(userId, occupation){
+  await fetchFromServer(`/api/users/${userId}/occupation/${occupation}`, `POST`);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -111,9 +109,9 @@ export {
     getUserCourses,
     enrollUser,
     removeUserCoursesFromList,
-    changeOccupation,
     updateProfilePicture,
     deleteProfilePicture,
     getNextCourseModule,
-    checkAnswer
+    checkAnswer,
+    changeOccupation,
 };
