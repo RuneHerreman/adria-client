@@ -3,13 +3,19 @@ import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonCo
 
 const props = defineProps({
   content: String
-})
+});
+const emits = defineEmits(["continue"]);
+
+
+function handleContinueClick(){
+  emits("continue");
+}
 </script>
 
 <template>
   <section>
     <article id="module-content" v-html="content"></article>
-    <BrightGreenButtonComponent id="continue">Continue to questions</BrightGreenButtonComponent>
+    <BrightGreenButtonComponent @click="handleContinueClick" id="continue">Continue to questions</BrightGreenButtonComponent>
   </section>
 </template>
 

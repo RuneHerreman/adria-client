@@ -93,7 +93,7 @@ async function deleteProfilePicture(userID) {
 }
 
 async function getNextCourseModule(courseId, userId){
-  return await fetchFromServer(`/courses/${courseId}/module/${useUserDataStore().getUserID()}`);
+  return await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
 }
 
 export {
