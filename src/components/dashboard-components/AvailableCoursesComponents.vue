@@ -14,8 +14,9 @@ console.log(allCourses);
 
 <template>
   <section id="available-courses-component">
-    <SpotlightComponent class="spotlight"
-                            src="/assets/media/spotlight/Spotlight_Miners.png"
+    <SpotlightComponent
+        class="spotlight"
+        src="/assets/media/spotlight/Spotlight_Miners.png"
     />
 
     <CourseCarousel

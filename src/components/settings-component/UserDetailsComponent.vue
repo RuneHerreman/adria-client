@@ -1,8 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import InputboxComponent from "@/components/InputboxComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import {ref} from "vue";
-import {changeOccupation} from "@/assets/js/data-connector/api"
+import * as API from "@/assets/js/data-connector/api"
 
 const occupation = ref("");
 
@@ -10,9 +10,9 @@ const props = defineProps({
   user: {type: Object, required: true}
 })
 
-function handleChangeOccupation(){
+async function handleChangeOccupation() {
   console.log(occupation.value)
-  changeOccupation(props.user.adriaId, occupation.value)
+  await API.changeOccupation(props.user.adriaId, occupation.value)
   props.user.occupation = occupation.value;
   occupation.value = "";
 }

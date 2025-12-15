@@ -3,18 +3,28 @@ import Top3Component from "@/components/leaderboard-components/top3-components/T
 import Top10Component from "@/components/leaderboard-components/top10-components/Top10Component.vue";
 import { ref, computed, onMounted } from "vue";
 import { useUserDataStore } from "@/data/user-data.js";
-import { getUsersInLeaderboard } from "@/assets/js/data-connector/api.js";
+import {getUserDetails, getUsersInLeaderboard} from "@/assets/js/data-connector/api.js";
 
 const userData = useUserDataStore();
 
 const leaderboardTop10 = ref([]);
+const currentUserName = ref('');
+const isLoading = ref(true);
 
 onMounted(async () => {
-  leaderboardTop10.value = await getUsersInLeaderboard();
+  try {
+    leaderboardTop10.value = await getUsersInLeaderboard();
+    const userDetails = await getUserDetails(userData.getUserID());
+    currentUserName.value = userDetails.userName;
+  } catch (error) {
+    console.error('Failed to load leaderboard data:', error);
+  } finally {
+    isLoading.value = false;
+  }
 });
+
 const maxPlayers = 3;
 const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, maxPlayers));
-const currentUserName = computed(() => userData.getName());
 
 </script>
 
