@@ -1,7 +1,11 @@
 <script setup>
 import QuestionComponent from "@/components/course-components/QuestionComponent.vue";
 import AnswerComponent from "@/components/course-components/AnswerComponent.vue";
-import {ref, computed} from "vue";
+import {computed, ref, watch} from "vue";
+import * as API from "@/assets/js/data-connector/api.js"
+import {useUserDataStore} from "@/data/user-data.js";
+import LoadingComponent from "@/components/LoadingComponent.vue";
+import {useRoute} from "vue-router";
 
 const props = defineProps({QAS: Object});
 const queue = ref([...props.QAS]);
@@ -9,10 +13,18 @@ const currentQuestion = computed(() => queue.value[0] ?? null);
 const removeFirst = () => {
   queue.value.shift();
 }
-
+const route = useRoute();
+const courseId = route.params.id;
 const selectedAnswerId = ref(null);
 const correctAnswerId = ref(null);
 const isChecking = ref(false);
+const emit = defineEmits(["module-completed"]);
+
+watch(queue, (newQueue) => {
+  if (newQueue.length === 0) {
+    emit('module-completed');
+  }
+}, { deep: true });
 
 const checkAnswer = async (answerId) => {
   if (isChecking.value) return; // Prevent multiple clicks
@@ -21,13 +33,8 @@ const checkAnswer = async (answerId) => {
   selectedAnswerId.value = answerId;
 
   try {
-    // Send to server
-    const data = await API.checkAnswer(currentQuestion.value.questionId, answerId);
-    // data = { isCorrect: true/false, correctAnswerId: "..." }
+    correctAnswerId.value = await API.checkAnswer(courseId, currentQuestion.value.questionId, answerId, useUserDataStore().getUserID());
 
-    correctAnswerId.value = data.correctAnswerId;
-
-    // Move to next question after showing result
     setTimeout(() => {
       removeFirst();
       selectedAnswerId.value = null;
@@ -40,21 +47,27 @@ const checkAnswer = async (answerId) => {
     isChecking.value = false;
   }
 }
-
-console.log(currentQuestion.value)
 </script>
 
 <template>
-<section id="qa-container">
-  <QuestionComponent id="question">{{currentQuestion.question}}</QuestionComponent>
-  <AnswerComponent
-      v-for="answer in currentQuestion.answers"
-      :key="answer.answerId"
-      :answerId="answer.answerId"
-      :answerText="answer.answer"
-      @answer-clicked="checkAnswer"
-  />
-</section>
+  <div v-if="currentQuestion">
+
+    <section id="qa-container">
+      <QuestionComponent id="question">{{currentQuestion.question}}</QuestionComponent>
+      <AnswerComponent
+          v-for="answer in currentQuestion.answers"
+          :key="answer.answerId"
+          :answerId="answer.answerId"
+          :answerText="answer.answer"
+          :isCorrect="answer.answerId === correctAnswerId"
+          :isSelected="answer.answerId === selectedAnswerId"
+
+          :showResult="correctAnswerId !== null"
+          @answer-clicked="checkAnswer"
+      />
+    </section>
+  </div>
+  <LoadingComponent v-else>next module</LoadingComponent>
 </template>
 
 <style scoped>

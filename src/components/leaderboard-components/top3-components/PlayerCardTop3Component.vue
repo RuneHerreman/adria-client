@@ -63,7 +63,8 @@ console.log(props.player)
 }
 
 #leaderboard-top-3-item.current-user .profile-info {
-    background: #eafae1;
+  background: var(--off-white);
+  border: 0.1rem solid var(--bright-green);
 }
 
 .profile-name {

@@ -58,7 +58,8 @@ defineProps({
 }
 
 .leaderboard-row.current-user {
-    background: #eafae1;
+    background: var(--off-white);
+  border-left: 0.25rem solid var(--bright-green);
 }
 
 .rank-badge {

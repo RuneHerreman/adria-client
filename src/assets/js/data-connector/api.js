@@ -96,6 +96,11 @@ async function getNextCourseModule(courseId, userId){
   return await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
 }
 
+async function checkAnswer(courseId, questionId, answerId, userId) {
+  return await fetchFromServer(`/api/courses/${courseId}/question/${questionId}/answer/${answerId}/${userId}`,
+    `POST`)
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -110,4 +115,5 @@ export {
     updateProfilePicture,
     deleteProfilePicture,
     getNextCourseModule,
+    checkAnswer
 };
