@@ -30,7 +30,7 @@ const routes = [
         component: LeaderboardPage
     },
     {
-        path: "/learning-course",
+        path: "/learn/:id",
         component: LearningCoursePage
     },
     {

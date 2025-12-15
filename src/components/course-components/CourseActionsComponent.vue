@@ -6,14 +6,15 @@ import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonCo
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import DifficultyComponent from "@/components/dashboard-components/DifficultyComponent.vue";
 import * as API from "@/assets/js/data-connector/api";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {useUserDataStore} from "@/data/user-data.js";
 
 const userCourses = ref<Array<any>>([]);
 const enrolled = ref(false);
 const enrolledCourse = ref<any | undefined>(undefined);
 
-const router = useRoute();
+const route = useRoute();
+const router = useRouter();
 const props = defineProps<{
   course: Course
 }>();
@@ -21,12 +22,12 @@ const props = defineProps<{
 console.log("Course:", props.course);
 function handleEnrolment(){
   const userId = useUserDataStore().getUserID();
-  API.enrollUser(router.params.id, userId)
+  API.enrollUser(route.params.id, userId)
       .then(() => loadUserCourses());
 }
 
 function handleLearn() {
-  console.log("learn")
+  router.push(`/learn/${route.params.id}`);
 }
 
 function handleSleepLearn() {
@@ -35,7 +36,7 @@ function handleSleepLearn() {
 
 async function loadUserCourses() {
   userCourses.value = await API.getUserCourses(useUserDataStore().getUserID());
-  const courseID = String(router.params.id);
+  const courseID = String(route.params.id);
   enrolled.value = userCourses.value.some((c) => c.courseId == courseID);
   if (enrolled.value) {
     enrolledCourse.value = userCourses.value.find((c) => c.courseId == courseID);

@@ -1,5 +1,6 @@
 import { fetchFromServer } from "./api-communication-abstractor.js";
 import * as ErrorHandler from "./error-handler.js";
+import {useUserDataStore} from "@/data/user-data.js";
 
 
 function translateLevel(level) {
@@ -91,6 +92,10 @@ async function deleteProfilePicture(userID) {
   await fetchFromServer(`/api/users/${userID}/profilePicture`, "DELETE");
 }
 
+async function getNextCourseModule(courseId, userId){
+  return await fetchFromServer(`/courses/${courseId}/module/${useUserDataStore().getUserID()}`);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -103,5 +108,6 @@ export {
     removeUserCoursesFromList,
     changeOccupation,
     updateProfilePicture,
-    deleteProfilePicture
+    deleteProfilePicture,
+    getNextCourseModule,
 };
