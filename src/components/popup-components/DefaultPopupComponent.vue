@@ -49,10 +49,10 @@ function handleAffirmation(){
 <style scoped>
   @keyframes breathe-glow {
     0%, 100%{
-      box-shadow: 0 0 45px 20px rgba(225, 128, 17, 0.59);
+      box-shadow: 0 0 50px 10px rgba(225, 128, 17, 0.59);
     }
     50% {
-      box-shadow: 0 0 44px 50px rgba(255, 187, 15, 0.5);
+      box-shadow: 0 0 50px 20px rgba(255, 187, 15, 0.5);
     }
   }
 
