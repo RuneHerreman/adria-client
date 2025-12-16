@@ -99,6 +99,10 @@ async function changeOccupation(userId, occupation){
   await fetchFromServer(`/api/users/${userId}/occupation/${occupation}`, `POST`);
 }
 
+async function getAllCosmetics(userId){
+  return await fetchFromServer(`/api/cosmetics/all-cosmetics/${userId}`);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -114,4 +118,5 @@ export {
     getNextCourseModule,
     checkAnswer,
     changeOccupation,
+    getAllCosmetics,
 };
