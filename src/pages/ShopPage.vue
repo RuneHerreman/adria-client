@@ -3,6 +3,10 @@
 import SettingsComponent from "@/components/settings-component/SettingsComponent.vue";
 import LoadingComponent from "@/components/LoadingComponent.vue";
 import ShopComponent from "@/components/shop-components/ShopComponent.vue";
+const emit = defineEmits(['profileUpdated']);
+function handleProfileUpdate() {
+  emit("profileUpdated");
+}
 </script>
 
 <template>
@@ -12,6 +16,7 @@ import ShopComponent from "@/components/shop-components/ShopComponent.vue";
       <template #default>
         <ShopComponent
             id="shop-page"
+            @profile-updated="handleProfileUpdate"
         />
       </template>
       <template #fallback>

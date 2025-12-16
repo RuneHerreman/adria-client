@@ -87,7 +87,13 @@ function handleAffirmation(){
     justify-content: center;
   }
 
+  .popup:has(img){
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+  }
   .popup :deep(img){
+    align-self: center;
     width: 12rem;
     margin-bottom: 1rem;
   }

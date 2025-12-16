@@ -103,6 +103,10 @@ async function getAllCosmetics(userId){
   return await fetchFromServer(`/api/cosmetics/all-cosmetics/${userId}`);
 }
 
+async function purchaseCosmetic(userId, cosmeticId){
+    return await fetchFromServer(`/api/cosmetics/purchase/${cosmeticId}/${userId}`, `POST`);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -119,4 +123,5 @@ export {
     checkAnswer,
     changeOccupation,
     getAllCosmetics,
+    purchaseCosmetic,
 };

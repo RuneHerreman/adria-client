@@ -14,9 +14,25 @@ function toggleCosmeticPopup(cosmetic){
   showPopup.value = !showPopup.value;
 }
 
+const errorMessage = ref(null);
+const infoMessage = ref(null);
+const emit = defineEmits(['profileUpdated']);
+
 function closePopup(){
   showPopup.value = false;
   selectedCosmetic.value = null;
+  errorMessage.value = null;
+  infoMessage.value = null;
+}
+
+async function processCosmeticPurchase() {
+  try {
+    const result = await API.purchaseCosmetic(useUserDataStore().getUserID(), selectedCosmetic.value.cosmeticId);
+    infoMessage.value = result;
+    emit("profileUpdated");
+  } catch (error) {
+    errorMessage.value = error;
+  }
 }
 </script>
 
@@ -34,8 +50,11 @@ function closePopup(){
         class="cosmetic-popup"
         v-if="showPopup && selectedCosmetic"
         @close="closePopup"
+        @affirmation="processCosmeticPurchase"
         :breathe="true"
     >
+      <p class="error-alert" v-if="errorMessage">{{errorMessage}}</p>
+      <p class="info-alert" v-if="infoMessage">{{infoMessage}}</p>
       <img :src="`data:image/*;base64,${selectedCosmetic.image}`" :alt="selectedCosmetic.itemName">
       <h3>{{ selectedCosmetic.itemName }}</h3>
       <p>{{ selectedCosmetic.points }} XP</p>
@@ -44,6 +63,8 @@ function closePopup(){
 </template>
 
 <style scoped>
+
+
 #banner-badges {
   margin: 3rem 0 2rem;
   max-width: 100%;
@@ -55,6 +76,12 @@ function closePopup(){
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.2rem;
+}
+
+@media (max-width: 1000px) {
+  #badges {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 #badges h2{
