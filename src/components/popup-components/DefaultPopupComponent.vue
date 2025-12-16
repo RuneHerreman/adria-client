@@ -92,10 +92,15 @@ function handleAffirmation(){
     flex-direction: column;
     width: 25rem;
   }
+
   .popup :deep(img){
     align-self: center;
     width: 12rem;
     margin-bottom: 1rem;
+  }
+
+  .popup :deep(#popup-point){
+    margin-top: 0.3rem;
   }
 
   .breatheAnimation{

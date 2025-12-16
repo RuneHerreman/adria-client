@@ -57,7 +57,7 @@ async function processCosmeticPurchase() {
       <p class="info-alert" v-if="infoMessage">{{infoMessage}}</p>
       <img :src="`data:image/*;base64,${selectedCosmetic.image}`" :alt="selectedCosmetic.itemName">
       <h3>{{ selectedCosmetic.itemName }}</h3>
-      <p>{{ selectedCosmetic.points }} XP</p>
+      <p id="popup-point">{{ selectedCosmetic.points }} XP</p>
     </DefaultPopupComponent>
   </section>
 </template>
