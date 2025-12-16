@@ -1,5 +1,6 @@
 import { fetchFromServer } from "./api-communication-abstractor.js";
 import * as ErrorHandler from "./error-handler.js";
+import {useUserDataStore} from "@/data/user-data.js";
 
 
 function translateLevel(level) {
@@ -77,18 +78,25 @@ async function removeUserCoursesFromList(courses, userID) {
   return courses.filter(course => !doubleCourses.has(course.id));
 }
 
-async function changeOccupation(userID, occupation) {
-    await fetchFromServer(`/api/users/${userID}/changeOccupation`, `POST`, {
-        occupation: occupation
-    });
-}
-
 async function updateProfilePicture(userID, imageString) {
   await fetchFromServer(`/api/users/${userID}/profilePicture`, "POST", { profilePicture: imageString });
 }
 
 async function deleteProfilePicture(userID) {
   await fetchFromServer(`/api/users/${userID}/profilePicture`, "DELETE");
+}
+
+async function getNextCourseModule(courseId, userId){
+  return await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
+}
+
+async function checkAnswer(courseId, questionId, answerId, userId) {
+  return await fetchFromServer(`/api/courses/${courseId}/question/${questionId}/answer/${answerId}/${userId}`,
+    `POST`)
+}
+
+async function changeOccupation(userId, occupation){
+  await fetchFromServer(`/api/users/${userId}/occupation/${occupation}`, `POST`);
 }
 
 export {
@@ -101,7 +109,9 @@ export {
     getUserCourses,
     enrollUser,
     removeUserCoursesFromList,
-    changeOccupation,
     updateProfilePicture,
-    deleteProfilePicture
+    deleteProfilePicture,
+    getNextCourseModule,
+    checkAnswer,
+    changeOccupation,
 };

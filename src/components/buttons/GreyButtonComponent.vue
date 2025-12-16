@@ -14,5 +14,10 @@ defineProps({
 .grey-button {
   background-color: var(--grey-background);
   color: var(--grey-text);
+
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
 }
 </style>
