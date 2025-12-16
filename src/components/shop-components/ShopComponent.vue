@@ -2,8 +2,22 @@
 import * as API from "@/assets/js/data-connector/api"
 import { useUserDataStore } from "@/data/user-data";
 import CosmeticCompoment from "@/components/shop-components/CosmeticCompoment.vue";
+import {ref} from "vue";
+import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
 
 const cosmetics = await API.getAllCosmetics(useUserDataStore().getUserID()).then(cosmetics => cosmetics.filter(cosmetic => cosmetic.points !== 0))
+const showPopup = ref(false);
+const selectedCosmetic = ref(null);
+
+function toggleCosmeticPopup(cosmetic){
+  selectedCosmetic.value = cosmetic;
+  showPopup.value = !showPopup.value;
+}
+
+function closePopup(){
+  showPopup.value = false;
+  selectedCosmetic.value = null;
+}
 </script>
 
 <template>
@@ -14,7 +28,18 @@ const cosmetics = await API.getAllCosmetics(useUserDataStore().getUserID()).then
         v-for="cosmetic in cosmetics"
         :cosmetic="cosmetic"
         :key="cosmetic.cosmeticId"
+         @click="toggleCosmeticPopup(cosmetic)"
     />
+    <DefaultPopupComponent
+        class="cosmetic-popup"
+        v-if="showPopup && selectedCosmetic"
+        @close="closePopup"
+        :breathe="true"
+    >
+      <img :src="`data:image/*;base64,${selectedCosmetic.image}`" :alt="selectedCosmetic.itemName">
+      <h3>{{ selectedCosmetic.itemName }}</h3>
+      <p>{{ selectedCosmetic.points }} XP</p>
+    </DefaultPopupComponent>
   </section>
 </template>
 
