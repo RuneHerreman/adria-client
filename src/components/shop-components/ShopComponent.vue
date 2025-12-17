@@ -28,10 +28,16 @@ function closePopup(){
 async function processCosmeticPurchase() {
   try {
     const result = await API.purchaseCosmetic(useUserDataStore().getUserID(), selectedCosmetic.value.cosmeticId);
-    infoMessage.value = result;
-    emit("profileUpdated");
+
+    if (result && typeof result === 'string' && result.includes('successful')) {
+      infoMessage.value = result;
+      emit("profileUpdated");
+      setTimeout(closePopup, 1000);
+    } else {
+      throw new Error(result || 'Purchase failed');
+    }
   } catch (error) {
-    errorMessage.value = error;
+    errorMessage.value = error.message || "Purchase failed";
   }
 }
 </script>
