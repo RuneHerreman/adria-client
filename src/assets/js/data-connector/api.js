@@ -4,7 +4,7 @@ import * as ErrorHandler from "./error-handler.js";
 
 const LEVEL_LABELS = ["easy", "moderate", "hard", "expert"];
 function translateLevel(level) {
-    return LEVEL_LABELS[level];
+    return LEVEL_LABELS[level] ?? "unknown";
 }
 
 export function translateCourseLevels(courses) {

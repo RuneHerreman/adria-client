@@ -170,9 +170,8 @@ describe("API calls", () => {
             await API.changeOccupation(10, 'Engineer')
 
             expect(APICOMM.fetchFromServer).toHaveBeenCalledWith(
-                '/api/users/10/changeOccupation',
-                'POST',
-                { occupation: 'Engineer' }
+                '/api/users/10/occupation/Engineer',
+                'POST'
             )
         })
         test('updateProfilePicture posts image string', async () => {
