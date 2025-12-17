@@ -29,11 +29,11 @@
   }
 
   function notLoggedIn() {
-    return ["/subscription", "/subscription/checkout", "/onboarding/occupation", "/onboarding/interests"].indexOf(currentRoute.path) !== -1;
+    return ["/subscription", "/subscription/checkout", "/onboarding/occupation", "/onboarding/interests", "/404"].indexOf(currentRoute.path) !== -1;
   }
 
   function showNavigation(){
-    return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout"].indexOf(currentRoute.path) === -1;
+    return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout", "/404"].indexOf(currentRoute.path) === -1;
   }
 
   function goToSettings(){

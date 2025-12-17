@@ -112,6 +112,10 @@ async function getSubscription(userId, subscriptionId) {
   return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}`, "POST");
 }
 
+async function getUserStatus(userId){
+  return await fetchFromServer(`/api/users/${userId}/active`);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -131,5 +135,6 @@ export {
     purchaseCosmetic,
     getUserCosmetics,
     cancelSubscription,
-    getSubscription
+    getSubscription,
+    getUserStatus
 };
