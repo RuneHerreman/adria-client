@@ -1,11 +1,11 @@
 <script setup>
-import * as API from "@/assets/js/data-connector/api"
+import * as API from "@/assets/js/data-connector/api";
 import { useUserDataStore } from "@/data/user-data";
 import CosmeticCompoment from "@/components/shop-components/CosmeticCompoment.vue";
 import {ref} from "vue";
 import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
 
-const cosmetics = await API.getAllCosmetics(useUserDataStore().getUserID()).then(cosmetics => cosmetics.filter(cosmetic => cosmetic.points !== 0))
+let cosmetics = await API.getAllCosmetics(useUserDataStore().getUserID()).then(cosmetics => cosmetics.filter(cosmetic => cosmetic.points !== 0));
 const showPopup = ref(false);
 const selectedCosmetic = ref(null);
 

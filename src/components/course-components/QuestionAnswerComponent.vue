@@ -27,12 +27,27 @@ watch(queue, (newQueue) => {
   }
 }, { deep: true });
 
-const VIBRATE_SUCCESS = [50, 20, 50];
-const VIBRATE_FAILURE = [200];
+const VIBRATE_SUCCESS = [50, 20, 50];//NOSONAR
+const VIBRATE_FAILURE = [200];//NOSONAR
 const ANSWER_DELAY_MS = 2000;
 
+const resetAnswerState = () => {
+  removeFirst();
+  selectedAnswerId.value = null;
+  correctAnswerId.value = null;
+  isChecking.value = false;
+};
+
+const handleVibration = (answerId) => {
+  if (correctAnswerId.value === answerId) {
+    vibrate(VIBRATE_SUCCESS);
+  } else {
+    vibrate(VIBRATE_FAILURE);
+  }
+};
+
 const checkAnswer = async (answerId) => {
-  if (isChecking.value) return; // Prevent multiple clicks
+  if (isChecking.value) return;
 
   isChecking.value = true;
   selectedAnswerId.value = answerId;
@@ -45,19 +60,9 @@ const checkAnswer = async (answerId) => {
         useUserDataStore().getUserID()
     );
 
-    if (correctAnswerId.value === answerId) {
-      vibrate(VIBRATE_SUCCESS);
-    } else {
-      vibrate(VIBRATE_FAILURE);
-    }
+    handleVibration(answerId);
 
-    setTimeout(() => {
-      removeFirst();
-      selectedAnswerId.value = null;
-      correctAnswerId.value = null;
-      isChecking.value = false;
-    }, ANSWER_DELAY_MS);
-
+    setTimeout(() => resetAnswerState(), ANSWER_DELAY_MS);
   } catch (error) {
     console.error('Error checking answer:', error);
     isChecking.value = false;
