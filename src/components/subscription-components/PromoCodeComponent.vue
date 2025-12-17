@@ -8,7 +8,6 @@ const promoCode = ref("");
 
 function clicked(){
   emits("apply", promoCode.value);
-  console.log(promoCode.value);
 }
 
 

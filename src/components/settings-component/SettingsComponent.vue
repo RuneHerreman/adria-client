@@ -13,7 +13,6 @@ async function reloadUserData() {
   emit('profileUpdated');
 }
 
-console.log(userDetails);
 </script>
 
 <template>

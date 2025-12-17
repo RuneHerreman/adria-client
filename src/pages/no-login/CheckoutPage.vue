@@ -23,9 +23,7 @@
   }
 
   function handlePurchaseClick(updatedPrice){
-    console.log(updatedPrice);
     userData.setSelectedPlanPrice(updatedPrice);
-    console.log(userData.getPlanPrice());
 
     showPopup.value = true;
   }

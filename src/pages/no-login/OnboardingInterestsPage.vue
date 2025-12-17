@@ -34,10 +34,10 @@
   
     if(isSelected) {
       interestSelected.splice(interestSelected.indexOf(interest), 1);
-      console.log(interestSelected);
     } else if (interestSelected.length < maxAllowedInterests) {
       interestSelected.push(interest);
-      console.log(interestSelected);
+    } else {
+      //does absolutely nothing... but it's a sonar issue :)
     }
   };
   

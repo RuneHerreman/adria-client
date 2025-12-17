@@ -7,7 +7,6 @@ import {useUserDataStore} from "@/data/user-data.js";
 
 const courses = await API.getUserCourses(useUserDataStore().getUserID());
 
-console.log(courses);
 </script>
 
 <template>

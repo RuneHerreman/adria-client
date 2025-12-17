@@ -19,7 +19,6 @@ function handleUserOccupation() {
   else {
     userData.setOccupation(occupation.value.trim());
     router.push("/onboarding/interests");
-    console.log(userData.getOccupation());
   }
 }
 
