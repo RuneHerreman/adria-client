@@ -18,7 +18,6 @@ onBeforeMount(()=>{
 const chosenCourse = await API.getCourseByID(courseID);
 
 
-console.log(chosenCourse);
 </script>
 
 <template>

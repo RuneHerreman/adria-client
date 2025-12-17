@@ -11,7 +11,6 @@ const props = defineProps({
 })
 
 async function handleChangeOccupation() {
-  console.log(occupation.value)
   await API.changeOccupation(props.user.adriaId, occupation.value)
   props.user.occupation = occupation.value;
   occupation.value = "";

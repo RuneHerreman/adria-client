@@ -19,7 +19,6 @@ const props = defineProps<{
   course: Course
 }>();
 
-console.log("Course:", props.course);
 function handleEnrolment(){
   const userId = useUserDataStore().getUserID();
   API.enrollUser(route.params.id, userId)
