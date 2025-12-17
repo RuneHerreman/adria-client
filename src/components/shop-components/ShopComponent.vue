@@ -5,7 +5,7 @@ import CosmeticCompoment from "@/components/shop-components/CosmeticCompoment.vu
 import {ref} from "vue";
 import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
 
-let cosmetics = await API.getAllCosmetics(useUserDataStore().getUserID()).then(cosmetics => cosmetics.filter(cosmetic => cosmetic.points !== 0))
+let cosmetics = await API.getAllCosmetics(useUserDataStore().getUserID()).then(cosmetics => cosmetics.filter(cosmetic => cosmetic.points !== 0));
 const showPopup = ref(false);
 const selectedCosmetic = ref(null);
 
