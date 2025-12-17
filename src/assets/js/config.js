@@ -4,4 +4,4 @@ function getAPIUrl() {
   return LOCALSERVER;
 }
 
-export { getAPIUrl };
+export { getAPIUr, LOCALSERVER };

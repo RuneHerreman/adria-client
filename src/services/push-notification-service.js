@@ -19,7 +19,7 @@ async function renewPushNotification() {
 }
 
 function postSubscriptionToServer(subscription) {
-  fetch("http://localhost:8000/api/push/subscribe", {
+  fetch(`${LOCALSERVER}/api/push/subscribe`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

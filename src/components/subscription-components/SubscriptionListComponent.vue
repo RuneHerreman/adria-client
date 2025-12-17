@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, reactive} from "vue";
+import {ref, onMounted, computed} from "vue";
 import { useUserDataStore } from "@/data/user-data";
 import SubscriptionComponent from "@/components/subscription-components/SubscriptionComponent.vue";
 import router from "@/router";
@@ -8,49 +8,20 @@ import { getAllSubscriptions } from "@/assets/js/data-connector/api.js";
 const userDataStore = useUserDataStore();
 const subscriptionsFromApi = ref([]);
 
- const perks = reactive(
-  [["Access to all courses."], 
+const perksByPlanName = {
+  Basic: ["Access to all courses."],
+  Standard: ["Access to all courses.", "Interactive experiences"],
+  Premium: ["Access to all courses.", "Interactive experiences", "Access to Genesis Sleep"],
+  Ultimate: ["Access to all courses.", "Interactive experiences", "Access to Genesis Sleep", "50% off Insta-Learn"],
+};
 
- ["Access to all courses.", 
- "Interactive experiences"],
-
- ["Access to all courses.", 
- "Interactive experiences", 
- "Access to Genesis Sleep"], 
- 
- ["Access to all courses.", 
- "Interactive experiences", 
- "Access to Genesis Sleep", 
- "50% off Insta-Learn"]]);
+const subscriptionsSortedByPrice = computed(() => {
+  return [...subscriptionsFromApi.value].sort((a, b) => a.price - b.price);
+});
 
 onMounted(async () => {
   subscriptionsFromApi.value = await getAllSubscriptions();
-  console.log(subscriptionsFromApi.value);
-  console.log(subscriptionsFromApi.value[0].type);
-
-  
 });
-
-const subscriptions = ref([
-  {subscriptionName: "Basic", subscriptionPrice: 15.99, perks: [
-      " Access to all courses."
-    ], mostPopular: false},
-  {subscriptionName: "Standard", subscriptionPrice: 22.99, perks: [
-        "Access to all courses.",
-        "Interactive experiences"
-    ], mostPopular: true},
-  {subscriptionName: "Premium", subscriptionPrice: 28.99, perks: [
-        "Access to all courses.",
-        "Interactive experiences",
-        "Access to Genesis Sleep"
-    ], mostPopular: false},
-  {subscriptionName: "Ultra", subscriptionPrice: 35.99, perks: [
-        "Access to all courses.",
-        "Interactive experiences",
-        "Access to Genesis Sleep",
-        "50% off Insta-Learn"
-    ], mostPopular: false},
-]);
 
 
 function handleSubscribe(subscription) {
@@ -65,11 +36,12 @@ function handleSubscribe(subscription) {
 <template>
   <section id="subscriptionList">
     <SubscriptionComponent
-        v-for="subscription in subscriptions"
-        :perks="subscription.perks"
-        :subscriptionName="subscription.subscriptionName"
-        :subscriptionPrice="subscription.subscriptionPrice"
-        :most-popular="subscription.mostPopular"
+        v-for="subscription in subscriptionsSortedByPrice"
+        :key="subscription.subscriptionId"
+        :perks="perksByPlanName[subscription.name]"
+        :subscriptionName="subscription.name"
+        :subscriptionPrice="subscription.price"
+        :most-popular="subscription.isMostPopular"
     @subscribe="handleSubscribe"
     />
   </section>
