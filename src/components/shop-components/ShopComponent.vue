@@ -1,5 +1,5 @@
 <script setup>
-import * as API from "@/assets/js/data-connector/api"
+import * as API from "@/assets/js/data-connector/api";
 import { useUserDataStore } from "@/data/user-data";
 import CosmeticCompoment from "@/components/shop-components/CosmeticCompoment.vue";
 import {ref} from "vue";
