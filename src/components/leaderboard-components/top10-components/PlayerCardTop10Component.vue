@@ -1,5 +1,8 @@
 <script setup>
-defineProps({
+import ProfilePopupComponent from "@/components/leaderboard-components/ProfilePopupComponent.vue";
+import {ref} from "vue";
+
+const props = defineProps({
     player: {
         type: Object,
         required: true
@@ -13,24 +16,58 @@ defineProps({
         default: false
     }
 });
+
+const showPopUp = ref(false);
+
+function showProfilePopup() {
+  showPopUp.value = true;
+}
+
+function hideProfilePopup() {
+  showPopUp.value = false;
+}
 </script>
 
 <template>
-    <div 
-        class="leaderboard-row" 
-        :class="{ 'current-user': isCurrentUser }"
-    >
-        <div class="rank-badge">{{ rank }}</div>
-        <img
-            :src="player.profilePicture ? `data:image/*;base64,${player.profilePicture}` : '/assets/media/profile-picture.png'"
-            alt="Profile Picture"
-            class="profile-picture profile-picture-small">
-        <p class="player-name">{{ player.name }}</p>
-        <p class="player-xp">{{ player.pointsBalance }} XP</p>
+  <div
+      class="leaderboard-row"
+      :class="{ 'current-user': isCurrentUser }"
+  >
+    <div class="rank-badge">{{ rank }}</div>
+    <div class="profile-picture-container">
+      <img
+          :src="player.profilePicture ? `data:image/*;base64,${player.profilePicture}` : '/assets/media/profile-picture.png'"
+          alt="Profile Picture"
+          class="profile-picture profile-picture-small"
+          @mouseenter="showProfilePopup"
+          @mouseleave="hideProfilePopup"
+      >
+      <ProfilePopupComponent
+          v-if="showPopUp"
+          :player="player"
+          @mouseenter="showProfilePopup"
+          @mouseleave="hideProfilePopup"
+      />
     </div>
+    <p class="player-name">{{ player.name }}</p>
+    <p class="player-xp">{{ player.pointsBalance }} XP</p>
+  </div>
 </template>
 
 <style scoped>
+.profile-picture-container {
+  position: relative;
+}
+
+.profile-picture-container :deep(#profilePicturePopup) {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  z-index: 1000;
+}
+
 .leaderboard-row {
     display: flex;
     flex-direction: row;
@@ -41,6 +78,8 @@ defineProps({
     border: 0.0625rem solid #e6e6e6;
     border-bottom: none;
     width: 100%;
+
+    position: relative;
 }
 
 .leaderboard-row:first-of-type{
@@ -83,6 +122,8 @@ defineProps({
     border: 0.0625rem solid #ccc;
     border-radius: 50%;
     object-fit: cover;
+
+    cursor: pointer;
 }
 
 .player-name {

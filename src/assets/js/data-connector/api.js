@@ -105,6 +105,10 @@ async function purchaseCosmetic(userId, cosmeticId){
   }
 }
 
+async function getUserCosmetics(userId){
+  return await fetchFromServer(`/api/cosmetics/${userId}`);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -122,4 +126,5 @@ export {
     changeOccupation,
     getAllCosmetics,
     purchaseCosmetic,
+    getUserCosmetics,
 };

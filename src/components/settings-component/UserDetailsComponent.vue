@@ -3,8 +3,10 @@ import InputboxComponent from "@/components/InputboxComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import {ref} from "vue";
 import * as API from "@/assets/js/data-connector/api";
+import {useUserDataStore} from "@/data/user-data.js";
 
 const occupation = ref("");
+const badges = await API.getUserCosmetics(useUserDataStore().getUserID()).then(res => res.filter(cosmetic => cosmetic.itemType === "Badge"))
 
 const props = defineProps({
   user: {type: Object, required: true}
@@ -41,11 +43,32 @@ async function handleChangeOccupation() {
     </div>
 
   </section>
+  <section v-if="badges.length > 0" id="profile-badges">
+    <h3>Badges</h3>
+    <img :src="`data:image/*;base64,${badge.image}`" :alt="badge.itemName"
+         v-for="badge in badges"
+    >
+  </section>
 </template>
 
 <style scoped>
 h3 {
   margin-top: 2rem;
+}
+
+#profile-badges {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(5, 5rem);
+}
+
+#profile-badges img {
+  width: 100%;
+}
+
+#profile-badges h3 {
+  margin-bottom: 1rem;
+  grid-column: 1 / -1;
 }
 
 #occupation {
