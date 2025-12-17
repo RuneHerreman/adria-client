@@ -46,7 +46,3 @@ const loadNextModule = async () => {
     />
   </main>
 </template>
-
-<style scoped>
-
-</style>
