@@ -93,6 +93,18 @@ async function changeOccupation(userId, occupation){
   await fetchFromServer(`/api/users/${userId}/occupation/${occupation}`, `POST`);
 }
 
+async function getAllCosmetics(userId){
+  return await fetchFromServer(`/api/cosmetics/all-cosmetics/${userId}`);
+}
+
+async function purchaseCosmetic(userId, cosmeticId){
+  try {
+    return await fetchFromServer(`/api/cosmetics/purchase/${cosmeticId}/${userId}`, `POST`);
+  } catch (error) {
+    throw error;
+  }
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -108,4 +120,6 @@ export {
     getNextCourseModule,
     checkAnswer,
     changeOccupation,
+    getAllCosmetics,
+    purchaseCosmetic,
 };
