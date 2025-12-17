@@ -98,11 +98,7 @@ async function getAllCosmetics(userId){
 }
 
 async function purchaseCosmetic(userId, cosmeticId){
-  try {
     return await fetchFromServer(`/api/cosmetics/purchase/${cosmeticId}/${userId}`, `POST`);
-  } catch (error) {
-    throw error;
-  }
 }
 
 export {
