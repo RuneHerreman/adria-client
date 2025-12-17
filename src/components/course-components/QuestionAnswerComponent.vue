@@ -27,6 +27,10 @@ watch(queue, (newQueue) => {
   }
 }, { deep: true });
 
+const VIBRATE_SUCCESS = [50, 20, 50];
+const VIBRATE_FAILURE = [200];
+const ANSWER_DELAY_MS = 2000;
+
 const checkAnswer = async (answerId) => {
   if (isChecking.value) return; // Prevent multiple clicks
 
@@ -34,12 +38,17 @@ const checkAnswer = async (answerId) => {
   selectedAnswerId.value = answerId;
 
   try {
-    correctAnswerId.value = await API.checkAnswer(courseId, currentQuestion.value.questionId, answerId, useUserDataStore().getUserID());
-    
+    correctAnswerId.value = await API.checkAnswer(
+        courseId,
+        currentQuestion.value.questionId,
+        answerId,
+        useUserDataStore().getUserID()
+    );
+
     if (correctAnswerId.value === answerId) {
-      vibrate([50, 20, 50]); // success pattern
+      vibrate(VIBRATE_SUCCESS);
     } else {
-      vibrate([200]); // wrong answer
+      vibrate(VIBRATE_FAILURE);
     }
 
     setTimeout(() => {
@@ -47,7 +56,7 @@ const checkAnswer = async (answerId) => {
       selectedAnswerId.value = null;
       correctAnswerId.value = null;
       isChecking.value = false;
-    }, 2000);
+    }, ANSWER_DELAY_MS);
 
   } catch (error) {
     console.error('Error checking answer:', error);
