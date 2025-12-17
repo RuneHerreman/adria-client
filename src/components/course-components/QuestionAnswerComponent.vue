@@ -2,7 +2,7 @@
 import QuestionComponent from "@/components/course-components/QuestionComponent.vue";
 import AnswerComponent from "@/components/course-components/AnswerComponent.vue";
 import {computed, ref, watch} from "vue";
-import * as API from "@/assets/js/data-connector/api.js"
+import * as API from "@/assets/js/data-connector/api.js";
 import {useUserDataStore} from "@/data/user-data.js";
 import LoadingComponent from "@/components/LoadingComponent.vue";
 import {useRoute} from "vue-router";
@@ -13,7 +13,7 @@ const queue = ref([...props.QAS]);
 const currentQuestion = computed(() => queue.value[0] ?? null);
 const removeFirst = () => {
   queue.value.shift();
-}
+};
 const route = useRoute();
 const courseId = route.params.id;
 const selectedAnswerId = ref(null);
@@ -53,7 +53,7 @@ const checkAnswer = async (answerId) => {
     console.error('Error checking answer:', error);
     isChecking.value = false;
   }
-}
+};
 </script>
 
 <template>
