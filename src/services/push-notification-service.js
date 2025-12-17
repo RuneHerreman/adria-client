@@ -1,10 +1,10 @@
-
-const VAPID_PUBLIC_KEY = "BPd94pRlGUtPWA9aEjwjcADqLuE7bdevk-IzxDqJnPx4LlRVZgkJPHq2-GICOA833uonMxnFc8pNCZjyUiy-ePY";
+const VAPID_PUBLIC_KEY =
+  "BEjEUzpt6xpfP1jVCF3IpKsV4iOhfwZoKclTWjwR8NN514xRDjUWZXAh1F3-a3Rt54nD-zSbDWP4xPrHjBlpD2s";
 
 const subscripteOptions = {
   userVisibleOnly: true,
   applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-}
+};
 
 async function enablePushNotifications() {
   const permission = await Notification.requestPermission();
@@ -19,7 +19,7 @@ async function renewPushNotification() {
 }
 
 function postSubscriptionToServer(subscription) {
-  fetch("http://localhost:8000/subscribe", {
+  fetch("http://localhost:8000/api/push/subscribe", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -29,18 +29,18 @@ function postSubscriptionToServer(subscription) {
 }
 
 function urlBase64ToUint8Array(base64String) {
-    var padding = '='.repeat((4 - base64String.length % 4) % 4);
-    var base64 = (base64String + padding)
-        .replace(/\-/g, '+')
-        .replace(/_/g, '/');
+  var padding = "=".repeat((4 - base64String.length % 4) % 4);
+  var base64 = (base64String + padding)
+    .replace(/\-/g, "+")
+    .replace(/_/g, "/");
 
-    var rawData = window.atob(base64);
-    var outputArray = new Uint8Array(rawData.length);
+  var rawData = window.atob(base64);
+  var outputArray = new Uint8Array(rawData.length);
 
-    for (var i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i);
-    }
-    return outputArray;
+  for (var i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
 }
 
 export { enablePushNotifications };
