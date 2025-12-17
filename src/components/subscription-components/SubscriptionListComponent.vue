@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, reactive} from "vue";
+import {ref, onMounted, computed} from "vue";
 import { useUserDataStore } from "@/data/user-data";
 import SubscriptionComponent from "@/components/subscription-components/SubscriptionComponent.vue";
 import router from "@/router";
@@ -14,6 +14,10 @@ const perksByPlanName = {
   Premium: ["Access to all courses.", "Interactive experiences", "Access to Genesis Sleep"],
   Ultimate: ["Access to all courses.", "Interactive experiences", "Access to Genesis Sleep", "50% off Insta-Learn"],
 };
+
+const subscriptionsSortedByPrice = computed(() => {
+  return [...subscriptionsFromApi.value].sort((a, b) => a.price - b.price);
+});
 
 onMounted(async () => {
   subscriptionsFromApi.value = await getAllSubscriptions();
@@ -32,7 +36,7 @@ function handleSubscribe(subscription) {
 <template>
   <section id="subscriptionList">
     <SubscriptionComponent
-        v-for="subscription in subscriptionsFromApi"
+        v-for="subscription in subscriptionsSortedByPrice"
         :key="subscription.subscriptionId"
         :perks="perksByPlanName[subscription.name]"
         :subscriptionName="subscription.name"
