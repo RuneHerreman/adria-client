@@ -6,6 +6,7 @@ import * as API from "@/assets/js/data-connector/api.js"
 import {useUserDataStore} from "@/data/user-data.js";
 import LoadingComponent from "@/components/LoadingComponent.vue";
 import {useRoute} from "vue-router";
+import {vibrate} from "../../services/vibration-service.js";
 
 const props = defineProps({QAS: Object});
 const queue = ref([...props.QAS]);
@@ -34,6 +35,12 @@ const checkAnswer = async (answerId) => {
 
   try {
     correctAnswerId.value = await API.checkAnswer(courseId, currentQuestion.value.questionId, answerId, useUserDataStore().getUserID());
+    
+    if (correctAnswerId.value === answerId) {
+      vibrate([50, 20, 50]); // success pattern
+    } else {
+      vibrate([200]); // wrong answer
+    }
 
     setTimeout(() => {
       removeFirst();
