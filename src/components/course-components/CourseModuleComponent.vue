@@ -2,7 +2,7 @@
 import {useRoute} from "vue-router";
 import ModuleContentComponent from "@/components/course-components/ModuleContentComponent.vue";
 import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
-import * as API from "@/assets/js/data-connector/api.js"
+import * as API from "@/assets/js/data-connector/api.js";
 import {useUserDataStore} from "@/data/user-data.js";
 import QuestionAnswerComponent from "@/components/course-components/QuestionAnswerComponent.vue";
 import {ref} from "vue";
@@ -22,7 +22,7 @@ const loadNextModule = async () => {
   } else {
     console.log('Course completed!');
   }
-}
+};
 </script>
 
 <template>
@@ -46,7 +46,3 @@ const loadNextModule = async () => {
     />
   </main>
 </template>
-
-<style scoped>
-
-</style>

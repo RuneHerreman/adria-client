@@ -2,16 +2,16 @@
 import InputboxComponent from "@/components/InputboxComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import {ref} from "vue";
-import * as API from "@/assets/js/data-connector/api"
+import * as API from "@/assets/js/data-connector/api";
 
 const occupation = ref("");
 
 const props = defineProps({
   user: {type: Object, required: true}
-})
+});
 
 async function handleChangeOccupation() {
-  await API.changeOccupation(props.user.adriaId, occupation.value)
+  await API.changeOccupation(props.user.adriaId, occupation.value);
   props.user.occupation = occupation.value;
   occupation.value = "";
 }

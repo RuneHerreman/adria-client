@@ -86,7 +86,7 @@ async function getNextCourseModule(courseId, userId){
 
 async function checkAnswer(courseId, questionId, answerId, userId) {
   return await fetchFromServer(`/api/courses/${courseId}/question/${questionId}/answer/${answerId}/${userId}`,
-    `POST`)
+    `POST`);
 }
 
 async function changeOccupation(userId, occupation){
