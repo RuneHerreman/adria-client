@@ -27,8 +27,8 @@ watch(queue, (newQueue) => {
   }
 }, { deep: true });
 
-const VIBRATE_SUCCESS = [50, 20, 50];
-const VIBRATE_FAILURE = [200];
+const VIBRATE_SUCCESS = [50, 20, 50];//NOSONAR
+const VIBRATE_FAILURE = [200];//NOSONAR
 const ANSWER_DELAY_MS = 2000;
 
 const checkAnswer = async (answerId) => {
