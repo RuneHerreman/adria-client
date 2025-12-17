@@ -1,7 +1,9 @@
 <script setup>
 import RedButtonComponent from "@/components/buttons/RedButtonComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
-
+import * as API from "@/assets/js/data-connector/api.js"
+import {useUserDataStore} from "@/data/user-data.js";
+import router from "@/router/index.js";
 const props = defineProps({
   user: {
     type: Object
@@ -10,16 +12,21 @@ const props = defineProps({
 
 const subscription = props.user.subscription
 
+async function cancelSubscription() {
+  await API.cancelSubscription(useUserDataStore().getUserID());
+  await router.push("/dashboard");
+}
+
 console.log(subscription)
 </script>
 
 <template>
   <section id="subscription-settings">
     <h2>Subscription</h2>
-    <p id="plan">Current plan: {{ subscription.name}} <br> Monthly payment: {{subscription.price}}</p>
+    <p id="plan">Current plan: {{subscription.name}} <br> Monthly payment: {{subscription.price}}</p>
     <div>
-      <RedButtonComponent>Cancel subscription</RedButtonComponent>
-      <BrightGreenButtonComponent>Change plan</BrightGreenButtonComponent>
+      <RedButtonComponent @click="cancelSubscription">Cancel subscription</RedButtonComponent>
+      <BrightGreenButtonComponent route="/subscription">Change plan</BrightGreenButtonComponent>
     </div>
   </section>
 </template>

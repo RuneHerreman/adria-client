@@ -51,9 +51,9 @@ const props = defineProps({
   #profilePicturePopup:deep(.fallback){
     margin: 1rem auto;
   }
+
   #profilePicturePopup:deep(.loading-animation){
     width: 2rem;
     height: 2rem;
   }
-
 </style>

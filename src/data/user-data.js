@@ -4,6 +4,7 @@ export const useUserDataStore = defineStore('userData', {
     state: () => ({
         name: "TestUser",
         selectedPlan: {
+            id: null,
           name: null,
           price: null,
         },
@@ -25,6 +26,9 @@ export const useUserDataStore = defineStore('userData', {
         setOccupation(occupation) {
             this.occupation = occupation;
         },
+        setSelectedPlanId(planId) {
+            this.selectedPlan.id = planId;
+        },
         setPreferences(preferences) {
             this.preferences = preferences;
         },
@@ -45,6 +49,9 @@ export const useUserDataStore = defineStore('userData', {
         },
         getCourseID() {
           return this.selectedCourseID;
+        },
+        getSelectedPlanId(){
+            return this.selectedPlan.id
         },
       getUserID(){
           return this.userId;

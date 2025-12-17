@@ -4,10 +4,12 @@
   import {onMounted, ref} from "vue";
   import router from "@/router/index.js";
   import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
+  import {getSubscription} from "@/assets/js/data-connector/api.js";
 
   const userData = useUserDataStore();
   const name = userData.getPlanName();
   const price = userData.getPlanPrice();
+  const id = userData.getSelectedPlanId();
   const showPopup = ref(false);
 
   onMounted(()=>{
@@ -17,8 +19,8 @@
     }
   });
 
-  function handlePurchase(){
-    alert(`Purchased plan: ${name} for ₳${userData.getPlanPrice()}`);
+  async function handlePurchase(){
+    await getSubscription(useUserDataStore().getUserID(), id)
     router.push("/onboarding/occupation");
   }
 
@@ -34,6 +36,7 @@
     <CheckoutComponent
         :name="name"
         :price="price"
+        :id="id"
         @purchaseClick="handlePurchaseClick"
     />
     <DefaultPopupComponent

@@ -27,6 +27,7 @@ onMounted(async () => {
 function handleSubscribe(subscription) {
   userDataStore.setSelectedPlanName(subscription.name);
   userDataStore.setSelectedPlanPrice(subscription.price);
+  userDataStore.setSelectedPlanId(subscription.id);
   router.push({
     path: '/subscription/checkout',
   });
@@ -38,11 +39,12 @@ function handleSubscribe(subscription) {
     <SubscriptionComponent
         v-for="subscription in subscriptionsSortedByPrice"
         :key="subscription.subscriptionId"
+        :id="subscription.subscriptionId"
         :perks="perksByPlanName[subscription.name]"
         :subscriptionName="subscription.name"
         :subscriptionPrice="subscription.price"
         :most-popular="subscription.isMostPopular"
-    @subscribe="handleSubscribe"
+        @subscribe="handleSubscribe"
     />
   </section>
 </template>
