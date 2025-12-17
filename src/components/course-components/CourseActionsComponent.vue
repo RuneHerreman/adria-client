@@ -19,7 +19,6 @@ const props = defineProps<{
   course: Course
 }>();
 
-console.log("Course:", props.course);
 function handleEnrolment(){
   const userId = useUserDataStore().getUserID();
   API.enrollUser(route.params.id, userId)
@@ -80,7 +79,7 @@ loadUserCourses();
       </div>
       <div class="course-info-item">
         <p>Lessons</p>
-        <p>{{ "Not Implemented Yet" }}</p> <!--todo-->
+        <p>{{ "Not Implemented Yet" }}</p>
       </div>
       <div class="course-info-item">
         <p>Students</p>

@@ -2,17 +2,18 @@
 import QuestionComponent from "@/components/course-components/QuestionComponent.vue";
 import AnswerComponent from "@/components/course-components/AnswerComponent.vue";
 import {computed, ref, watch} from "vue";
-import * as API from "@/assets/js/data-connector/api.js"
+import * as API from "@/assets/js/data-connector/api.js";
 import {useUserDataStore} from "@/data/user-data.js";
 import LoadingComponent from "@/components/LoadingComponent.vue";
 import {useRoute} from "vue-router";
+import {vibrate} from "../../services/vibration-service.js";
 
 const props = defineProps({QAS: Object});
 const queue = ref([...props.QAS]);
 const currentQuestion = computed(() => queue.value[0] ?? null);
 const removeFirst = () => {
   queue.value.shift();
-}
+};
 const route = useRoute();
 const courseId = route.params.id;
 const selectedAnswerId = ref(null);
@@ -26,6 +27,10 @@ watch(queue, (newQueue) => {
   }
 }, { deep: true });
 
+const VIBRATE_SUCCESS = [50, 20, 50];
+const VIBRATE_FAILURE = [200];
+const ANSWER_DELAY_MS = 2000;
+
 const checkAnswer = async (answerId) => {
   if (isChecking.value) return; // Prevent multiple clicks
 
@@ -33,20 +38,31 @@ const checkAnswer = async (answerId) => {
   selectedAnswerId.value = answerId;
 
   try {
-    correctAnswerId.value = await API.checkAnswer(courseId, currentQuestion.value.questionId, answerId, useUserDataStore().getUserID());
+    correctAnswerId.value = await API.checkAnswer(
+        courseId,
+        currentQuestion.value.questionId,
+        answerId,
+        useUserDataStore().getUserID()
+    );
+
+    if (correctAnswerId.value === answerId) {
+      vibrate(VIBRATE_SUCCESS);
+    } else {
+      vibrate(VIBRATE_FAILURE);
+    }
 
     setTimeout(() => {
       removeFirst();
       selectedAnswerId.value = null;
       correctAnswerId.value = null;
       isChecking.value = false;
-    }, 2000);
+    }, ANSWER_DELAY_MS);
 
   } catch (error) {
     console.error('Error checking answer:', error);
     isChecking.value = false;
   }
-}
+};
 </script>
 
 <template>

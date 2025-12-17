@@ -9,7 +9,6 @@ const survivalCourses = await API.removeUserCoursesFromList(await API.getCourses
 const lifestyleCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Life Skills"), useUserDataStore().getUserID());
 const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Culinary Arts"), useUserDataStore().getUserID());
 
-console.log(allCourses);
 </script>
 
 <template>

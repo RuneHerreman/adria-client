@@ -18,7 +18,7 @@ watchEffect(() => {
 });
 
 function handleProfileUpdate() {
-  headerKey.value++
+  headerKey.value++;
 }
 
 </script>

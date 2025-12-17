@@ -1,16 +1,10 @@
 import { fetchFromServer } from "./api-communication-abstractor.js";
 import * as ErrorHandler from "./error-handler.js";
-import {useUserDataStore} from "@/data/user-data.js";
 
 
+const LEVEL_LABELS = ["easy", "moderate", "hard", "expert"];
 function translateLevel(level) {
-    switch(level) {
-        case 0: return "easy";
-        case 1: return "moderate";
-        case 2: return "hard";
-        case 3: return "expert";
-        default: return "unknown";
-    }
+    return LEVEL_LABELS[level] ?? "unknown";
 }
 
 export function translateCourseLevels(courses) {
@@ -92,7 +86,7 @@ async function getNextCourseModule(courseId, userId){
 
 async function checkAnswer(courseId, questionId, answerId, userId) {
   return await fetchFromServer(`/api/courses/${courseId}/question/${questionId}/answer/${answerId}/${userId}`,
-    `POST`)
+    `POST`);
 }
 
 async function changeOccupation(userId, occupation){

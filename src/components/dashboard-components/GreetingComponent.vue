@@ -10,7 +10,6 @@ import { useUserDataStore } from "@/data/user-data";
   const afternoonEnd = 16;
   const eveningStart = 17;
   const eveningEnd = 23;
-  console.log(user);
   function getGreeting(){
     const date = new Date().getHours();
 
