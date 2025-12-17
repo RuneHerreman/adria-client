@@ -14,10 +14,10 @@ export default defineConfig({
       srcDir: "src",
       filename: "service-worker.js",
       strategies: "injectManifest",
-      injectRegister: "auto",
+      injectRegister: false,
       manifest: false,
       injectManifest: {
-        globPatterns: ["**/*"],
+        injectionPoint: undefined
       },
       devOptions: {
         enabled: true,
