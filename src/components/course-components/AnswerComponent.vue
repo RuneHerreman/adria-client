@@ -13,7 +13,7 @@ const handleClick = () => {
   if (!props.showResult) { // Only allow clicks before result
     emit('answer-clicked', props.answerId);
   }
-}
+};
 
 </script>
 
