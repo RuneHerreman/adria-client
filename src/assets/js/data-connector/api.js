@@ -140,6 +140,14 @@ async function setInterests(userId, interests) {
   return await fetchFromServer(`/api/users/${userId}/interests/${interests}`, "POST");
 }
 
+async function getUserEnrollmentCount(courseId){
+  return await fetchFromServer(`/api/courses/${courseId}/enrollment/count`);
+}
+
+async function getLessonCount(courseId) {
+  return await fetchFromServer(`/api/courses/${courseId}/lessons/count`);
+}
+
 export {
   getAllSubscriptions,
   getUserDetails,
@@ -164,4 +172,6 @@ export {
   getPromoCodePercentage,
   getInterests,
   setInterests,
+  getUserEnrollmentCount,
+  getLessonCount,
 };

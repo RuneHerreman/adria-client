@@ -12,13 +12,14 @@ import {useUserDataStore} from "@/data/user-data.js";
 const userCourses = ref<Array<any>>([]);
 const enrolled = ref(false);
 const enrolledCourse = ref<any | undefined>(undefined);
-
 const route = useRoute();
 const router = useRouter();
 const props = defineProps<{
   course: Course
 }>();
 
+const enrollmentCount = await API.getUserEnrollmentCount(route.params.id);
+const lessonCount = await API.getLessonCount(route.params.id);
 
 const notCompleted = ref();
 
@@ -86,11 +87,15 @@ loadUserCourses();
       </div>
       <div class="course-info-item">
         <p>Lessons</p>
-        <p>{{ "Not Implemented Yet" }}</p>
+        <p>{{ lessonCount }}</p>
       </div>
       <div class="course-info-item">
         <p>Students</p>
-        <p>{{1025}}</p>
+        <p>{{enrollmentCount}}</p>
+      </div>
+      <div class="course-info-item">
+        <p>Points on completion</p>
+        <p>{{course.pointsOnCompletion}}</p>
       </div>
     </div>
   </section>
