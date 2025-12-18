@@ -22,7 +22,7 @@ watchEffect(() => {
 });
 
 watchEffect(async () => {
-  if (requiresLogin) {
+  if (requiresLogin()) {
     const userStore = useUserDataStore();
     const isActiveUser = await getUserStatus(userStore.getUserID());
 
@@ -37,7 +37,7 @@ function handleProfileUpdate() {
   headerKey.value++;
 }
 function requiresLogin() {
-  return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout"].indexOf(currentRoute.path) === -1;
+  return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout"].indexOf(route.path) === -1;
 }
 
 </script>
