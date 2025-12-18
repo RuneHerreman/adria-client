@@ -14,7 +14,7 @@ const subscription = props.user.subscription
 
 async function cancelSubscription() {
   await API.cancelSubscription(useUserDataStore().getUserID());
-  await router.push("/dashboard");
+  await router.push("/");
 }
 
 function changePlan(){
