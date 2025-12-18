@@ -108,12 +108,19 @@ async function cancelSubscription(userId) {
   return await fetchFromServer(`/api/users/${userId}/subscription/cancel`, "POST")
 }
 
-async function getSubscription(userId, subscriptionId) {
-  return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}`, "POST");
+async function getSubscribed(userId, subscriptionId, code) {
+  if (code.length === 0) {
+    return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}`, "POST");
+  }
+  return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}?promoCode=${code}`, "POST");
 }
 
 async function getUserStatus(userId){
   return await fetchFromServer(`/api/users/${userId}/active`);
+}
+
+async function getPromoCodePercentage(PromoCode) {
+  return await fetchFromServer(`/api/subscriptions/${PromoCode}/discount`);
 }
 
 export {
@@ -135,6 +142,7 @@ export {
     purchaseCosmetic,
     getUserCosmetics,
     cancelSubscription,
-    getSubscription,
-    getUserStatus
+    getSubscribed,
+    getUserStatus,
+    getPromoCodePercentage
 };

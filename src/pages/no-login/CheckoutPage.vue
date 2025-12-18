@@ -4,13 +4,14 @@
   import {onMounted, ref} from "vue";
   import router from "@/router/index.js";
   import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
-  import {getSubscription} from "@/assets/js/data-connector/api.js";
+  import {getSubscribed} from "@/assets/js/data-connector/api.js";
 
   const userData = useUserDataStore();
   const name = userData.getPlanName();
   const price = userData.getPlanPrice();
   const id = userData.getSelectedPlanId();
   const showPopup = ref(false);
+  const discountCode = ref("");
 
   onMounted(()=>{
     if (userData.selectedPlan.price === null ||
@@ -20,13 +21,21 @@
   });
 
   async function handlePurchase(){
-    await getSubscription(useUserDataStore().getUserID(), id)
-    router.push("/onboarding/occupation");
+    console.log(discountCode.value)
+    await getSubscribed(useUserDataStore().getUserID(), id, discountCode.value);
+
+    if (!useUserDataStore().getChangePlan()) {
+      router.push("/onboarding/occupation");
+    } else {
+      router.push("/dashboard");
+    }
+
+    useUserDataStore().setChangePlan(false);
   }
 
-  function handlePurchaseClick(updatedPrice){
+  function handlePurchaseClick(updatedPrice, promocode){
     userData.setSelectedPlanPrice(updatedPrice);
-
+    discountCode.value = promocode;
     showPopup.value = true;
   }
 </script>

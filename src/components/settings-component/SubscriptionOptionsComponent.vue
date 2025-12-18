@@ -17,6 +17,11 @@ async function cancelSubscription() {
   await router.push("/dashboard");
 }
 
+function changePlan(){
+  useUserDataStore().setChangePlan(true);
+  router.push("/subscription");
+}
+
 console.log(subscription)
 </script>
 
@@ -26,7 +31,7 @@ console.log(subscription)
     <p id="plan">Current plan: {{subscription.name}} <br> Monthly payment: {{subscription.price}}</p>
     <div>
       <RedButtonComponent @click="cancelSubscription">Cancel subscription</RedButtonComponent>
-      <BrightGreenButtonComponent route="/subscription">Change plan</BrightGreenButtonComponent>
+      <BrightGreenButtonComponent @click="changePlan">Change plan</BrightGreenButtonComponent>
     </div>
   </section>
 </template>

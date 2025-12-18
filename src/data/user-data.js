@@ -11,7 +11,8 @@ export const useUserDataStore = defineStore('userData', {
         occupation: "",
         preferences: [],
         selectedCourseID: null,
-        userId: "389bc6fb-080e-4450-ac9a-2ff10868b0d6"
+        userId: "389bc6fb-080e-4450-ac9a-2ff10868b0d6",
+        isChangingSubscription: false
     }),
     actions: {
         setName(name) {
@@ -25,6 +26,9 @@ export const useUserDataStore = defineStore('userData', {
         },
         setOccupation(occupation) {
             this.occupation = occupation;
+        },
+        setChangePlan(boolean){
+            this.isChangingSubscription = boolean;
         },
         setSelectedPlanId(planId) {
             this.selectedPlan.id = planId;
@@ -55,6 +59,9 @@ export const useUserDataStore = defineStore('userData', {
         },
       getUserID(){
           return this.userId;
-      }
+      },
+        getChangePlan(){
+            return this.isChangingSubscription;
+        }
     },
 });
