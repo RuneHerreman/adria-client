@@ -60,6 +60,7 @@ h3 {
   width: 50%;
   display: grid;
   grid-template-columns: repeat(5, 5rem);
+  margin-bottom: 3rem;
 }
 
 #profile-badges img {
@@ -69,6 +70,7 @@ h3 {
 #profile-badges h3 {
   margin-bottom: 1rem;
   grid-column: 1 / -1;
+
 }
 
 #occupation {

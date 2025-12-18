@@ -5,8 +5,8 @@ import * as API from "@/assets/js/data-connector/api.js";
 import {handleCourseClick} from "@/assets/js/script.js";
 import {useUserDataStore} from "@/data/user-data.js";
 
-const courses = await API.getUserCourses(useUserDataStore().getUserID());
-
+const allCourses = await API.getUserCourses(useUserDataStore().getUserID());
+const courses = allCourses.filter(c => c.progressPercentage < 100);
 </script>
 
 <template>

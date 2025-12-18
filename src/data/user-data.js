@@ -11,7 +11,7 @@ export const useUserDataStore = defineStore('userData', {
         occupation: "",
         preferences: [],
         selectedCourseID: null,
-        userId: "389bc6fb-080e-4450-ac9a-2ff10868b0d6",
+        userId: "91171dab-1bc7-4af8-9bfa-620847e9e9f3", // CHANGE THIS TO THE ID OF THE USER YOU WANT TO SHOW
         isChangingSubscription: false
     }),
     actions: {

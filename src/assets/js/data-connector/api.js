@@ -53,7 +53,7 @@ async function getUserCourses(userID){
   try {
     const result = await fetchFromServer(`/api/users/${userID}/courses`);
 
-    return translateCourseLevels(result).filter(c => c.progressPercentage < 100);
+    return translateCourseLevels(result);
   } catch (error) {
     console.log(error);
     return [];
@@ -80,7 +80,16 @@ async function deleteProfilePicture(userID) {
 }
 
 async function getNextCourseModule(courseId, userId){
-  return await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
+
+  const res = await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`)
+
+  if (!res.ok) {
+    // 500, 404, etc. → throw so caller's try/catch sees it
+    const message = `getNextCourseModule failed: ${res.status} ${res.statusText}`;
+    throw new Error(message);
+  }
+
+  return await res.json();
 }
 
 async function checkAnswer(courseId, questionId, answerId, userId) {

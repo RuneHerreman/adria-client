@@ -19,6 +19,9 @@ const props = defineProps<{
   course: Course
 }>();
 
+
+const notCompleted = ref();
+
 function handleEnrolment(){
   const userId = useUserDataStore().getUserID();
   API.enrollUser(route.params.id, userId)
@@ -39,6 +42,7 @@ async function loadUserCourses() {
   enrolled.value = userCourses.value.some((c) => c.courseId == courseID);
   if (enrolled.value) {
     enrolledCourse.value = userCourses.value.find((c) => c.courseId == courseID);
+    notCompleted.value = enrolledCourse.value.progressPercentage < 100;
   } else {
     enrolledCourse.value = undefined;
   }
@@ -60,10 +64,13 @@ loadUserCourses();
         </div>
       </div>
 
-      <div id="course-buttons">
+      <div v-if="notCompleted" id="course-buttons">
         <BrightGreenButtonComponent @click="handleLearn" class="course-button">Learn</BrightGreenButtonComponent>
         <GreyButtonComponent @click="handleSleepLearn" class="course-button">Learn in sleep</GreyButtonComponent>
       </div>
+      <p v-else id="completed-message">
+        You have completed this course
+      </p>
     </section>
 
     <section v-else id="course-actions-not-enrolled">
@@ -170,5 +177,13 @@ p#progress-title {
   font-size: 0.9rem;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
+}
+
+#course-actions #course-actions-enrolled #completed-message{
+  font-size: 0.85rem;
+  text-align: center;
+  padding-top: 1rem;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 </style>
