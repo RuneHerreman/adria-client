@@ -123,26 +123,35 @@ async function getPromoCodePercentage(PromoCode) {
   return await fetchFromServer(`/api/subscriptions/${PromoCode}/discount`);
 }
 
+async function getInterests(){
+  return await fetchFromServer("/api/users/interests");
+}
+
+async function setInterests(userId, interests) {
+  return await fetchFromServer(`/api/users/${userId}/interests/${interests}`, "POST");
+}
+
 export {
-    getAllSubscriptions,
-    getUserDetails,
-    getUsersInLeaderboard,
-    getCourses,
-    getCoursesByCategory,
-    getCourseByID,
-    getUserCourses,
-    enrollUser,
-    removeUserCoursesFromList,
-    updateProfilePicture,
-    deleteProfilePicture,
-    getNextCourseModule,
-    checkAnswer,
-    changeOccupation,
-    getAllCosmetics,
-    purchaseCosmetic,
-    getUserCosmetics,
-    cancelSubscription,
-    getSubscribed,
-    getUserStatus,
-    getPromoCodePercentage
+  getAllSubscriptions,
+  getUserDetails,
+  getUsersInLeaderboard,
+  getCourses,
+  getCoursesByCategory,
+  getCourseByID,
+  getUserCourses,
+  enrollUser,
+  removeUserCoursesFromList,
+  updateProfilePicture,
+  deleteProfilePicture,
+  getNextCourseModule,
+  checkAnswer,
+  changeOccupation,
+  getAllCosmetics,
+  purchaseCosmetic,
+  getUserCosmetics,
+  cancelSubscription,
+  getSubscribed,
+  getUserStatus,
+  getPromoCodePercentage,
+  getInterests,
 };

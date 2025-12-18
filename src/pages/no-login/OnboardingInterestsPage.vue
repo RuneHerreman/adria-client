@@ -6,21 +6,9 @@
   import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
   import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
   import { enablePushNotifications } from "@/services/push-notification-service";
-  
-  const interests = [
-    "Hunting",
-    "History",
-    "Gaming",
-    "Fitness",
-    "Mining",
-    "Art",
-    "Fishing",
-    "Nature",
-    "Music",
-    "Photography",
-    "Medicine",
-    "Survival",
-  ];
+  import {getInterests} from "@/assets/js/data-connector/api.js";
+
+  const interests = await getInterests();
   
   const userData = useUserDataStore();
   const router = useRouter();
@@ -45,11 +33,11 @@
     return interestSelected.includes(interest);
   }
   
-  function handleUserPreferences() {
+  async function handleUserPreferences() {
     if (interestSelected.length !== maxAllowedInterests) {
       showErrorPopup.value = true;
     } else {
-      userData.setPreferences(interestSelected);
+      await setInterests(interestSelected.join("-"));
       enablePushNotifications();
       router.push("/dashboard");
     }
@@ -58,7 +46,8 @@
   function closeErrorPopup() {
     showErrorPopup.value = false;
   }
-  </script>
+</script>
+
   <template>
     <main class="onboarding-centered-section">
       <section class="onboardingCard" v-if="!showErrorPopup">
@@ -71,9 +60,7 @@
           </p>
           <p class="onboarding-selected-count">{{selectedInterestCount}}/3 selected</p>
         </section>
-  
-  
-  
+
         <section class="onboarding-interests-grid">
           <button
             v-for="interest in interests"
@@ -84,8 +71,7 @@
             {{ interest }}
           </button>
         </section>
-  
-  
+
         <section class="onboarding-actions">
           <GreyButtonComponent route="/onboarding/occupation" class="onboarding-btn-secondary">Go Back</GreyButtonComponent>
           <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserPreferences">Continue</BrightGreenButtonComponent>
@@ -112,7 +98,7 @@
   
   main{
     height: fit-content;
-    padding: 5rem 0;
+    padding: 5rem 0 10rem;
     position: relative;
   }
   

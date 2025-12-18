@@ -6,6 +6,7 @@ import {useRoute} from "vue-router";
 import {getUserStatus} from "@/assets/js/data-connector/api.js";
 import {useUserDataStore} from "@/data/user-data.js";
 import router from "@/router/index.js";
+import LoadingComponent from "@/components/LoadingComponent.vue";
 const route = useRoute();
 const headerKey = ref(0);
 watchEffect(() => {
@@ -43,7 +44,14 @@ function requiresLogin() {
 
 <template>
     <HeaderComponent :key="headerKey"/>
-    <RouterView @profileUpdated="handleProfileUpdate"/>
+    <suspense>
+      <template #default>
+        <RouterView @profileUpdated="handleProfileUpdate"/>
+      </template>
+      <template #fallback>
+        <LoadingComponent/>
+      </template>
+    </suspense>
     <FooterComponent />
 </template>
 
