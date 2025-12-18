@@ -34,13 +34,13 @@ function getUsersInLeaderboard() {
     .catch(ErrorHandler.handleError);
 }
 
-async function getCourses() {
-    const result = await fetchFromServer("/api/courses");
+async function getCourses(userId) {
+    const result = await fetchFromServer(`/api/courses/all/${userId}`);
     return translateCourseLevels(result);
 }
 
-async function getCoursesByCategory(category) {
-    const result = await fetchFromServer(`/api/courses?category=${category}`, "GET");
+async function getCoursesByCategory(category, userId) {
+    const result = await fetchFromServer(`/api/courses/all/${userId}?category=${category}`, "GET");
     return translateCourseLevels(result);
 }
 

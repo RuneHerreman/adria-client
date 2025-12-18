@@ -4,10 +4,10 @@ import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue
 import * as API from "@/assets/js/data-connector/api";
 import {useUserDataStore} from "@/data/user-data.js";
 
-const allCourses = await API.removeUserCoursesFromList(await API.getCourses(), useUserDataStore().getUserID());
-const survivalCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Survival Skills"), useUserDataStore().getUserID());
-const lifestyleCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Life Skills"), useUserDataStore().getUserID());
-const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Culinary Arts"), useUserDataStore().getUserID());
+const allCourses = await API.getCourses(useUserDataStore().getUserID());
+const survivalCourses = await API.getCoursesByCategory("Survival Skills", useUserDataStore().getUserID());
+const lifestyleCourses = await API.getCoursesByCategory("Life Skills", useUserDataStore().getUserID());
+const cookingCourses = await API.getCoursesByCategory("Culinary Arts", useUserDataStore().getUserID());
 
 </script>
 
