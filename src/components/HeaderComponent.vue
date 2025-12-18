@@ -6,6 +6,7 @@
   import { useUserDataStore } from '@/data/user-data';
   import {onMounted, ref} from "vue";
   import * as API from "@/assets/js/data-connector/api.js";
+  import ProfilePopupComponent from "@/components/leaderboard-components/ProfilePopupComponent.vue";
   const links = [
     {name: "Leaderboard", path: "/leaderboard", iconUrl: "/assets/icons/leaderboard.svg"},
     {name: "Shop", path: "/shop", iconUrl: "/assets/icons/shop.svg"},
@@ -15,12 +16,13 @@
   onMounted(async () => {
     try {
       user.value = await API.getUserDetails(useUserDataStore().getUserID());
+      console.log(user.value);
     } catch (error) {
       console.error(error);
     }
   });
 
-
+  const showPopUp = ref(false);
   const userData = useUserDataStore();
   const currentRoute = useRoute();
 
@@ -38,6 +40,14 @@
 
   function goToSettings(){
     router.push("/settings");
+  }
+
+  function showProfilePopup() {
+    showPopUp.value = true;
+  }
+
+  function hideProfilePopup() {
+    showPopUp.value = false;
   }
 </script>
 
@@ -59,19 +69,45 @@
           :title="link.name"
       />
       <XPComponent v-if="user" :xp="user.pointsBalance"/>
-      <img
-          v-if="user"
-          @click="goToSettings"
-          id="profile-picture"
-          class="profile-picture"
-          :src="user.profilePicture ? `data:image/*;base64,${user.profilePicture}` : '/assets/media/profile-picture.png'"
-          alt="Settings"
-          title="Settings">
+      <div id="profile-picture-container"
+           @mouseenter="showProfilePopup"
+           @mouseleave="hideProfilePopup">
+        <img
+            v-if="user"
+            id="profile-picture"
+            class="profile-picture"
+            :src="user.profilePicture ? `data:image/*;base64,${user.profilePicture}` : '/assets/media/profile-picture.png'"
+            alt="profile details"
+            title="profile details"
+
+        >
+        <ProfilePopupComponent
+            v-if="showPopUp"
+            :player="user"
+            @mouseenter="showProfilePopup"
+            @mouseleave="hideProfilePopup"
+        />
+      </div>
+
+
     </nav>
   </header>
 </template>
 
 <style scoped>
+
+#profile-picture-container {
+  position: relative;
+}
+
+#profile-picture-container :deep(#profilePicturePopup) {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  z-index: 1000;
+}
+
   header {
     margin-top: 1rem;
     margin-bottom: 5rem;

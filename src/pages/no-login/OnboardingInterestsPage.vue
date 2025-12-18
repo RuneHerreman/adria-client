@@ -6,7 +6,7 @@
   import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
   import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
   import { enablePushNotifications } from "@/services/push-notification-service";
-  import {getInterests} from "@/assets/js/data-connector/api.js";
+  import {getInterests, setInterests} from "@/assets/js/data-connector/api.js";
 
   const interests = await getInterests();
   

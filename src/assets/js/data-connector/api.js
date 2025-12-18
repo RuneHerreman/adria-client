@@ -154,4 +154,5 @@ export {
   getUserStatus,
   getPromoCodePercentage,
   getInterests,
+  setInterests,
 };
