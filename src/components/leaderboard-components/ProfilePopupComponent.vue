@@ -10,10 +10,10 @@ const props = defineProps({
 <template>
   <div id="profilePicturePopup">
     <img :src="player.profilePicture ? `data:image/*;base64,${player.profilePicture}` : '/assets/media/profile-picture.png'" alt="">
-    <h3>{{ player.name }}</h3>
+    <h3>{{ player.name || player.userName }}</h3>
     <suspense>
       <template #default>
-        <BadgesComponent :playerId="player.userId"/>
+        <BadgesComponent :playerId="player.userId || player.adriaId"/>
       </template>
       <template #fallback>
         <LoadingComponent>
