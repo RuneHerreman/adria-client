@@ -11,6 +11,7 @@ import ContactPage from "@/pages/no-login/ContactPage.vue";
 import OnboardingOccupationPage from "@/pages/no-login/OnboardingOccupationPage.vue";
 import OnboardingInterestsPage from "@/pages/no-login/OnboardingInterestsPage.vue";
 import CheckoutPage from "@/pages/no-login/CheckoutPage.vue";
+import NotFoundPage from "@/pages/no-login/NotFoundPage.vue";
 
 const routes = [
     {
@@ -60,6 +61,10 @@ const routes = [
     {
         path: "/contact",
         component: ContactPage
+    },
+    {
+        path: "/404",
+        component: NotFoundPage
     }
 ];
 

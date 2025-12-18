@@ -72,6 +72,9 @@ async function handleProfilePictureRemoval() {
       <BrightGreenButtonComponent @click="triggerFileUpload">Change profile picture</BrightGreenButtonComponent>
       <RedButtonComponent @click="handleProfilePictureRemoval">Remove profile picture from site</RedButtonComponent>
     </section>
+    <section id="profile-badges">
+
+    </section>
   </div>
 
 </section>

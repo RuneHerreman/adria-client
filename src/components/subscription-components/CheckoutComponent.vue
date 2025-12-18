@@ -9,13 +9,10 @@ import PromoCodeComponent from "@/components/subscription-components/PromoCodeCo
 const props = defineProps({
   name: {type: String, required: true},
   price: {type: Number, required: true},
+  id: {type: String, required: true}
 });
 
 const emits = defineEmits(["purchaseClick"]);
-
-const discounts = ref({
-  ADRIANIGHT10: 10
-});
 
 const discountUsed = ref(false);
 const discountPercentage = ref(0);

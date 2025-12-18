@@ -1,7 +1,6 @@
 import { fetchFromServer } from "./api-communication-abstractor.js";
 import * as ErrorHandler from "./error-handler.js";
 
-
 const LEVEL_LABELS = ["easy", "moderate", "hard", "expert"];
 function translateLevel(level) {
     return LEVEL_LABELS[level] ?? "unknown";
@@ -101,6 +100,22 @@ async function purchaseCosmetic(userId, cosmeticId){
     return await fetchFromServer(`/api/cosmetics/purchase/${cosmeticId}/${userId}`, `POST`);
 }
 
+async function getUserCosmetics(userId){
+  return await fetchFromServer(`/api/cosmetics/${userId}`);
+}
+
+async function cancelSubscription(userId) {
+  return await fetchFromServer(`/api/users/${userId}/subscription/cancel`, "POST")
+}
+
+async function getSubscription(userId, subscriptionId) {
+  return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}`, "POST");
+}
+
+async function getUserStatus(userId){
+  return await fetchFromServer(`/api/users/${userId}/active`);
+}
+
 export {
     getAllSubscriptions,
     getUserDetails,
@@ -118,4 +133,8 @@ export {
     changeOccupation,
     getAllCosmetics,
     purchaseCosmetic,
+    getUserCosmetics,
+    cancelSubscription,
+    getSubscription,
+    getUserStatus
 };

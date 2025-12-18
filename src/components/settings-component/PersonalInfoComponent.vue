@@ -2,6 +2,7 @@
 
 import ProfilePictureComponent from "@/components/settings-component/ProfilePictureComponent.vue";
 import UserDetailsComponent from "@/components/settings-component/UserDetailsComponent.vue";
+import SubscriptionOptionsComponent from "@/components/settings-component/SubscriptionOptionsComponent.vue";
 
 const props = defineProps({
   user: {type: Object, required: true}
@@ -15,6 +16,7 @@ defineEmits(['reloadUserData']);
     <h2>Profile</h2>
     <ProfilePictureComponent :user="user" @reloadUserData="$emit('reloadUserData')"/>
     <UserDetailsComponent :user="user"/>
+    <SubscriptionOptionsComponent :user="user"/>
   </section>
 </template>
 
