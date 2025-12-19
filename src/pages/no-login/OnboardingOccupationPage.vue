@@ -49,6 +49,7 @@ function closeErrorPopup() {
             id="occupation"
             class="onboarding-label-input"
             v-model="occupation"
+            @keyup.enter="handleUserOccupation"
         />
         <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserOccupation">Next step</BrightGreenButtonComponent>
       </section>
