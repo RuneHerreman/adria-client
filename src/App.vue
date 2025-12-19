@@ -6,6 +6,7 @@ import {useRoute} from "vue-router";
 import {getUserStatus} from "@/assets/js/data-connector/api.js";
 import {useUserDataStore} from "@/data/user-data.js";
 import router from "@/router/index.js";
+import LoadingComponent from "@/components/LoadingComponent.vue";
 const route = useRoute();
 const headerKey = ref(0);
 watchEffect(() => {
@@ -21,7 +22,7 @@ watchEffect(() => {
 });
 
 watchEffect(async () => {
-  if (requiresLogin) {
+  if (requiresLogin()) {
     const userStore = useUserDataStore();
     const isActiveUser = await getUserStatus(userStore.getUserID());
 
@@ -36,14 +37,21 @@ function handleProfileUpdate() {
   headerKey.value++;
 }
 function requiresLogin() {
-  return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout"].indexOf(currentRoute.path) === -1;
+  return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout", "/contact"].indexOf(route.path) === -1;
 }
 
 </script>
 
 <template>
     <HeaderComponent :key="headerKey"/>
-    <RouterView @profileUpdated="handleProfileUpdate"/>
+    <suspense>
+      <template #default>
+        <RouterView @profileUpdated="handleProfileUpdate"/>
+      </template>
+      <template #fallback>
+        <LoadingComponent/>
+      </template>
+    </suspense>
     <FooterComponent />
 </template>
 

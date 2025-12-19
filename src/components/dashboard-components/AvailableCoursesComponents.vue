@@ -3,11 +3,12 @@ import SpotlightComponent from "@/components/dashboard-components/SpotlightCompo
 import CourseCarousel from "@/components/dashboard-components/CourseCarousel.vue";
 import * as API from "@/assets/js/data-connector/api";
 import {useUserDataStore} from "@/data/user-data.js";
+import router from "@/router/index.js";
 
-const allCourses = await API.removeUserCoursesFromList(await API.getCourses(), useUserDataStore().getUserID());
-const survivalCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Survival Skills"), useUserDataStore().getUserID());
-const lifestyleCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Life Skills"), useUserDataStore().getUserID());
-const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesByCategory("Culinary Arts"), useUserDataStore().getUserID());
+const allCourses = await API.getCourses(useUserDataStore().getUserID());
+const survivalCourses = await API.getCoursesByCategory("Survival Skills", useUserDataStore().getUserID());
+const lifestyleCourses = await API.getCoursesByCategory("Life Skills", useUserDataStore().getUserID());
+const cookingCourses = await API.getCoursesByCategory("Culinary Arts", useUserDataStore().getUserID());
 
 </script>
 
@@ -16,6 +17,7 @@ const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesB
     <SpotlightComponent
         class="spotlight"
         src="/assets/media/spotlight/Spotlight_Miners.png"
+        @click="()=>{router.push('/course/70d62244-fe2c-4acb-8943-40eb26e042cc')}"
     />
 
     <CourseCarousel
@@ -37,10 +39,12 @@ const cookingCourses = await API.removeUserCoursesFromList(await API.getCoursesB
       <SpotlightComponent
           src="/assets/media/spotlight/Spotlight_bread.png"
           :half="true"
+          @click="() => {router.push('/course/5fe6e3d1-0a74-4759-9bad-a5f0e48a9340')}"
       />
       <SpotlightComponent
           src="/assets/media/spotlight/Spotlight_Surgeon.png"
           :half="true"
+          @click="() => {router.push('/course/9d649dc9-a233-4274-904c-3f75936ae86e')}"
       />
     </div>
 

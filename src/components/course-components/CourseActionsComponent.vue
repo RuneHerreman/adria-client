@@ -12,12 +12,16 @@ import {useUserDataStore} from "@/data/user-data.js";
 const userCourses = ref<Array<any>>([]);
 const enrolled = ref(false);
 const enrolledCourse = ref<any | undefined>(undefined);
-
 const route = useRoute();
 const router = useRouter();
 const props = defineProps<{
   course: Course
 }>();
+
+const enrollmentCount = await API.getUserEnrollmentCount(route.params.id);
+const lessonCount = await API.getLessonCount(route.params.id);
+
+const notCompleted = ref();
 
 function handleEnrolment(){
   const userId = useUserDataStore().getUserID();
@@ -39,6 +43,7 @@ async function loadUserCourses() {
   enrolled.value = userCourses.value.some((c) => c.courseId == courseID);
   if (enrolled.value) {
     enrolledCourse.value = userCourses.value.find((c) => c.courseId == courseID);
+    notCompleted.value = enrolledCourse.value.progressPercentage < 100;
   } else {
     enrolledCourse.value = undefined;
   }
@@ -60,10 +65,13 @@ loadUserCourses();
         </div>
       </div>
 
-      <div id="course-buttons">
+      <div v-if="notCompleted" id="course-buttons">
         <BrightGreenButtonComponent @click="handleLearn" class="course-button">Learn</BrightGreenButtonComponent>
         <GreyButtonComponent @click="handleSleepLearn" class="course-button">Learn in sleep</GreyButtonComponent>
       </div>
+      <p v-else id="completed-message">
+        You have completed this course
+      </p>
     </section>
 
     <section v-else id="course-actions-not-enrolled">
@@ -79,11 +87,15 @@ loadUserCourses();
       </div>
       <div class="course-info-item">
         <p>Lessons</p>
-        <p>{{ "Not Implemented Yet" }}</p>
+        <p>{{ lessonCount }}</p>
       </div>
       <div class="course-info-item">
         <p>Students</p>
-        <p>{{1025}}</p>
+        <p>{{enrollmentCount}}</p>
+      </div>
+      <div class="course-info-item">
+        <p>Points on completion</p>
+        <p>{{course.pointsOnCompletion}}</p>
       </div>
     </div>
   </section>
@@ -170,5 +182,13 @@ p#progress-title {
   font-size: 0.9rem;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
+}
+
+#course-actions #course-actions-enrolled #completed-message{
+  font-size: 0.85rem;
+  text-align: center;
+  padding-top: 1rem;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 </style>

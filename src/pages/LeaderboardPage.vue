@@ -1,21 +1,27 @@
 <script setup>
 import Top3Component from "@/components/leaderboard-components/top3-components/Top3Component.vue";
 import Top10Component from "@/components/leaderboard-components/top10-components/Top10Component.vue";
-import { ref, computed, onMounted } from "vue";
+import {ref, computed, onMounted, onUnmounted, nextTick} from "vue";
 import { useUserDataStore } from "@/data/user-data.js";
-import {getUserDetails, getUsersInLeaderboard} from "@/assets/js/data-connector/api.js";
+import { getUserDetails, getUsersInLeaderboard } from "@/assets/js/data-connector/api.js";
 
 const userData = useUserDataStore();
 
 const leaderboardTop10 = ref([]);
 const currentUserName = ref('');
 const isLoading = ref(true);
+const chartRef = ref(null);
+let chartInstance = null;
 
 onMounted(async () => {
   try {
     leaderboardTop10.value = await getUsersInLeaderboard();
     const userDetails = await getUserDetails(userData.getUserID());
     currentUserName.value = userDetails.userName;
+
+    // Load chart after data
+    await nextTick();
+    loadUsersChart();
   } catch (error) {
     console.error('Failed to load leaderboard data:', error);
   } finally {
@@ -26,15 +32,73 @@ onMounted(async () => {
 const maxPlayers = 3;
 const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, maxPlayers));
 
+function loadUsersChart() {
+  const ctx = chartRef.value?.getContext('2d');
+  if (!ctx) return;
+
+  chartInstance?.destroy();
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Active Monthly Users',
+        data: [2675, 3076, 3538, 4069, 4679, 5381],
+        borderColor: 'rgba(0,128,66,0.9)',
+        backgroundColor: 'rgba(0,128,66,0.08)',
+        tension: 0.4,
+        fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHitRadius: 10,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        title: { display: false }
+      },
+      layout: {
+        padding: { top: 2, bottom: 15, left: 5, right: 5 }
+      },
+      scales: {
+        x: {
+          display: false
+        },
+        y: {
+          display: false
+        }
+      },
+      elements: {
+        line: {
+          borderWidth: 2
+        }
+      }
+    }
+  });
+}
+
+
+onUnmounted(() => {
+  if (chartInstance) chartInstance.destroy();
+});
 </script>
 
 <template>
     <main>
-    <h1>Leaderboard</h1>
-    <div id="leaderboard-container">
-        <Top3Component :players="leaderboardTop3" :currentUserName="currentUserName" />
-        <Top10Component :players="leaderboardTop10" :currentUserName="currentUserName" />
-    </div>
+      <div id="leaderboard-heading">
+        <h1>Leaderboard</h1>
+        <div class="sparkline">
+          <p class="sparkline-title">Active monthly users</p>
+          <canvas ref="chartRef"></canvas>
+        </div>
+      </div>
+      <div id="leaderboard-container">
+          <Top3Component :players="leaderboardTop3" :currentUserName="currentUserName" />
+          <Top10Component :players="leaderboardTop10" :currentUserName="currentUserName" />
+      </div>
     </main>
 </template>
 
@@ -43,6 +107,34 @@ const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, maxPlayer
     width: 42rem;
     margin: 0 auto;
     margin-bottom: 6rem;
+}
+
+#leaderboard-heading{
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+  margin-bottom: 5rem;
+  align-items: end;
+}
+
+.sparkline{
+  padding: 0.8rem;
+  height:5rem;
+
+  width: 12rem;
+
+  font-size: 0.9rem;
+  border-radius: 1rem;
+  border: 1px solid var(--grey-background);
+}
+
+.sparkline-title{
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--grey-text);
 }
 
 #leaderboard-top-3 {

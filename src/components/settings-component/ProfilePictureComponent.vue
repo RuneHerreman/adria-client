@@ -68,7 +68,6 @@ async function handleProfilePictureRemoval() {
           @change="handleFileUpload"
           style="display: none"
       />
-      <GreyButtonComponent>Add Frame</GreyButtonComponent>
       <BrightGreenButtonComponent @click="triggerFileUpload">Change profile picture</BrightGreenButtonComponent>
       <RedButtonComponent @click="handleProfilePictureRemoval">Remove profile picture from site</RedButtonComponent>
     </section>
@@ -87,10 +86,6 @@ img{
   border-radius: 50%;
 }
 
-.grey-button { /*DO NOT TOUCH THIS CSS, IT NEEDS TO BE HERE*/
-  grid-column: 1 / span 2;
-}
-
 #profile-picture-wrapper{
   margin-top: 1rem;
 
@@ -101,7 +96,7 @@ img{
 
 #profile-picture-actions {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   gap: 0.25rem;
 }
 </style>

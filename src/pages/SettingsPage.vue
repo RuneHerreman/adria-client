@@ -27,6 +27,6 @@ const emit = defineEmits(['profileUpdated']);
 
 <style scoped>
 main {
-  padding-bottom: 2rem;
+  padding-bottom: 5rem;
 }
 </style>

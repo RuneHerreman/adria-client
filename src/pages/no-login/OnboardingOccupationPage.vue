@@ -5,19 +5,20 @@ import {useUserDataStore} from "@/data/user-data.js";
 import InputboxComponent from "@/components/InputboxComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import DefaultPopupComponent from "@/components/popup-components/DefaultPopupComponent.vue";
+import {changeOccupation} from "@/assets/js/data-connector/api.js";
 
 const router = useRouter();
 const userData = useUserDataStore();
 
-const occupation = ref(userData.getOccupation() || "");
+const occupation = ref("");
 const showErrorPopup = ref(false);
 
-function handleUserOccupation() {
+async function handleUserOccupation() {
   if (occupation.value.trim() === "") {
     showErrorPopup.value = true;
   }
   else {
-    userData.setOccupation(occupation.value.trim());
+    await changeOccupation(userData.getUserID(), occupation.value);
     router.push("/onboarding/interests");
   }
 }
@@ -35,7 +36,7 @@ function closeErrorPopup() {
         <p>Welcome to</p>
         <img src="/assets/media/genesis.png" alt="Genesis Logo" class="logo" />
         <p>
-          Let's personalize your learning experience.<br />
+          Let's personalize your learning experience.<br/>
           What's your current occupation?
         </p>
       </section>
@@ -48,6 +49,7 @@ function closeErrorPopup() {
             id="occupation"
             class="onboarding-label-input"
             v-model="occupation"
+            @keyup.enter="handleUserOccupation"
         />
         <BrightGreenButtonComponent class="onboarding-btn" @click="handleUserOccupation">Next step</BrightGreenButtonComponent>
       </section>

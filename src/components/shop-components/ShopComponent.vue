@@ -73,12 +73,13 @@ async function processCosmeticPurchase() {
 
 #banner-badges {
   margin: 3rem 0 2rem;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 1rem;
 }
 
 #badges {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.2rem;

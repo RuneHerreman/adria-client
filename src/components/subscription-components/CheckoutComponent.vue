@@ -5,6 +5,7 @@ import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import { useUserDataStore } from "@/data/user-data";
 import {computed, ref} from "vue";
 import PromoCodeComponent from "@/components/subscription-components/PromoCodeComponent.vue";
+import {getPromoCodePercentage} from "@/assets/js/data-connector/api.js";
 
 const props = defineProps({
   name: {type: String, required: true},
@@ -17,6 +18,8 @@ const emits = defineEmits(["purchaseClick"]);
 const discountUsed = ref(false);
 const discountPercentage = ref(0);
 const userData = useUserDataStore();
+const discountCode = ref("");
+
 
 const totalPrice = computed(() => {
   return (props.price * (100 - discountPercentage.value) / 100).toFixed(2);
@@ -26,20 +29,27 @@ const totalDiscount = computed(() => {
   return (props.price * discountPercentage.value / 100).toFixed(2);
 });
 
-function checkDiscount(code){
-  const normalized = code.trim().toUpperCase();
-  const percentage = discounts.value[normalized];
-  if (percentage){
-    discountUsed.value = true;
-    discountPercentage.value = percentage;
-  } else {
+async function checkDiscount(code){
+  if (code && code.length > 0){
+    const percentage = await getPromoCodePercentage(code)
+    if (percentage > 0){
+      discountUsed.value = true;
+      discountPercentage.value = percentage;
+      discountCode.value = code;
+    } else {
+      discountUsed.value = false;
+      discountPercentage.value = 0;
+      discountCode.value = "";
+    }
+  } else{
     discountUsed.value = false;
     discountPercentage.value = 0;
+    discountCode.value = "";
   }
 }
 
 function handleSubscriptionPayment(){
-  emits("purchaseClick", totalPrice.value);
+  emits("purchaseClick", totalPrice.value, discountCode.value);
 }
 </script>
 

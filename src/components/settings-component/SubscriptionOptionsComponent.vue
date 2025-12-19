@@ -14,10 +14,13 @@ const subscription = props.user.subscription
 
 async function cancelSubscription() {
   await API.cancelSubscription(useUserDataStore().getUserID());
-  await router.push("/dashboard");
+  await router.push("/");
 }
 
-console.log(subscription)
+function changePlan(){
+  useUserDataStore().setChangePlan(true);
+  router.push("/subscription");
+}
 </script>
 
 <template>
@@ -26,7 +29,7 @@ console.log(subscription)
     <p id="plan">Current plan: {{subscription.name}} <br> Monthly payment: {{subscription.price}}</p>
     <div>
       <RedButtonComponent @click="cancelSubscription">Cancel subscription</RedButtonComponent>
-      <BrightGreenButtonComponent route="/subscription">Change plan</BrightGreenButtonComponent>
+      <BrightGreenButtonComponent @click="changePlan">Change plan</BrightGreenButtonComponent>
     </div>
   </section>
 </template>

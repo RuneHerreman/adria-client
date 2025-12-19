@@ -34,13 +34,13 @@ function getUsersInLeaderboard() {
     .catch(ErrorHandler.handleError);
 }
 
-async function getCourses() {
-    const result = await fetchFromServer("/api/courses");
+async function getCourses(userId) {
+    const result = await fetchFromServer(`/api/courses/all/${userId}`);
     return translateCourseLevels(result);
 }
 
-async function getCoursesByCategory(category) {
-    const result = await fetchFromServer(`/api/courses?category=${category}`, "GET");
+async function getCoursesByCategory(category, userId) {
+    const result = await fetchFromServer(`/api/courses/all/${userId}?category=${category}`, "GET");
     return translateCourseLevels(result);
 }
 
@@ -53,7 +53,7 @@ async function getUserCourses(userID){
   try {
     const result = await fetchFromServer(`/api/users/${userID}/courses`);
 
-    return translateCourseLevels(result).filter(c => c.progressPercentage < 100);
+    return translateCourseLevels(result);
   } catch (error) {
     console.log(error);
     return [];
@@ -80,7 +80,16 @@ async function deleteProfilePicture(userID) {
 }
 
 async function getNextCourseModule(courseId, userId){
-  return await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
+
+  const res = await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`)
+
+  if (!res.ok) {
+    // 500, 404, etc. → throw so caller's try/catch sees it
+    const message = `getNextCourseModule failed: ${res.status} ${res.statusText}`;
+    throw new Error(message);
+  }
+
+  return await res.json();
 }
 
 async function checkAnswer(courseId, questionId, answerId, userId) {
@@ -108,33 +117,61 @@ async function cancelSubscription(userId) {
   return await fetchFromServer(`/api/users/${userId}/subscription/cancel`, "POST")
 }
 
-async function getSubscription(userId, subscriptionId) {
-  return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}`, "POST");
+async function getSubscribed(userId, subscriptionId, code) {
+  if (code.length === 0) {
+    return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}`, "POST");
+  }
+  return await fetchFromServer(`/api/users/${userId}/subscribe/${subscriptionId}?promoCode=${code}`, "POST");
 }
 
 async function getUserStatus(userId){
   return await fetchFromServer(`/api/users/${userId}/active`);
 }
 
+async function getPromoCodePercentage(PromoCode) {
+  return await fetchFromServer(`/api/subscriptions/${PromoCode}/discount`);
+}
+
+async function getInterests(){
+  return await fetchFromServer("/api/users/interests");
+}
+
+async function setInterests(userId, interests) {
+  return await fetchFromServer(`/api/users/${userId}/interests/${interests}`, "POST");
+}
+
+async function getUserEnrollmentCount(courseId){
+  return await fetchFromServer(`/api/courses/${courseId}/enrollment/count`);
+}
+
+async function getLessonCount(courseId) {
+  return await fetchFromServer(`/api/courses/${courseId}/lessons/count`);
+}
+
 export {
-    getAllSubscriptions,
-    getUserDetails,
-    getUsersInLeaderboard,
-    getCourses,
-    getCoursesByCategory,
-    getCourseByID,
-    getUserCourses,
-    enrollUser,
-    removeUserCoursesFromList,
-    updateProfilePicture,
-    deleteProfilePicture,
-    getNextCourseModule,
-    checkAnswer,
-    changeOccupation,
-    getAllCosmetics,
-    purchaseCosmetic,
-    getUserCosmetics,
-    cancelSubscription,
-    getSubscription,
-    getUserStatus
+  getAllSubscriptions,
+  getUserDetails,
+  getUsersInLeaderboard,
+  getCourses,
+  getCoursesByCategory,
+  getCourseByID,
+  getUserCourses,
+  enrollUser,
+  removeUserCoursesFromList,
+  updateProfilePicture,
+  deleteProfilePicture,
+  getNextCourseModule,
+  checkAnswer,
+  changeOccupation,
+  getAllCosmetics,
+  purchaseCosmetic,
+  getUserCosmetics,
+  cancelSubscription,
+  getSubscribed,
+  getUserStatus,
+  getPromoCodePercentage,
+  getInterests,
+  setInterests,
+  getUserEnrollmentCount,
+  getLessonCount,
 };
