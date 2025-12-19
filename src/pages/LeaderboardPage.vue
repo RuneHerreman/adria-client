@@ -32,7 +32,7 @@ onMounted(async () => {
 const maxPlayers = 3;
 const leaderboardTop3 = computed(() => leaderboardTop10.value.slice(0, maxPlayers));
 
-function loadUsersChart() {
+function loadUsersChart() { // NOSONAR
   const ctx = chartRef.value?.getContext('2d');
   if (!ctx) return;
 
@@ -40,10 +40,10 @@ function loadUsersChart() {
   chartInstance = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // NOSONAR
       datasets: [{
         label: 'Active Monthly Users',
-        data: [2675, 3076, 3538, 4069, 4679, 5381],
+        data: [2675, 3076, 3538, 4069, 4679, 5381], // NOSONAR
         borderColor: 'rgba(0,128,66,0.9)',
         backgroundColor: 'rgba(0,128,66,0.08)',
         tension: 0.4,

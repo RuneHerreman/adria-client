@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="16" failures="0" errors="0" time="0.0089147">
-    <testsuite name="src/components/__tests__/script-tests/api.test.ts" timestamp="2025-12-19T10:36:40.511Z" hostname="RH_IDPADPRO5" tests="16" failures="0" errors="0" skipped="0" time="0.0089147">
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="Level translations &gt; multiple levels gets correcly translated" time="0.0014415">
+<testsuites name="vitest tests" tests="20" failures="0" errors="0" time="0.0794798">
+    <testsuite name="src/components/__tests__/script-tests/api.test.ts" timestamp="2025-12-19T10:45:06.062Z" hostname="RH_IDPADPRO5" tests="16" failures="0" errors="0" skipped="0" time="0.0212762">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="Level translations &gt; multiple levels gets correcly translated" time="0.0033782">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="Level translations &gt; one course gets correcly translated" time="0.0004115">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="Level translations &gt; one course gets correcly translated" time="0.0007186">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Subscription tests &gt; getAllSubscriptions fetches subscriptions" time="0.0018722">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Subscription tests &gt; getAllSubscriptions fetches subscriptions" time="0.0036239">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Subscription tests &gt; getAllSubscriptions handles errors" time="0.0004262">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Subscription tests &gt; getAllSubscriptions handles errors" time="0.0008208">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; getUserDetails fetches user by ID" time="0.0003258">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; getUserDetails fetches user by ID" time="0.0006577">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; getUsersInLeaderboard fetches leaderboard" time="0.0003545">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; getUsersInLeaderboard fetches leaderboard" time="0.0010236">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; enrollUser posts enrollment" time="0.0002319">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; enrollUser posts enrollment" time="0.0006704">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; changeOccupation posts new occupation" time="0.0002227">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; changeOccupation posts new occupation" time="0.0007081">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; updateProfilePicture posts image string" time="0.0004588">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; updateProfilePicture posts image string" time="0.0012981">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; deleteProfilePicture sends DELETE request" time="0.000327">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; User tests &gt; deleteProfilePicture sends DELETE request" time="0.00086">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getCourses fetches and translates levels" time="0.0003428">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getCourses fetches and translates levels" time="0.0011703">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getCoursesByCategory filters by category" time="0.0002379">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getCoursesByCategory filters by category" time="0.0005662">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getCourseByID fetches single course" time="0.0002109">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getCourseByID fetches single course" time="0.0003917">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getUserCourses filters completed courses" time="0.0002564">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getUserCourses filters completed courses" time="0.0004741">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getUserCourses returns empty array on error" time="0.0002308">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; getUserCourses returns empty array on error" time="0.0006132">
         </testcase>
-        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; removeUserCoursesFromList filters enrolled courses" time="0.0003568">
+        <testcase classname="src/components/__tests__/script-tests/api.test.ts" name="API calls &gt; Course tests &gt; removeUserCoursesFromList filters enrolled courses" time="0.001098">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/components/__tests__/component-tests/App.test.ts" timestamp="2025-12-19T10:45:06.067Z" hostname="RH_IDPADPRO5" tests="4" failures="0" errors="0" skipped="0" time="0.0582036">
+        <testcase classname="src/components/__tests__/component-tests/App.test.ts" name="App.vue &gt; adds landing-page-body class so background can be rendered on root path" time="0.0393412">
+            <system-out>
+&lt;Suspense&gt; is an experimental feature and its API will likely change.
+
+            </system-out>
+        </testcase>
+        <testcase classname="src/components/__tests__/component-tests/App.test.ts" name="App.vue &gt; adds gradient-background-body class on subscription checkout page" time="0.0069168">
+        </testcase>
+        <testcase classname="src/components/__tests__/component-tests/App.test.ts" name="App.vue &gt; adds gradient-background-body class on onboarding pages" time="0.0049374">
+        </testcase>
+        <testcase classname="src/components/__tests__/component-tests/App.test.ts" name="App.vue &gt; removes all classes when navigating away" time="0.005488">
         </testcase>
     </testsuite>
 </testsuites>

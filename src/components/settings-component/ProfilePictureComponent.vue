@@ -1,6 +1,4 @@
 <script setup>
-
-import GreyButtonComponent from "@/components/buttons/GreyButtonComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
 import RedButtonComponent from "@/components/buttons/RedButtonComponent.vue";
 import {ref, defineEmits, defineProps} from "vue";

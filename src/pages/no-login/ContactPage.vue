@@ -16,7 +16,7 @@ function showAlert(event) {
 
   setTimeout(() => {
     sent.value = false;
-  }, 2000)
+  }, 2000);
 }
 </script>
 

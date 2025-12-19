@@ -6,7 +6,7 @@ import * as API from "@/assets/js/data-connector/api";
 import {useUserDataStore} from "@/data/user-data.js";
 
 const occupation = ref("");
-const badges = await API.getUserCosmetics(useUserDataStore().getUserID()).then(res => res.filter(cosmetic => cosmetic.itemType === "Badge"))
+const badges = await API.getUserCosmetics(useUserDataStore().getUserID()).then(res => res.filter(cosmetic => cosmetic.itemType === "Badge"));
 
 const props = defineProps({
   user: {type: Object, required: true}

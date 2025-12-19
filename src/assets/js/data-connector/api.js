@@ -81,7 +81,7 @@ async function deleteProfilePicture(userID) {
 
 async function getNextCourseModule(courseId, userId){
 
-  const res = await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`)
+  const res = await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
 
   if (!res.ok) {
     // 500, 404, etc. → throw so caller's try/catch sees it
@@ -114,7 +114,7 @@ async function getUserCosmetics(userId){
 }
 
 async function cancelSubscription(userId) {
-  return await fetchFromServer(`/api/users/${userId}/subscription/cancel`, "POST")
+  return await fetchFromServer(`/api/users/${userId}/subscription/cancel`, "POST");
 }
 
 async function getSubscribed(userId, subscriptionId, code) {

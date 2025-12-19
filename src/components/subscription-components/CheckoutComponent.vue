@@ -31,7 +31,7 @@ const totalDiscount = computed(() => {
 
 async function checkDiscount(code){
   if (code && code.length > 0){
-    const percentage = await getPromoCodePercentage(code)
+    const percentage = await getPromoCodePercentage(code);
     if (percentage > 0){
       discountUsed.value = true;
       discountPercentage.value = percentage;

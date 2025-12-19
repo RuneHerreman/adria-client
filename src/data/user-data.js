@@ -55,7 +55,7 @@ export const useUserDataStore = defineStore('userData', {
           return this.selectedCourseID;
         },
         getSelectedPlanId(){
-            return this.selectedPlan.id
+            return this.selectedPlan.id;
         },
       getUserID(){
           return this.userId;
