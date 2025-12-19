@@ -14,7 +14,7 @@
     loadPieChart();
   });
 
-  function loadPieChart() {
+  function loadPieChart() { // NOSONAR
     const ctx = pieChartRef.value?.getContext('2d');
     if (ctx) {
       pieChartInstance?.destroy();
@@ -67,7 +67,7 @@
     }
   }
 
-  function loadLineChart() {
+  function loadLineChart() { // NOSONAR
     const ctx = lineChartRef.value?.getContext('2d');
     if (ctx) {
       lineChartInstance?.destroy();

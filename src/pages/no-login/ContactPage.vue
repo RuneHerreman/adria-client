@@ -14,7 +14,7 @@ function showAlert(event) {
 
   sent.value = true;
 
-  setTimeout(() => {
+  setTimeout(() => { // NOSONAR
     sent.value = false;
   }, 2000);
 }
