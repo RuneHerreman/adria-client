@@ -1,5 +1,16 @@
 # Adria Client
 ___
+
+## Quickstart
+
+```bash
+git clone <client-repo-url>
+cd client
+npm install
+npm run dev
+```
+
+
 ## Naming conventions
 
 | Type       | Naming          | Example                 |
