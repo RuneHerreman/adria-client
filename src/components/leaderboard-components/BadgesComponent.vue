@@ -1,12 +1,12 @@
 <script setup>
-import * as API from "@/assets/js/data-connector/api.js"
-import {ref} from "vue";
+import * as API from "@/assets/js/data-connector/api.js";
 
 const props = defineProps({
   playerId: {
     type: String
   }
-})
+});
+
 const cosmetics = await API.getUserCosmetics(props.playerId);
 </script>
 

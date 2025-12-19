@@ -1,16 +1,16 @@
 <script setup>
 import RedButtonComponent from "@/components/buttons/RedButtonComponent.vue";
 import BrightGreenButtonComponent from "@/components/buttons/BrightGreenButtonComponent.vue";
-import * as API from "@/assets/js/data-connector/api.js"
+import * as API from "@/assets/js/data-connector/api.js";
 import {useUserDataStore} from "@/data/user-data.js";
 import router from "@/router/index.js";
 const props = defineProps({
   user: {
     type: Object
   }
-})
+});
 
-const subscription = props.user.subscription
+const subscription = props.user.subscription;
 
 async function cancelSubscription() {
   await API.cancelSubscription(useUserDataStore().getUserID());

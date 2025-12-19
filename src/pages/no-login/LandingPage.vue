@@ -21,9 +21,9 @@
       pieChartInstance = new Chart(ctx, {
         type: 'pie',
         data: {
-          labels: ['Basic', 'Standard', 'Premium', 'Ultra'],
+          labels: ['Basic', 'Standard', 'Premium', 'Ultra'],// NOSONAR
           datasets: [{
-            data: [20, 40, 30, 10],
+            data: [20, 40, 30, 10],// NOSONAR
             backgroundColor: [
               'rgba(0,128,66, 0.4)',
               'rgba(0,128,66,0.8)',
@@ -74,10 +74,10 @@
       lineChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['2084', '2085', '2086', '2087', '2088'],
+          labels: ['2084', '2085', '2086', '2087', '2088'],// NOSONAR
           datasets: [{
             label: 'Users Growth',
-            data: [2326, 12446, 66588, 356261, 1906086],
+            data: [2326, 12446, 66588, 356261, 1906086],// NOSONAR
             borderColor: 'rgba(0,128,66,0.9)',
             backgroundColor: 'rgba(0,128,66,0.2)',
             tension: 0.4,
