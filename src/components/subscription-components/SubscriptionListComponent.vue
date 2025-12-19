@@ -12,7 +12,7 @@ const perksByPlanName = {
   Basic: ["Access to all courses."],
   Standard: ["Access to all courses.", "Interactive experiences"],
   Premium: ["Access to all courses.", "Interactive experiences", "Access to Genesis Sleep"],
-  Ultimate: ["Access to all courses.", "Interactive experiences", "Access to Genesis Sleep", "50% off Insta-Learn"],
+  Ultra: ["Access to all courses.", "Interactive experiences", "Access to Genesis Sleep", "50% off Insta-Learn"],
 };
 
 const subscriptionsSortedByPrice = computed(() => {
