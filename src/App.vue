@@ -37,7 +37,7 @@ function handleProfileUpdate() {
   headerKey.value++;
 }
 function requiresLogin() {
-  return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout"].indexOf(route.path) === -1;
+  return ["/", "/subscription", "/onboarding/occupation", "/onboarding/interests", "/subscription/checkout", "/contact"].indexOf(route.path) === -1;
 }
 
 </script>
