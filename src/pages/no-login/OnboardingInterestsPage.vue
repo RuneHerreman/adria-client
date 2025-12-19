@@ -37,7 +37,7 @@
     if (interestSelected.length !== maxAllowedInterests) {
       showErrorPopup.value = true;
     } else {
-      await setInterests(interestSelected.join("-"));
+      await setInterests(useUserDataStore().getUserID(), interestSelected.join("-"));
       enablePushNotifications();
       router.push("/dashboard");
     }
