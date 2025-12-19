@@ -13,6 +13,7 @@ watchEffect(() => {
   document.body.classList.toggle('landing-page-body', route.path === '/');
 });
 
+
 watchEffect(() => {
   document.body.classList.toggle(
       'gradient-background-body',
