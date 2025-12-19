@@ -217,9 +217,9 @@ describe("API calls", () => {
             ];
             vi.spyOn(APICOMM, 'fetchFromServer').mockResolvedValue(mockCourses)
 
-            const result = await API.getCourses()
+            const result = await API.getCourses("91171dab-1bc7-4af8-9bfa-620847e9e9f3")
 
-            expect(APICOMM.fetchFromServer).toHaveBeenCalledWith('/api/courses')
+            expect(APICOMM.fetchFromServer).toHaveBeenCalledWith('/api/courses/all/91171dab-1bc7-4af8-9bfa-620847e9e9f3')
             expect(result[0].level).toBe('hard')
             expect(result[1].level).toBe('moderate')
         })
@@ -243,9 +243,9 @@ describe("API calls", () => {
             ];
             vi.spyOn(APICOMM, 'fetchFromServer').mockResolvedValue(mockCourses)
 
-            const result = await API.getCoursesByCategory('Life Skills')
+            const result = await API.getCoursesByCategory('Life Skills', "91171dab-1bc7-4af8-9bfa-620847e9e9f3")
 
-            expect(APICOMM.fetchFromServer).toHaveBeenCalledWith('/api/courses?category=Life Skills', 'GET')
+            expect(APICOMM.fetchFromServer).toHaveBeenCalledWith('/api/courses/all/91171dab-1bc7-4af8-9bfa-620847e9e9f3?category=Life Skills', 'GET')
             expect(result[0].level).toBe('hard')
         })
         test('getCourseByID fetches single course', async () => {
@@ -285,8 +285,8 @@ describe("API calls", () => {
 
             const result = await API.getUserCourses("389bc6fb-080e-4450-ac9a-2ff10868b0d6")
 
-            expect(result).toHaveLength(1)
-            expect(result[0].progressPercentage).toBe(50)
+            expect(result).toHaveLength(2)
+            expect(result[0].progressPercentage).toBe(100)
         })
         test('getUserCourses returns empty array on error', async () => {
             vi.spyOn(APICOMM, 'fetchFromServer').mockRejectedValue(new Error('fail'))
