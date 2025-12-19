@@ -83,13 +83,15 @@ async function getNextCourseModule(courseId, userId){
 
   const res = await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
 
-  if (!res.ok) {
+  console.log(res)
+
+  if (res.length === 0) {
     // 500, 404, etc. → throw so caller's try/catch sees it
     const message = `getNextCourseModule failed: ${res.status} ${res.statusText}`;
     throw new Error(message);
   }
 
-  return await res.json();
+  return res;
 }
 
 async function checkAnswer(courseId, questionId, answerId, userId) {

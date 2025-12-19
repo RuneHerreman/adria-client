@@ -19,14 +19,15 @@ try {
   );
 } catch (error) {
   router.push(`/course/${courseId}`);
+  console.log(error.message);
 }
 
 const showQuestions = ref(false);
 
 const loadNextModule = async () => {
+  console.log("loading module...");
   try {
     const nextModule = await API.getNextCourseModule(courseId, useUserDataStore().getUserID());
-
     if (nextModule) {
       moduleData.value = nextModule;
       showQuestions.value = false;
