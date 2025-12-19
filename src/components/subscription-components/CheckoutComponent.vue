@@ -46,11 +46,9 @@ async function checkDiscount(code){
     discountPercentage.value = 0;
     discountCode.value = "";
   }
-  console.log(discountCode.value);
 }
 
 function handleSubscriptionPayment(){
-  console.log(discountCode.value);
   emits("purchaseClick", totalPrice.value, discountCode.value);
 }
 </script>

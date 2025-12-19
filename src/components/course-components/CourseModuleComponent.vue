@@ -26,7 +26,6 @@ const showQuestions = ref(false);
 const loadNextModule = async () => {
   try {
     const nextModule = await API.getNextCourseModule(courseId, useUserDataStore().getUserID());
-    console.log(nextModule);
 
     if (nextModule) {
       moduleData.value = nextModule;

@@ -21,8 +21,6 @@ function changePlan(){
   useUserDataStore().setChangePlan(true);
   router.push("/subscription");
 }
-
-console.log(subscription)
 </script>
 
 <template>

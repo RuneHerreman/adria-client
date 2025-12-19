@@ -21,7 +21,6 @@
   });
 
   async function handlePurchase(){
-    console.log(discountCode.value)
     await getSubscribed(useUserDataStore().getUserID(), id, discountCode.value);
 
     if (!useUserDataStore().getChangePlan()) {

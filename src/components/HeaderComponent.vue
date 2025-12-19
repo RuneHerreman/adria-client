@@ -16,7 +16,6 @@
   onMounted(async () => {
     try {
       user.value = await API.getUserDetails(useUserDataStore().getUserID());
-      console.log(user.value);
     } catch (error) {
       console.error(error);
     }
