@@ -55,7 +55,6 @@ async function getUserCourses(userID){
 
     return translateCourseLevels(result);
   } catch (error) {
-    console.log(error);
     return [];
   }
 }
@@ -82,8 +81,6 @@ async function deleteProfilePicture(userID) {
 async function getNextCourseModule(courseId, userId){
 
   const res = await fetchFromServer(`/api/courses/${courseId}/modules/${userId}`);
-
-  console.log(res)
 
   if (res.length === 0) {
     // 500, 404, etc. → throw so caller's try/catch sees it
