@@ -1,3 +1,4 @@
+const LOCALSERVER = "http://localhost:8000";
 const VAPID_PUBLIC_KEY =
   "BEjEUzpt6xpfP1jVCF3IpKsV4iOhfwZoKclTWjwR8NN514xRDjUWZXAh1F3-a3Rt54nD-zSbDWP4xPrHjBlpD2s";
 
