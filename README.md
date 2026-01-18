@@ -1,6 +1,4 @@
 # Adria Client
-___
-
 ## Quickstart
 
 ```bash
